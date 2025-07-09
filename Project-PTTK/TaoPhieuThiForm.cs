@@ -92,15 +92,5 @@ namespace Project_PTTK
         {
 
         }
-
-        private void TaoPhieuDangKyForm_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupThiSinh_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }
