@@ -10,7 +10,13 @@
     <Compile Update="LogoutForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TaoPhieuGiaHanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TaoPhieuThiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ThanhToanGiaHanForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ThanhToanPhieuDangKyForm.cs">

@@ -272,6 +272,7 @@ namespace Project_PTTK
             groupThiSinh.TabIndex = 1;
             groupThiSinh.TabStop = false;
             groupThiSinh.Text = "Thông tin thí sinh";
+            groupThiSinh.Enter += groupThiSinh_Enter;
             // 
             // groupDangKy
             // 
@@ -297,6 +298,7 @@ namespace Project_PTTK
             Name = "TaoPhieuDangKyForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Tạo Phiếu Đăng Ký";
+            Load += TaoPhieuDangKyForm_Load_1;
             groupKhachHang.ResumeLayout(false);
             groupKhachHang.PerformLayout();
             groupThiSinh.ResumeLayout(false);
