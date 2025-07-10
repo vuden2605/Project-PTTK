@@ -14,16 +14,19 @@ namespace Project_PTTK
             return conn;
         }
 
-        public static DataTable GetData(string query)
+        public static DataTable GetData(string query, SqlParameter[]? parameters)
         {
-            using (SqlConnection conn = GetConnection())
-            {
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
+            using SqlConnection conn = new SqlConnection(connectionString);
+            using SqlCommand cmd = new SqlCommand(query, conn);
+            if (parameters != null)
+                cmd.Parameters.AddRange(parameters);
+
+            using SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
         }
+
 
         public static int ExecuteCommand(string query, params SqlParameter[] parameters)
         {
