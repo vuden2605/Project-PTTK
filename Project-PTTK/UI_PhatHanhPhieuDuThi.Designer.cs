@@ -30,12 +30,9 @@
         {
             button4 = new Button();
             label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
             label2 = new Label();
             button3 = new Button();
             dataGridView1 = new DataGridView();
-            button2 = new Button();
             button1 = new Button();
             textBox1 = new TextBox();
             label1 = new Label();
@@ -46,6 +43,7 @@
             Column2 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -65,27 +63,9 @@
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(45, 77);
             label5.Name = "label5";
-            label5.Size = new Size(519, 28);
+            label5.Size = new Size(440, 28);
             label5.TabIndex = 30;
-            label5.Text = "Danh sách phiếu đăng ký cần phát hành phiếu dự thi:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(956, 376);
-            label4.Name = "label4";
-            label4.Size = new Size(17, 20);
-            label4.TabIndex = 29;
-            label4.Text = "5";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(841, 376);
-            label3.Name = "label3";
-            label3.Size = new Size(119, 20);
-            label3.TabIndex = 28;
-            label3.Text = "Tổng số bản ghi:";
+            label5.Text = "Danh sách thí sinh cần cấp hành phiếu dự thi";
             // 
             // label2
             // 
@@ -109,21 +89,12 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { m, Column3, Column4, Column5, Column2, Column6, Column1 });
-            dataGridView1.Location = new Point(45, 119);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { m, Column3, Column4, Column5, Column2, Column6, Column1, Column7 });
+            dataGridView1.Location = new Point(22, 120);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(929, 254);
+            dataGridView1.Size = new Size(973, 254);
             dataGridView1.TabIndex = 25;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(826, 31);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 34);
-            button2.TabIndex = 24;
-            button2.Text = "Làm mới";
-            button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -147,13 +118,13 @@
             label1.AutoSize = true;
             label1.Location = new Point(45, 38);
             label1.Name = "label1";
-            label1.Size = new Size(229, 20);
+            label1.Size = new Size(183, 20);
             label1.TabIndex = 21;
-            label1.Text = "Tìm kiếm theo mã phiếu đăng ký:";
+            label1.Text = "Tìm kiếm theo Mã thí sinh:";
             // 
             // m
             // 
-            m.HeaderText = "Mã phiếu đăng ký";
+            m.HeaderText = "Mã thí sinh";
             m.MaxInputLength = 32900;
             m.MinimumWidth = 6;
             m.Name = "m";
@@ -161,45 +132,50 @@
             // 
             // Column3
             // 
-            Column3.HeaderText = "Mã khách hàng";
+            Column3.HeaderText = "Họ tên";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
-            Column3.Width = 125;
             // 
             // Column4
             // 
-            Column4.HeaderText = "Ngày tạo";
+            Column4.HeaderText = "Ngày sinh";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
             Column4.Width = 125;
             // 
             // Column5
             // 
-            Column5.HeaderText = "Trạng thái";
+            Column5.HeaderText = "Tên dịch vụ";
             Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
             Column5.Width = 125;
             // 
             // Column2
             // 
-            Column2.HeaderText = "Phương thức thanh toán";
+            Column2.HeaderText = "Phòng thi";
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
             Column2.Width = 125;
             // 
             // Column6
             // 
-            Column6.HeaderText = "Email";
+            Column6.HeaderText = "Ngày thi";
             Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
             Column6.Width = 125;
             // 
             // Column1
             // 
-            Column1.HeaderText = "Số thí sinh";
+            Column1.HeaderText = "Giờ thi";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
-            Column1.Width = 125;
+            // 
+            // Column7
+            // 
+            Column7.HeaderText = "Trạng thái phát hành";
+            Column7.MinimumWidth = 6;
+            Column7.Name = "Column7";
+            Column7.Width = 125;
             // 
             // UI_PhatHanhPhieuDuThi
             // 
@@ -208,12 +184,9 @@
             ClientSize = new Size(1018, 486);
             Controls.Add(button4);
             Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(button3);
             Controls.Add(dataGridView1);
-            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(label1);
@@ -228,12 +201,9 @@
 
         private Button button4;
         private Label label5;
-        private Label label4;
-        private Label label3;
         private Label label2;
         private Button button3;
         private DataGridView dataGridView1;
-        private Button button2;
         private Button button1;
         private TextBox textBox1;
         private Label label1;
@@ -244,5 +214,6 @@
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column7;
     }
 }

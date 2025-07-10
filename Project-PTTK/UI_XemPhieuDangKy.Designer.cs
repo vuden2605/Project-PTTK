@@ -29,17 +29,7 @@
         private void InitializeComponent()
         {
             label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
             dataGridView1 = new DataGridView();
-            button2 = new Button();
-            button1 = new Button();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            panel1 = new Panel();
-            label6 = new Label();
-            comboBox1 = new ComboBox();
-            label7 = new Label();
             m = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
@@ -47,6 +37,13 @@
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
+            button1 = new Button();
+            textBox1 = new TextBox();
+            label1 = new Label();
+            panel1 = new Panel();
+            label7 = new Label();
+            comboBox1 = new ComboBox();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -61,24 +58,6 @@
             label5.TabIndex = 19;
             label5.Text = "Danh sách phiếu đăng ký";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(953, 439);
-            label4.Name = "label4";
-            label4.Size = new Size(17, 20);
-            label4.TabIndex = 18;
-            label4.Text = "5";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(838, 439);
-            label3.Name = "label3";
-            label3.Size = new Size(119, 20);
-            label3.TabIndex = 17;
-            label3.Text = "Tổng số bản ghi:";
-            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -88,83 +67,6 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(898, 254);
             dataGridView1.TabIndex = 14;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(679, 59);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 34);
-            button2.TabIndex = 13;
-            button2.Text = "Làm mới";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.Lime;
-            button1.Location = new Point(554, 59);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 34);
-            button1.TabIndex = 12;
-            button1.Text = "Tìm kiếm";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(198, 64);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(311, 27);
-            textBox1.TabIndex = 11;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(198, 40);
-            label1.Name = "label1";
-            label1.Size = new Size(290, 20);
-            label1.TabIndex = 10;
-            label1.Text = "Tìm kiếm khách hàng theo Mã khách hàng:";
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(comboBox1);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(button2);
-            panel1.Location = new Point(71, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(898, 114);
-            panel1.TabIndex = 20;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label6.Location = new Point(10, 10);
-            label6.Name = "label6";
-            label6.Size = new Size(141, 20);
-            label6.TabIndex = 0;
-            label6.Text = "Bộ lọc và Tìm kiếm";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(20, 63);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 1;
-            comboBox1.Text = "Tất cả";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(20, 40);
-            label7.Name = "label7";
-            label7.Size = new Size(78, 20);
-            label7.TabIndex = 21;
-            label7.Text = "Trạng thái:";
             // 
             // m
             // 
@@ -216,6 +118,73 @@
             Column6.Name = "Column6";
             Column6.Width = 125;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Lime;
+            button1.Location = new Point(554, 59);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 34);
+            button1.TabIndex = 12;
+            button1.Text = "Tìm kiếm";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(198, 64);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(311, 27);
+            textBox1.TabIndex = 11;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(198, 40);
+            label1.Name = "label1";
+            label1.Size = new Size(290, 20);
+            label1.TabIndex = 10;
+            label1.Text = "Tìm kiếm khách hàng theo Mã khách hàng:";
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(comboBox1);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(button1);
+            panel1.Location = new Point(71, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(898, 114);
+            panel1.TabIndex = 20;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(20, 40);
+            label7.Name = "label7";
+            label7.Size = new Size(78, 20);
+            label7.TabIndex = 21;
+            label7.Text = "Trạng thái:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(20, 63);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 28);
+            comboBox1.TabIndex = 1;
+            comboBox1.Text = "Tất cả";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label6.Location = new Point(10, 10);
+            label6.Name = "label6";
+            label6.Size = new Size(141, 20);
+            label6.TabIndex = 0;
+            label6.Text = "Bộ lọc và Tìm kiếm";
+            // 
             // UI_XemPhieuDangKy
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -223,8 +192,6 @@
             ClientSize = new Size(1018, 486);
             Controls.Add(panel1);
             Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(dataGridView1);
             Name = "UI_XemPhieuDangKy";
             Text = "UI_XemPhieuDangKy";
@@ -238,10 +205,7 @@
         #endregion
 
         private Label label5;
-        private Label label4;
-        private Label label3;
         private DataGridView dataGridView1;
-        private Button button2;
         private Button button1;
         private TextBox textBox1;
         private Label label1;

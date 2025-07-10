@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
             label2 = new Label();
             button3 = new Button();
             dataGridView1 = new DataGridView();
@@ -47,7 +45,6 @@
             textBox1 = new TextBox();
             label1 = new Label();
             button1 = new Button();
-            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -62,24 +59,6 @@
             label5.TabIndex = 19;
             label5.Text = "Danh sách chứng chỉ";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(871, 422);
-            label4.Name = "label4";
-            label4.Size = new Size(17, 20);
-            label4.TabIndex = 18;
-            label4.Text = "5";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(756, 422);
-            label3.Name = "label3";
-            label3.Size = new Size(119, 20);
-            label3.TabIndex = 17;
-            label3.Text = "Tổng số bản ghi:";
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -92,7 +71,7 @@
             // button3
             // 
             button3.BackColor = Color.LightSkyBlue;
-            button3.Location = new Point(756, 457);
+            button3.Location = new Point(774, 457);
             button3.Name = "button3";
             button3.Size = new Size(143, 45);
             button3.TabIndex = 15;
@@ -160,7 +139,6 @@
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(button1);
-            panel1.Controls.Add(button2);
             panel1.Location = new Point(112, 6);
             panel1.Name = "panel1";
             panel1.Size = new Size(805, 114);
@@ -220,15 +198,6 @@
             button1.Text = "Tìm kiếm";
             button1.UseVisualStyleBackColor = false;
             // 
-            // button2
-            // 
-            button2.Location = new Point(679, 59);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 34);
-            button2.TabIndex = 13;
-            button2.Text = "Làm mới";
-            button2.UseVisualStyleBackColor = true;
-            // 
             // UI_CapChungChi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -236,8 +205,6 @@
             ClientSize = new Size(1018, 514);
             Controls.Add(panel1);
             Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(button3);
             Controls.Add(dataGridView1);
@@ -253,8 +220,6 @@
         #endregion
 
         private Label label5;
-        private Label label4;
-        private Label label3;
         private Label label2;
         private Button button3;
         private DataGridView dataGridView1;
@@ -271,6 +236,5 @@
         private TextBox textBox1;
         private Label label1;
         private Button button1;
-        private Button button2;
     }
 }
