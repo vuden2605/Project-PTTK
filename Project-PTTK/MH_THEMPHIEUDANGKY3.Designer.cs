@@ -37,6 +37,8 @@
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             btnDangKy = new Button();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -44,7 +46,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label1.Location = new Point(24, 29);
+            label1.Location = new Point(24, 56);
             label1.Name = "label1";
             label1.Size = new Size(439, 20);
             label1.TabIndex = 0;
@@ -54,7 +56,7 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column2, Column3, Column4, Column5, Column6, Column7 });
-            dataGridView1.Location = new Point(24, 66);
+            dataGridView1.Location = new Point(24, 89);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(726, 321);
@@ -108,18 +110,40 @@
             btnDangKy.FlatStyle = FlatStyle.Flat;
             btnDangKy.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnDangKy.ForeColor = Color.White;
-            btnDangKy.Location = new Point(304, 403);
+            btnDangKy.Location = new Point(306, 416);
             btnDangKy.Name = "btnDangKy";
             btnDangKy.Size = new Size(200, 45);
             btnDangKy.TabIndex = 8;
             btnDangKy.Text = "Thêm dịch vụ";
             btnDangKy.UseVisualStyleBackColor = false;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.Location = new Point(24, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(294, 28);
+            label2.TabIndex = 9;
+            label2.Text = "Thêm dịch vụ cho phiếu đăng ký";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label3.Location = new Point(324, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(48, 28);
+            label3.TabIndex = 10;
+            label3.Text = "001";
+            // 
             // MH_THEMPHIEUDANGKY3
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 473);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(btnDangKy);
             Controls.Add(dataGridView1);
             Controls.Add(label1);
@@ -141,5 +165,7 @@
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
         private Button btnDangKy;
+        private Label label2;
+        private Label label3;
     }
 }

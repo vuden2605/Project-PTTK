@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupKhachHang = new GroupBox();
+            label2 = new Label();
             textBox1 = new TextBox();
             label1 = new Label();
             txtDiaChiDV = new TextBox();
@@ -46,9 +47,6 @@
             button1 = new Button();
             button3 = new Button();
             dataGridView2 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
             button2 = new Button();
             groupBox2 = new GroupBox();
             lblHoTenTS = new Label();
@@ -69,6 +67,10 @@
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column8 = new DataGridViewTextBoxColumn();
             groupKhachHang.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -79,6 +81,7 @@
             // 
             // groupKhachHang
             // 
+            groupKhachHang.Controls.Add(label2);
             groupKhachHang.Controls.Add(textBox1);
             groupKhachHang.Controls.Add(label1);
             groupKhachHang.Controls.Add(txtDiaChiDV);
@@ -96,11 +99,21 @@
             groupKhachHang.Size = new Size(920, 127);
             groupKhachHang.TabIndex = 4;
             groupKhachHang.TabStop = false;
-            groupKhachHang.Text = "Thông tin khách hàng";
+            groupKhachHang.Text = "Thông tin phiếu đăng ký";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label2.Location = new Point(186, -3);
+            label2.Name = "label2";
+            label2.Size = new Size(48, 28);
+            label2.TabIndex = 12;
+            label2.Text = "001";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(427, 65);
+            textBox1.Location = new Point(427, 84);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(180, 27);
             textBox1.TabIndex = 11;
@@ -108,7 +121,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(372, 65);
+            label1.Location = new Point(372, 84);
             label1.Name = "label1";
             label1.Size = new Size(49, 20);
             label1.TabIndex = 10;
@@ -116,7 +129,7 @@
             // 
             // txtDiaChiDV
             // 
-            txtDiaChiDV.Location = new Point(722, 65);
+            txtDiaChiDV.Location = new Point(722, 84);
             txtDiaChiDV.Name = "txtDiaChiDV";
             txtDiaChiDV.Size = new Size(180, 27);
             txtDiaChiDV.TabIndex = 9;
@@ -124,14 +137,14 @@
             // dtpNgaySinhKH
             // 
             dtpNgaySinhKH.Format = DateTimePickerFormat.Short;
-            dtpNgaySinhKH.Location = new Point(426, 21);
+            dtpNgaySinhKH.Location = new Point(426, 40);
             dtpNgaySinhKH.Name = "dtpNgaySinhKH";
             dtpNgaySinhKH.Size = new Size(180, 27);
             dtpNgaySinhKH.TabIndex = 5;
             // 
             // lblLoaiKH
             // 
-            lblLoaiKH.Location = new Point(20, 30);
+            lblLoaiKH.Location = new Point(20, 49);
             lblLoaiKH.Name = "lblLoaiKH";
             lblLoaiKH.Size = new Size(129, 23);
             lblLoaiKH.TabIndex = 0;
@@ -139,14 +152,14 @@
             // 
             // cboLoaiKH
             // 
-            cboLoaiKH.Location = new Point(155, 25);
+            cboLoaiKH.Location = new Point(155, 44);
             cboLoaiKH.Name = "cboLoaiKH";
             cboLoaiKH.Size = new Size(180, 28);
             cboLoaiKH.TabIndex = 1;
             // 
             // lblTenKH
             // 
-            lblTenKH.Location = new Point(20, 65);
+            lblTenKH.Location = new Point(20, 84);
             lblTenKH.Name = "lblTenKH";
             lblTenKH.Size = new Size(114, 23);
             lblTenKH.TabIndex = 2;
@@ -154,14 +167,14 @@
             // 
             // txtTenKH
             // 
-            txtTenKH.Location = new Point(155, 64);
+            txtTenKH.Location = new Point(155, 83);
             txtTenKH.Name = "txtTenKH";
             txtTenKH.Size = new Size(180, 27);
             txtTenKH.TabIndex = 3;
             // 
             // lblNgaySinhKH
             // 
-            lblNgaySinhKH.Location = new Point(352, 24);
+            lblNgaySinhKH.Location = new Point(352, 43);
             lblNgaySinhKH.Name = "lblNgaySinhKH";
             lblNgaySinhKH.Size = new Size(83, 23);
             lblNgaySinhKH.TabIndex = 4;
@@ -169,7 +182,7 @@
             // 
             // lblTenDV
             // 
-            lblTenDV.Location = new Point(637, 23);
+            lblTenDV.Location = new Point(637, 42);
             lblTenDV.Name = "lblTenDV";
             lblTenDV.Size = new Size(83, 23);
             lblTenDV.TabIndex = 6;
@@ -177,14 +190,14 @@
             // 
             // txtTenDV
             // 
-            txtTenDV.Location = new Point(722, 21);
+            txtTenDV.Location = new Point(722, 40);
             txtTenDV.Name = "txtTenDV";
             txtTenDV.Size = new Size(180, 27);
             txtTenDV.TabIndex = 7;
             // 
             // lblDiaChiDV
             // 
-            lblDiaChiDV.Location = new Point(619, 69);
+            lblDiaChiDV.Location = new Point(619, 88);
             lblDiaChiDV.Name = "lblDiaChiDV";
             lblDiaChiDV.Size = new Size(111, 23);
             lblDiaChiDV.TabIndex = 8;
@@ -210,7 +223,7 @@
             groupBox1.Controls.Add(dataGridView2);
             groupBox1.Location = new Point(49, 145);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(466, 327);
+            groupBox1.Size = new Size(548, 327);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách dich vụ đã đăng ký";
@@ -244,33 +257,12 @@
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
-            dataGridView2.Location = new Point(20, 39);
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column8 });
+            dataGridView2.Location = new Point(11, 39);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(428, 220);
+            dataGridView2.Size = new Size(531, 220);
             dataGridView2.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Tên dịch vụ";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 125;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Số lượng thí sinh đã đăng ký";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 125;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Số lượng thí sinh tối đa";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 125;
             // 
             // button2
             // 
@@ -278,7 +270,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(243, 275);
+            button2.Location = new Point(206, 275);
             button2.Name = "button2";
             button2.Size = new Size(129, 40);
             button2.TabIndex = 12;
@@ -296,9 +288,9 @@
             groupBox2.Controls.Add(lblGioiTinh);
             groupBox2.Controls.Add(cboGioiTinh);
             groupBox2.Controls.Add(button2);
-            groupBox2.Location = new Point(537, 145);
+            groupBox2.Location = new Point(603, 145);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(414, 327);
+            groupBox2.Size = new Size(348, 327);
             groupBox2.TabIndex = 14;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin thí sinh";
@@ -448,6 +440,34 @@
             Column7.Name = "Column7";
             Column7.Width = 125;
             // 
+            // Column1
+            // 
+            Column1.HeaderText = "Tên dịch vụ";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Mã lịch thi";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Số lượng thí sinh tối đa";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.Width = 125;
+            // 
+            // Column8
+            // 
+            Column8.HeaderText = "Số lượng thí sinh đã đăng ký";
+            Column8.MinimumWidth = 6;
+            Column8.Name = "Column8";
+            Column8.Width = 125;
+            // 
             // MH_THEMPHIEUDANGKY2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -490,9 +510,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
         private GroupBox groupBox2;
         private Label lblHoTenTS;
         private TextBox txtHoTenTS;
@@ -514,5 +531,10 @@
         private DataGridViewTextBoxColumn Column7;
         private TextBox textBox1;
         private Label label1;
+        private Label label2;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column8;
     }
 }
