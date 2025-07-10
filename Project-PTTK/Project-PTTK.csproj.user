@@ -16,6 +16,15 @@
     <Compile Update="LogoutForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="MH_THEMPHIEUDANGKY1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MH_THEMPHIEUDANGKY2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MH_THEMPHIEUDANGKY3.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TaoPhieuGiaHanForm.cs">
       <SubType>Form</SubType>
     </Compile>
