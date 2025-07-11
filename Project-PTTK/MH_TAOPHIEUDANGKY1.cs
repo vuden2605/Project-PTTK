@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_PTTK.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Project_PTTK.DataAccess;
+using Project_PTTK.Business;
+using Project_PTTK.DataAccess.Phieu;
 
 namespace Project_PTTK
 {
@@ -15,6 +19,58 @@ namespace Project_PTTK
         public MH_TAOPHIEUDANGKY1()
         {
             InitializeComponent();
+        }
+
+        private void btnTaoPhieuDangKy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTaoPhieuDangKy_Click_1(object sender, EventArgs e)
+        {
+            string? loai = cmbLoaiKhachHang.SelectedItem?.ToString();
+
+            if (string.IsNullOrEmpty(loai))
+            {
+                MessageBox.Show("Vui lòng chọn loại khách hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string email = txtEmail.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                MessageBox.Show("Vui lòng nhập email.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            KhachHang kh = new KhachHang(loai, email);
+            KhangHangBus khbus = new KhangHangBus(new KhachHangDAO());
+            int maKH = khbus.AddKhachHang(kh);
+            MessageBox.Show("Mã khách hàng mới là: " + maKH, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (loai == "Tự do")
+            {
+                string tenkh= txtTenKhachHang.Text.Trim();
+                DateOnly ngaysinh = DateOnly.FromDateTime(dtpNgaySinh.Value);
+                KhachHangTuDo khTuDo = new KhachHangTuDo(tenkh, ngaysinh);
+                khTuDo.MaKH = maKH; // Gán mã khách hàng đã tạo
+                KhachHangTuDoBus khtdBus = new KhachHangTuDoBus(new KhachHangTuDoDAO());
+                khtdBus.AddKhachHangTuDo(khTuDo);
+
+            }
+            else if (loai == "Đơn vị")
+            {
+                string tendv = txtTenDonVi.Text.Trim();
+                string diachi = txtDiaChiDonVi.Text.Trim();
+                KhachHangDonVi khDonVi = new KhachHangDonVi(tendv, diachi);
+                khDonVi.MaKH = maKH; // Gán mã khách hàng đã tạo
+                KhachHangDonViBus khdvBus = new KhachHangDonViBus(new KhachHangDonViDAO());
+                khdvBus.AddKhachHangDonVi(khDonVi);
+            }
+            PhieuDangKy phieuDangKy = new PhieuDangKy(maKH);
+            PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
+            pdkBus.ThemPhieuDangKy(phieuDangKy);
+            MessageBox.Show("Đã tạo phiếu đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

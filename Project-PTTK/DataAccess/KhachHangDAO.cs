@@ -36,7 +36,7 @@ namespace Project_PTTK.DataAccess
             try
             {
                 string query = "SELECT * FROM KhachHang";
-                DataTable dataTable = DBHelper.ExecuteQuery(query,null);
+                DataTable dataTable = DBHelper.ExecuteQuery(query, null);
                 List<KhachHang> khachHangs = new List<KhachHang>();
                 foreach (DataRow row in dataTable.Rows)
                 {
@@ -59,7 +59,7 @@ namespace Project_PTTK.DataAccess
         {
             try
             {
-                string query = "INSERT INTO KhachHang (LoaiKhachHang, Email) VALUES (@LoaiKhachHang, @Email)";
+                string query = "INSERT INTO KhachHang (LoaiKhachHang, Email) OUTPUT INSERTED.MaKH  VALUES (@LoaiKhachHang, @Email)";
                 SqlParameter[] parameters = {
                     new SqlParameter("@LoaiKhachHang", khachHang.LoaiKhachHang),
                     new SqlParameter("@Email", khachHang.Email)
@@ -79,5 +79,5 @@ namespace Project_PTTK.DataAccess
                 throw new Exception("Lỗi khi thêm khách hàng: ", ex);
             }
         }
-    }
+    }  
 }
