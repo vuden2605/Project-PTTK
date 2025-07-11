@@ -128,6 +128,34 @@ namespace Project_PTTK.DataAccess.Phieu
 
     public class PhieuDangKyDAO
     {
+        public PhieuDangKy? LayTheoMa(int maPhieu)
+        {
+            PhieuDangKy? phieuDangKy = null;
+            try
+            {
+                const string query = "SELECT * FROM PhieuDangKy WHERE MaPhieu = @MaPhieu";
+                SqlParameter[] parameters = { new SqlParameter("@MaPhieu", maPhieu) };
+                using DataTable dt = DBHelper.ExecuteQuery(query, parameters);
+                if (dt.Rows.Count > 0)
+                {
+                    var row = dt.Rows[0];
+                    phieuDangKy = new PhieuDangKy
+                    {
+                        MaPhieu = row.Field<int>("MaPhieu"),
+                        NgayTao = row.Field<DateOnly>("NgayTao"),
+                        TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
+                        PhuongThucThanhToan = row.Field<string>("PhuongThucThanhToan") ?? string.Empty,
+                        MaKH = row.Field<int>("MaKH"),
+                        NhanVienLap = row.Field<int>("NhanVienLap")
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy phiếu đăng ký: ", ex);
+            }
+            return phieuDangKy;
+        }
         public List<PhieuDangKy> getAll()
         {
             var list = new List<PhieuDangKy>();

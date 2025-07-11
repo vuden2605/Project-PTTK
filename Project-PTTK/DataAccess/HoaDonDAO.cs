@@ -31,9 +31,10 @@ namespace Project_PTTK.DataAccess
                 DataTable dt = DBHelper.ExecuteQuery(query, parameters);
                 int maHoaDon = dt.MinimumCapacity > 0 ? Convert.ToInt32(dt.Rows[0][0]) : 0;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Lỗi khi thực hiện thêm hóa đơn", ex);
             }
+        }
     }
 }

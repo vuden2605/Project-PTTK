@@ -3,23 +3,33 @@ using Project_PTTK.Model;
 
 namespace Project_PTTK.Business
 {
-    public class PhieuGiaHanBUS2
+    public class PhieuGiaHanService
     {
-        private readonly PhieuGiaHanDAO phieuGiaHanDAO = new PhieuGiaHanDAO();
-        public List<PhieuGiaHan> LayDanhSach()
+        private readonly PhieuGiaHanDAO _phieuGiaHanDAO;
+        private readonly PhieuDangKyDAO _phieuDangKyDAO;
+
+        public PhieuGiaHanService(PhieuGiaHanDAO phieuGiaHanDAO, PhieuDangKyDAO phieuDangKyDAO)
         {
-            List<PhieuGiaHan> phieuGiaHans = phieuGiaHanDAO.LayDanhSach();
-            return phieuGiaHans;
+            _phieuGiaHanDAO = phieuGiaHanDAO;
+            _phieuDangKyDAO = phieuDangKyDAO;
         }
-        public PhieuGiaHan? LayTheoMa(int maPhieuGiaHan)
-        {
-            PhieuGiaHan? phieuGiaHan = phieuGiaHanDAO.LayTheoMa(maPhieuGiaHan);
-            return phieuGiaHan;
-        }
+
+        public List<PhieuGiaHan> LayDanhSach() => _phieuGiaHanDAO.LayDanhSach();
+
+        public PhieuGiaHan? LayTheoMa(int maPhieuGiaHan) => _phieuGiaHanDAO.LayTheoMa(maPhieuGiaHan);
+
         public void TaoPhieu(PhieuGiaHan phieuGiaHan)
         {
-            phieuGiaHanDAO.Them(phieuGiaHan);
+            if (phieuGiaHan == null)
+                throw new ArgumentNullException(nameof(phieuGiaHan));
+
+            if (string.IsNullOrWhiteSpace(phieuGiaHan.LyDo))
+                throw new ArgumentException("Lý do không được để trống.", nameof(phieuGiaHan.LyDo));
+
+            if (_phieuDangKyDAO.LayTheoMa(phieuGiaHan.MaPhieuDangKy) == null)
+                throw new ArgumentException("Phiếu đăng ký không tồn tại.", nameof(phieuGiaHan.MaPhieuDangKy));
+
+            _phieuGiaHanDAO.Them(phieuGiaHan);
         }
-        
     }
 }
