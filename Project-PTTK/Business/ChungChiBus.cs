@@ -16,18 +16,18 @@ namespace Project_PTTK.Business
             this.chungChiDAO = _chungChiDAO;
         }
 
-        public void ThemChungChi(ChungChiModel model)
+        public void ThemChungChi(ChungChiCreateModel model)
         {
             ChungChi chungChi = model.toEntity();
             chungChiDAO.ThemChungChi(chungChi);
         }
     }
-    public class ChungChiModel
+    public class ChungChiCreateModel
     {
         public int MaTS { get; set; }
         public int KetQua { get; set; }
         public int NvLap { get; set; }
-        public ChungChiModel(int maTS, int ketQua)
+        public ChungChiCreateModel(int maTS, int ketQua)
         {
             MaTS = maTS;
             KetQua = ketQua;

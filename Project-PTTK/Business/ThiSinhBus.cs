@@ -16,28 +16,28 @@ namespace Project_PTTK.Business
         {
             this.thiSinhDAO = _thiSinhDAO;
         }
-        public ThiSinhModel loadThongTinTS(int maTS)
+        public ThiSinhGetModel loadThongTinTS(int maTS)
         {
             ThiSinh thiSinh = thiSinhDAO.loadThongTinThiSinh(maTS);
-            return ThiSinhModel.mapFromEntity(thiSinh);
+            return ThiSinhGetModel.mapFromEntity(thiSinh);
         }
 
     }
-    public class ThiSinhModel
+    public class ThiSinhGetModel
     {
         public int MaTS { get; set; }
         public String HoTen { get; set; }
         public DateOnly NgaySinh { get; set; }
-        public ThiSinhModel(int maTS, string hoTen, DateOnly ngaySinh)
+        public ThiSinhGetModel(int maTS, string hoTen, DateOnly ngaySinh)
         {
             MaTS = maTS;
             HoTen = hoTen;
             NgaySinh = ngaySinh;
         }
 
-        public static ThiSinhModel mapFromEntity(ThiSinh thiSinh)
+        public static ThiSinhGetModel mapFromEntity(ThiSinh thiSinh)
         {
-            return new ThiSinhModel(thiSinh.MaTS, thiSinh.HoTen, thiSinh.NgaySinh);
+            return new ThiSinhGetModel(thiSinh.MaTS, thiSinh.HoTen, thiSinh.NgaySinh);
         }
     }
 }
