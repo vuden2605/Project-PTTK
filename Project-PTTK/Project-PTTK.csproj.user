@@ -7,25 +7,31 @@
     <Compile Update="DanhSachThiSinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GhiNhanKetQuaForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="LogoutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="TaoPhieuGiaHanForm.cs">
+    <Compile Update="MH_GHINHANKETQUA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="TaoPhieuThiForm.cs">
+    <Compile Update="MH_TAOPHIEUDANGKY1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ThanhToanGiaHanForm.cs">
+    <Compile Update="MH_TAOPHIEUDANGKY2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ThanhToanPhieuDangKyForm.cs">
+    <Compile Update="MH_TAOPHIEUDANGKY3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MH_TAOPHIEUGIAHAN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MH_THANHTOANPHIEUDANGKY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MH_THANHTOANPHIEUGIAHAN.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

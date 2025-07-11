@@ -10,24 +10,14 @@ using System.Windows.Forms;
 
 namespace Project_PTTK
 {
-    public partial class ThanhToanGiaHanForm : Form
+    public partial class MH_THANHTOANPHIEUGIAHAN : Form
     {
-        public ThanhToanGiaHanForm()
+        public MH_THANHTOANPHIEUGIAHAN()
         {
             InitializeComponent();
         }
 
-        private void groupPhieu_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDichVu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDichVu_TextChanged(object sender, EventArgs e)
+        private void MH_THANHTOANPHIEUGIAHAN_Load(object sender, EventArgs e)
         {
 
         }
