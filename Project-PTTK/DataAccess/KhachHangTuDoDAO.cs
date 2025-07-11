@@ -14,7 +14,7 @@ namespace Project_PTTK.DataAccess
         {
             try
             {
-                string query = "INSERT INTO KhachHangTuDo (MaKH,HoTen, NgaySinh) VALUES (@MaKH,@HoTen, @NgaySinh)";
+                string query = "INSERT INTO KhachHangTuDo (MaKH,HoTen, NgaySinh) OUTPUT inserted.MaKh VALUES (@MaKH,@HoTen, @NgaySinh)";
                 SqlParameter[] parameters = {
                     new SqlParameter("@MaKH", khachHang.MaKH),
                     new SqlParameter("@HoTen", khachHang.Ten),
