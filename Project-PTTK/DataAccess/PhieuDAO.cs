@@ -275,4 +275,83 @@ namespace Project_PTTK.DataAccess
             return list;
         }
     }
+
+    public class PhieuGiaHanDAO
+    {
+        public PhieuGiaHan? LayTheoMa(int MaPhieu)
+        {
+            PhieuGiaHan? phieuGiaHan = null;
+            const string query = "SELECT * FROM PhieuGiaHan WHERE MaPhieu = @MaPhieu";
+            SqlParameter[] parameters = { new SqlParameter("@MaPhieu", MaPhieu) };
+            try
+            {
+                using DataTable dt = DBHelper.ExecuteQuery(query, parameters);
+                if (dt.Rows.Count > 0)
+                {
+                    var row = dt.Rows[0];
+                    phieuGiaHan = new PhieuGiaHan
+                    {
+                        MaPhieu = row.Field<int>("MaPhieu"),
+                        NgayTao = row.Field<DateOnly>("NgayTao"),
+                        LyDo = row.Field<string>("LyDo") ?? string.Empty,
+                        TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
+                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy")
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy phiếu gia hạn: ", ex);
+            }
+            return phieuGiaHan;
+        }
+        public List<PhieuGiaHan> LayDanhSach()
+        {
+            var list = new List<PhieuGiaHan>();
+            const string query = "SELECT * FROM PhieuGiaHan";
+            try
+            {
+                using DataTable dt = DBHelper.ExecuteQuery(query, null);
+                foreach (DataRow row in dt.Rows)
+                {
+                    var phieuGiaHan = new PhieuGiaHan
+                    {
+                        MaPhieu = row.Field<int>("MaPhieu"),
+                        NgayTao = row.Field<DateOnly>("NgayTao"),
+                        LyDo = row.Field<string>("LyDo") ?? string.Empty,
+                        TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
+                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy")
+                    };
+                    list.Add(phieuGiaHan);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách phiếu gia hạn: ", ex);
+            }
+            return list;
+        }
+        public void Them(PhieuGiaHan phieuGiaHan)
+        {
+            const string query = "INSERT INTO PhieuGiaHan (NgayTao, LyDo, TrangThaiThanhToan, MaPhieuDangKy) VALUES (@NgayTao, @LyDo, @TrangThaiThanhToan, @MaPhieuDangKy)";
+            SqlParameter[] parameters = {
+                new SqlParameter("@NgayTao", phieuGiaHan.NgayTao),
+                new SqlParameter("@LyDo", phieuGiaHan.LyDo),
+                new SqlParameter("@TrangThaiThanhToan", phieuGiaHan.TrangThaiThanhToan),
+                new SqlParameter("@MaPhieuDangKy", phieuGiaHan.MaPhieuDangKy)
+            };
+            try
+            {
+                int rows = DBHelper.ExecuteNonQuery(query, parameters);
+                if (rows == 0)
+                {
+                    throw new Exception("Không có bản ghi nào được thêm.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi thêm phiếu gia hạn: ", ex);
+            }
+        }
+    }
 }
