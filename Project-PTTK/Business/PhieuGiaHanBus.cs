@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Project_PTTK.DataAccess;
+using Project_PTTK.DataAccess.PhieuGiaHanDAO;
 using Project_PTTK.Model;
 
 namespace Project_PTTK.Business
