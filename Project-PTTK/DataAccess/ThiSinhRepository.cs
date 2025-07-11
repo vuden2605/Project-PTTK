@@ -28,7 +28,7 @@ namespace Project_PTTK.DataAccess
                         CCCD = row.Field<string>("CCCD") ?? string.Empty,
                         GioiTinh = row.Field<string>("GioiTinh") ?? string.Empty,
                         TrangThaiPhatHanhPhieuDuThi = row.Field<string>("TrangThaiPhatHanhPhieuDuThi") ?? string.Empty,
-                        MaKH = row.Field<int>("MaKH"),
+                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy"),
                         MaLichThi = row.Field<int>("MaLichThi")
                     };
                     list.Add(thiSinh);
@@ -42,14 +42,14 @@ namespace Project_PTTK.DataAccess
         }
         public void add(ThiSinh TS)
         {
-            const string query = "INSERT INTO ThiSinh VALUES (@TenThiSinh, @NgaySinh, @CCCD, @GioiTinh, @TrangThaiPhatHanhPhieuDuThi, @MaKhoaHoc, @MaLichThi)";
+            const string query = "INSERT INTO ThiSinh VALUES (@TenThiSinh, @NgaySinh, @CCCD, @GioiTinh, @TrangThaiPhatHanhPhieuDuThi, @MaPhieuDangKy, @MaLichThi)";
             SqlParameter[] parameters = {
                 new SqlParameter("@TenThiSinh", TS.HoTen),
                 new SqlParameter("@NgaySinh", TS.NgaySinh),
                 new SqlParameter("@CCCD", TS.CCCD),
                 new SqlParameter("@GioiTinh", TS.GioiTinh),
                 new SqlParameter("@TrangThaiPhatHanhPhieuDuThi", TS.TrangThaiPhatHanhPhieuDuThi),
-                new SqlParameter("@MaKhoaHoc", TS.MaKH),
+                new SqlParameter("@MaPhieuDangKy", TS.MaPhieuDangKy),
                 new SqlParameter("@MaLichThi", TS.MaLichThi)
             };
             try
