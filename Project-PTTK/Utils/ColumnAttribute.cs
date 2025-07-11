@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Project_PTTK.Utils
 {
-    internal class ColumnAttribute
+    [AttributeUsage(AttributeTargets.Property)]
+    public class ColumnAttribute : Attribute
     {
+        public string Name { get; }
+        public ColumnAttribute(string name)
+        {
+            Name = name;
+        }
     }
 }
