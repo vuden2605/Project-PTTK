@@ -28,6 +28,7 @@ namespace Project_PTTK.Model
             Ten = ten;
             NgaySinh = ngaySinh;
         }
+        public KhachHangTuDo() { }
     }
 
     public class KhachHangDonVi: KhachHang
@@ -39,6 +40,7 @@ namespace Project_PTTK.Model
             TenDonVi = tenDonVi;
             DiaChi = diaChi;
         }
+        public KhachHangDonVi() { } // Constructor mặc định để sử dụng trong các thao tác khác
 
     }
 }

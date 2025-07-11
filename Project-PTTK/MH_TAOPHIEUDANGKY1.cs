@@ -19,6 +19,7 @@ namespace Project_PTTK
         public MH_TAOPHIEUDANGKY1()
         {
             InitializeComponent();
+            LoadPhieuDangKy();
         }
 
         private void btnTaoPhieuDangKy_Click(object sender, EventArgs e)
@@ -49,7 +50,7 @@ namespace Project_PTTK
             int maKH = khbus.AddKhachHang(kh);
             if (loai == "Tự do")
             {
-                string tenkh= txtTenKhachHang.Text.Trim();
+                string tenkh = txtTenKhachHang.Text.Trim();
                 DateOnly ngaysinh = DateOnly.FromDateTime(dtpNgaySinh.Value);
                 KhachHangTuDo khTuDo = new KhachHangTuDo(tenkh, ngaysinh);
                 khTuDo.MaKH = maKH; // Gán mã khách hàng đã tạo
@@ -70,6 +71,25 @@ namespace Project_PTTK
             PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
             pdkBus.ThemPhieuDangKy(phieuDangKy);
             MessageBox.Show("Đã tạo phiếu đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void dgvPhieuDangKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void LoadPhieuDangKy()
+        {
+            try
+            {
+                PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
+                List<PhieuDangKy> danhSach = pdkBus.LayDanhSach();
+               
+                dgvPhieuDangKy.DataSource = danhSach;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

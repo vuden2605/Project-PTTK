@@ -162,17 +162,17 @@ namespace Project_PTTK.DataAccess.Phieu
             try
             {
                 const string query = "SELECT * FROM PhieuDangKy";
-                using DataTable dt = DBHelper.ExecuteQuery(query, null);
+                DataTable dt = DBHelper.ExecuteQuery(query, null);
                 foreach (DataRow row in dt.Rows)
                 {
                     var phieuDangKy = new PhieuDangKy
                     {
-                        MaPhieu = row.Field<int>("MaPhieu"),
+                        MaPhieu = row.Field<int>("MaPhieuDangKy"),
                         NgayTao = row.Field<DateOnly>("NgayTao"),
                         
                         TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
                         MaKH = row.Field<int>("MaKH"),
-                        NhanVienLap = row.Field<int>("NhanVienLap")
+                        NhanVienLap = row.Field<int>("NvLap")
                     };
                     list.Add(phieuDangKy);
                 }

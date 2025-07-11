@@ -87,6 +87,7 @@
             dgvPhieuDangKy.RowHeadersWidth = 51;
             dgvPhieuDangKy.Size = new Size(677, 275);
             dgvPhieuDangKy.TabIndex = 0;
+            dgvPhieuDangKy.CellContentClick += dgvPhieuDangKy_CellContentClick;
             // 
             // Column1
             // 

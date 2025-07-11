@@ -18,5 +18,9 @@ namespace Project_PTTK.Business
         {
             return _khachHangTuDoDAO.add(khachHang);
         }
+        public List<KhachHangTuDo> GetAllKhachHangTuDo()
+        {
+            return _khachHangTuDoDAO.getAll();
+        }
     }
 }

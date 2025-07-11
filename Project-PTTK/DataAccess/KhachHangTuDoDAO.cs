@@ -5,11 +5,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace Project_PTTK.DataAccess
 {
     public class KhachHangTuDoDAO 
     {
+        public List<KhachHangTuDo> getAll()
+        {
+            try
+            {
+                string query = "SELECT * FROM KhachHangTuDo";
+                DataTable dataTable = DBHelper.ExecuteQuery(query, null);
+                List<KhachHangTuDo> khachHangs = new List<KhachHangTuDo>();
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    KhachHangTuDo khachHang = new KhachHangTuDo
+                    {
+                        MaKH = row.Field<int>("MaKH"),
+                        Ten = row.Field<string>("HoTen"),
+                        NgaySinh = row.Field<DateOnly>("NgaySinh")
+                    };
+                    khachHangs.Add(khachHang);
+                }
+                return khachHangs;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách khách hàng: ", ex);
+            }
+        }
         public int add(KhachHangTuDo khachHang)
         {
             try

@@ -19,6 +19,10 @@ namespace Project_PTTK.Business
         {
             return _khachhangdonviDAO.add(khachHang);
         }
+        public List<KhachHangDonVi> GetAllKhachHangDonVi()
+        {
+            return _khachhangdonviDAO.getAll();
+        }
 
     }
 }
