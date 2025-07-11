@@ -16,7 +16,7 @@ namespace Project_PTTK.Model
     public class KhachHangTuDo : KhachHang
     {
         public string Ten { get; set; } = null!;
-        public DateTime NgaySinh { get; set; }
+        public DateOnly NgaySinh { get; set; }
     }
 
     public class KhachHangDonVi: KhachHang

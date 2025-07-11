@@ -14,26 +14,37 @@ namespace Project_PTTK
             return conn;
         }
 
-        public static DataTable GetData(string query)
+        public static DataTable ExecuteQuery(string query, SqlParameter[]? parameters)
         {
-            using (SqlConnection conn = GetConnection())
-            {
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
+            using SqlConnection conn = new SqlConnection(connectionString);
+            using SqlCommand cmd = new SqlCommand(query, conn);
+            if (parameters != null)
+                cmd.Parameters.AddRange(parameters);
+
+            using SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
         }
 
-        public static int ExecuteCommand(string query, params SqlParameter[] parameters)
+
+        public static int ExecuteNonQuery(string query, SqlParameter[]? parameters)
         {
-            using (SqlConnection conn = GetConnection())
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
+            using SqlConnection conn = new SqlConnection(connectionString);
+            using SqlCommand cmd = new SqlCommand(query, conn);
+            if (parameters != null)
                 cmd.Parameters.AddRange(parameters);
-                conn.Open();
-                return cmd.ExecuteNonQuery();
-            }
+            conn.Open();
+            return cmd.ExecuteNonQuery();
+        }
+        public static object ExecuteScalar(string query, SqlParameter[]? parameters)
+        {
+            using SqlConnection conn = new SqlConnection(connectionString);
+            using SqlCommand cmd = new SqlCommand(query, conn);
+            if (parameters != null)
+                cmd.Parameters.AddRange(parameters);
+            conn.Open();
+            return cmd.ExecuteScalar() ?? DBNull.Value;
         }
     }
 }
