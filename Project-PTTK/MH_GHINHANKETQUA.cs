@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace Project_PTTK
 {
-    public partial class MH_THEMPHIEUDANGKY2 : Form
+    public partial class MH_GHINHANKETQUA : Form
     {
-        public MH_THEMPHIEUDANGKY2()
+        public MH_GHINHANKETQUA()
         {
             InitializeComponent();
-        }
-
-        private void groupDangKy_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

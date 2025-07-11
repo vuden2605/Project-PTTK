@@ -10,15 +10,16 @@ using System.Windows.Forms;
 
 namespace Project_PTTK
 {
-    public partial class MH_THEMPHIEUDANGKY1 : Form
+    public partial class MH_TAOPHIEUGIAHAN : Form
     {
-        public MH_THEMPHIEUDANGKY1()
+        public MH_TAOPHIEUGIAHAN()
         {
             InitializeComponent();
         }
 
-        private void groupDangKy_Enter(object sender, EventArgs e)
+        private void MH_TAOPHIEUGIAHAN_Load(object sender, EventArgs e)
         {
-                    }
+
+        }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Project_PTTK
 {
-    public partial class MH_THEMPHIEUDANGKY5 : Form
+    public partial class MH_TAOPHIEUDANGKY2 : Form
     {
-        public MH_THEMPHIEUDANGKY5()
+        public MH_TAOPHIEUDANGKY2()
         {
             InitializeComponent();
         }

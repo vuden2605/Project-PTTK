@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace Project_PTTK
 {
-    public partial class MH_THEMPHIEUDANGKY3 : Form
+    public partial class MH_THANHTOANPHIEUGIAHAN : Form
     {
-        public MH_THEMPHIEUDANGKY3()
+        public MH_THANHTOANPHIEUGIAHAN()
         {
             InitializeComponent();
+        }
+
+        private void MH_THANHTOANPHIEUGIAHAN_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
