@@ -143,8 +143,8 @@ namespace Project_PTTK.DataAccess.Phieu
                     {
                         MaPhieu = row.Field<int>("MaPhieu"),
                         NgayTao = row.Field<DateOnly>("NgayTao"),
+                        
                         TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
-                        PhuongThucThanhToan = row.Field<string>("PhuongThucThanhToan") ?? string.Empty,
                         MaKH = row.Field<int>("MaKH"),
                         NhanVienLap = row.Field<int>("NhanVienLap")
                     };
@@ -169,8 +169,8 @@ namespace Project_PTTK.DataAccess.Phieu
                     {
                         MaPhieu = row.Field<int>("MaPhieu"),
                         NgayTao = row.Field<DateOnly>("NgayTao"),
+                        
                         TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
-                        PhuongThucThanhToan = row.Field<string>("PhuongThucThanhToan") ?? string.Empty,
                         MaKH = row.Field<int>("MaKH"),
                         NhanVienLap = row.Field<int>("NhanVienLap")
                     };
@@ -185,11 +185,10 @@ namespace Project_PTTK.DataAccess.Phieu
         }
         public void add(PhieuDangKy phieuDangKy)
         {
-            const string query = "INSERT INTO PhieuDangKy VALUES (@NgayTao, @TrangThaiThanhToan, @PhuongThucThanhToan, @MaKH, @NhanVienLap)";
+            const string query = "INSERT INTO PhieuDangKy VALUES (@NgayTao, @TrangThaiThanhToan, @MaKH, @NhanVienLap)";
             SqlParameter[] parameters = {
                 new SqlParameter("@NgayTao", phieuDangKy.NgayTao),
                 new SqlParameter("@TrangThaiThanhToan", phieuDangKy.TrangThaiThanhToan),
-                new SqlParameter("@PhuongThucThanhToan", phieuDangKy.PhuongThucThanhToan),
                 new SqlParameter("@MaKH", phieuDangKy.MaKH),
                 new SqlParameter("@NhanVienLap", phieuDangKy.NhanVienLap)
             };
@@ -228,8 +227,8 @@ namespace Project_PTTK.DataAccess.Phieu
             const string query = "UPDATE PhieuDangKy SET NgayTao = @NgayTao, TrangThaiThanhToan = @TrangThaiThanhToan, PhuongThucThanhToan = @PhuongThucThanhToan, MaKH = @MaKH, NhanVienLap = @NhanVienLap WHERE MaPhieu = @MaPhieu";
             SqlParameter[] parameters = {
                 new SqlParameter("@NgayTao", newP.NgayTao),
+                 
                 new SqlParameter("@TrangThaiThanhToan", newP.TrangThaiThanhToan),
-                new SqlParameter("@PhuongThucThanhToan", newP.PhuongThucThanhToan),
                 new SqlParameter("@MaKH", newP.MaKH),
                 new SqlParameter("@NhanVienLap", newP.NhanVienLap),
                 new SqlParameter("@MaPhieu", oldP.MaPhieu)
@@ -263,7 +262,7 @@ namespace Project_PTTK.DataAccess.Phieu
                         MaPhieu = row.Field<int>("MaPhieu"),
                         NgayTao = row.Field<DateOnly>("NgayTao"),
                         TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
-                        PhuongThucThanhToan = row.Field<string>("PhuongThucThanhToan") ?? string.Empty,
+                        
                         MaKH = row.Field<int>("MaKH"),
                         NhanVienLap = row.Field<int>("NhanVienLap")
                     };
@@ -290,7 +289,7 @@ namespace Project_PTTK.DataAccess.Phieu
                         MaPhieu = dr.Field<int>("MaPhieu"),
                         NgayTao = dr.Field<DateOnly>("NgayTao"),
                         TrangThaiThanhToan = dr.Field<string>("TrangThaiThanhToan") ?? string.Empty,
-                        PhuongThucThanhToan = dr.Field<string>("PhuongThucThanhToan") ?? string.Empty,
+                        
                         MaKH = dr.Field<int>("MaKH"),
                         NhanVienLap = dr.Field<int>("NhanVienLap")
                     });

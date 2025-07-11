@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Project_PTTK.DataAccess;
 using Project_PTTK.Business;
+using Project_PTTK.DataAccess.Phieu;
 
 namespace Project_PTTK
 {
@@ -27,7 +28,14 @@ namespace Project_PTTK
 
         private void btnTaoPhieuDangKy_Click_1(object sender, EventArgs e)
         {
-            string loai = cmbLoaiKhachHang.SelectedItem?.ToString();
+            string? loai = cmbLoaiKhachHang.SelectedItem?.ToString();
+
+            if (string.IsNullOrEmpty(loai))
+            {
+                MessageBox.Show("Vui lòng chọn loại khách hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string email = txtEmail.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(email))
@@ -59,6 +67,10 @@ namespace Project_PTTK
                 KhachHangDonViBus khdvBus = new KhachHangDonViBus(new KhachHangDonViDAO());
                 khdvBus.AddKhachHangDonVi(khDonVi);
             }
+            PhieuDangKy phieuDangKy = new PhieuDangKy(maKH);
+            PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
+            pdkBus.ThemPhieuDangKy(phieuDangKy);
+            MessageBox.Show("Đã tạo phiếu đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
