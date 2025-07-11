@@ -21,7 +21,7 @@ namespace Project_PTTK.Model
 
     public class KhachHangDonVi: KhachHang
     {
-        public string TenDichVu { get; set; } = null!;
+        public string TenDonVi { get; set; } = null!;
         public string DiaChi { get; set; } = null!;
     }
 }
