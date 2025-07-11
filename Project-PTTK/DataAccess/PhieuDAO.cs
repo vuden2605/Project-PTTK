@@ -156,7 +156,7 @@ namespace Project_PTTK.DataAccess.Phieu
             }
             return phieuDangKy;
         }
-        public List<PhieuDangKy> getAll()
+        public List<PhieuDangKy> LayDanhSach()
         {
             var list = new List<PhieuDangKy>();
             try

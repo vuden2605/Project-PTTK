@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Project_PTTK.Business;
+using Project_PTTK.DataAccess.Phieu;
 
 namespace Project_PTTK
 {
     public partial class MH_TAOPHIEUGIAHAN : Form
     {
+        private PhieuGiaHanBUS phieuGiaHanBUS = new PhieuGiaHanBUS(new PhieuGiaHanDAO(), new PhieuDangKyDAO());
         public MH_TAOPHIEUGIAHAN()
         {
             InitializeComponent();
         }
 
         private void MH_TAOPHIEUGIAHAN_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaPhieu_TextChanged(object sender, EventArgs e)
         {
 
         }
