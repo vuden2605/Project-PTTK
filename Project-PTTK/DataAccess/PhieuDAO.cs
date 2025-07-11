@@ -37,7 +37,6 @@ namespace Project_PTTK.DataAccess
             }
             return list;
         }
-        
         public List<ChiTietPhieuDangKy> getByMaPhieu(int maPhieu)
         {
             var list = new List<ChiTietPhieuDangKy>();
@@ -63,7 +62,6 @@ namespace Project_PTTK.DataAccess
             }
             return list;
         }
-
         public void add(ChiTietPhieuDangKy chiTietPhieuDangKy)
         {
             const string query = "INSERT INTO ChiTietPhieuDangKy VALUES (@MaPhieuDangKy, @MaLichThi, @SoLuong)";
@@ -85,7 +83,6 @@ namespace Project_PTTK.DataAccess
                 throw new Exception("Lỗi khi thêm chi tiết phiếu đăng ký: ", ex);
             }
         }
-
         public void delete(int maPhieu, int maLichThi)
         {
             const string query = "DELETE FROM ChiTietPhieuDangKy WHERE MaPhieuDangKy = @MaPhieuDangKy AND MaLichThi = @MaLichThi";
@@ -106,7 +103,6 @@ namespace Project_PTTK.DataAccess
                 throw new Exception("Lỗi khi xóa chi tiết phiếu đăng ký: ", ex);
             }
         }
-
         public void update(ChiTietPhieuDangKy oldP, ChiTietPhieuDangKy newP)
         {
             const string query = "UPDATE ChiTietPhieuDangKy SET SoLuong = @SoLuong WHERE MaPhieuDangKy = @MaPhieuDangKy AND MaLichThi = @MaLichThi";

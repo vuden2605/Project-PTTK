@@ -11,6 +11,36 @@ namespace Project_PTTK.DataAccess
 {
     public class ThiSinhDAO
     {
+        public ThiSinh? get(int MaTS)
+        {
+            ThiSinh? thiSinh = null;
+            try
+            {
+                const string query = "SELECT * FROM ThiSinh WHERE MaTS = @MaTS";
+                SqlParameter[] parameters = { new SqlParameter("@MaTS", MaTS) };
+                using DataTable dt = DBHelper.ExecuteQuery(query, parameters);
+                if (dt.Rows.Count > 0)
+                {
+                    var row = dt.Rows[0];
+                    thiSinh = new ThiSinh
+                    {
+                        MaTS = row.Field<int>("MaTS"),
+                        HoTen = row.Field<string>("TenThiSinh") ?? string.Empty,
+                        NgaySinh = row.Field<DateOnly>("NgaySinh"),
+                        CCCD = row.Field<string>("CCCD") ?? string.Empty,
+                        GioiTinh = row.Field<string>("GioiTinh") ?? string.Empty,
+                        TrangThaiPhatHanhPhieuDuThi = row.Field<string>("TrangThaiPhatHanhPhieuDuThi") ?? string.Empty,
+                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy"),
+                        MaLichThi = row.Field<int>("MaLichThi")
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy thí sinh: ", ex);
+            }
+            return thiSinh;
+        }
         public List<ThiSinh> getAll()
         {
             var list = new List<ThiSinh>();
@@ -63,6 +93,33 @@ namespace Project_PTTK.DataAccess
             catch (Exception ex)
             {
                 throw new Exception("Lỗi khi thêm thí sinh: ", ex);
+            }
+        }
+        public void update(ThiSinh oldTS, ThiSinh newTS)
+        {
+            const string query = "UPDATE ThiSinh SET TenThiSinh = @TenThiSinh, NgaySinh = @NgaySinh, CCCD = @CCCD, GioiTinh = @GioiTinh, TrangThaiPhatHanhPhieuDuThi = @TrangThaiPhatHanhPhieuDuThi, MaPhieuDangKy = @MaPhieuDangKy, MaLichThi = @MaLichThi WHERE MaTS = @MaTS";
+            var parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaTS", oldTS.MaTS),
+                new SqlParameter("@TenThiSinh,", newTS.HoTen),
+                new SqlParameter("@NgaySinh", newTS.NgaySinh),
+                new SqlParameter("@CCCD", newTS.CCCD),
+                new SqlParameter("@GioiTinh", newTS.GioiTinh),
+                new SqlParameter("@TrangThaiPhatHanhPhieuDuThi", newTS.TrangThaiPhatHanhPhieuDuThi),
+                new SqlParameter("@MaPhieuDangKy", newTS.MaPhieuDangKy),
+                new SqlParameter("@MaLichThi", newTS.MaLichThi)
+                };
+            try
+            {
+                int rows = DBHelper.ExecuteNonQuery(query, parameters);
+                if (rows == 0)
+                {
+                    throw new Exception("Không có bản ghi nào được cập nhật.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi cập nhật thí sinh: ", ex);
             }
         }
     }
