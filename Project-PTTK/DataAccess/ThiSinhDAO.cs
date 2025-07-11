@@ -11,7 +11,7 @@ namespace Project_PTTK.DataAccess
 {
     public class ThiSinhDAO
     {
-        public ThiSinh? get(int MaTS)
+        public ThiSinh? loadThongTinThiSinh(int MaTS)
         {
             ThiSinh? thiSinh = null;
             try
