@@ -1,9 +1,6 @@
 ﻿using Project_PTTK.Model;
 using System.Data;
-using System.Data.SqlClient;
-{
-    
-}
+using Microsoft.Data.SqlClient;
 
 namespace Project_PTTK.DataAccess
 {
