@@ -23,7 +23,7 @@ namespace Project_PTTK.Model
     }
     public class PhieuGiaHan
     {
-        public int MaPhie { get; set; }
+        public int MaPhieuGiaHan { get; set; }
         public DateOnly NgayTao { get; set; }
         public string LyDo { get; set; } = null!;
         public string TrangThaiThanhToan { get; set; } = null!;
