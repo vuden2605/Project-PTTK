@@ -35,6 +35,35 @@ namespace Project_PTTK.DataAccess
             }
             return lichThi;
         }
+        public List<LichThi> LayTheoMaDichVu(int maDichVu)
+        {
+            var lichThis = new List<LichThi>();
+            try
+            {
+                const string query = "SELECT * FROM LichThi WHERE MaDichVu = @MaDichVu";
+                SqlParameter[] parameters = { new SqlParameter("@MaDichVu", maDichVu) };
+                using DataTable dt = DBHelper.ExecuteQuery(query, parameters);
+                foreach (DataRow row in dt.Rows)
+                {
+                    var lichThi = new LichThi
+                    {
+                        MaLichThi = row.Field<int>("MaLichThi"),
+                        NgayThi = row.Field<DateOnly>("NgayThi"),
+                        GioThi = row.Field<TimeOnly>("GioThi"),
+                        SoThiSinhDaDangKy = row.Field<int>("SoThiSinhDaDangKy"),
+                        MaPhongThi = row.Field<int>("MaPhongThi"),
+                        MaDichVu = row.Field<int>("MaDichVu"),
+                        NhanVienLap = row.Field<int>("NhanVienLap")
+                    };
+                    lichThis.Add(lichThi);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy lịch thi theo mã dịch vụ: ", ex);
+            }
+            return lichThis;
+        }
         public List<LichThi> LayDanhSach()
         {
             var lichThis = new List<LichThi>();
