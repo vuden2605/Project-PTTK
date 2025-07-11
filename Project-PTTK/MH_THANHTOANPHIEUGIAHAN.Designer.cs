@@ -52,6 +52,11 @@
             lblTongTien = new Label();
             nudTongTien = new NumericUpDown();
             btnXacNhan = new Button();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhieuGiaHan).BeginInit();
             groupHoaDon.SuspendLayout();
@@ -96,6 +101,7 @@
             // dgvPhieuGiaHan
             // 
             dgvPhieuGiaHan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPhieuGiaHan.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
             dgvPhieuGiaHan.Location = new Point(84, 138);
             dgvPhieuGiaHan.Name = "dgvPhieuGiaHan";
             dgvPhieuGiaHan.RowHeadersWidth = 82;
@@ -299,6 +305,41 @@
             btnXacNhan.Text = "✅ Xác nhận thanh toán";
             btnXacNhan.UseVisualStyleBackColor = false;
             // 
+            // Column1
+            // 
+            Column1.HeaderText = "Mã phiếu gia hạn";
+            Column1.MinimumWidth = 10;
+            Column1.Name = "Column1";
+            Column1.Width = 200;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Mã phiếu đăng ký";
+            Column2.MinimumWidth = 10;
+            Column2.Name = "Column2";
+            Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Mã khách hàng";
+            Column3.MinimumWidth = 10;
+            Column3.Name = "Column3";
+            Column3.Width = 200;
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Lý do";
+            Column4.MinimumWidth = 10;
+            Column4.Name = "Column4";
+            Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Trạng thái";
+            Column5.MinimumWidth = 10;
+            Column5.Name = "Column5";
+            Column5.Width = 200;
+            // 
             // MH_THANHTOANPHIEUGIAHAN
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -350,5 +391,10 @@
         private Label lblTongTien;
         private NumericUpDown nudTongTien;
         private Button btnXacNhan;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
     }
 }
