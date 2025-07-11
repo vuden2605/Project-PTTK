@@ -291,7 +291,7 @@ namespace Project_PTTK.DataAccess
                     var row = dt.Rows[0];
                     phieuGiaHan = new PhieuGiaHan
                     {
-                        MaPhieu = row.Field<int>("MaPhieu"),
+                        MaPhieuGiaHan = row.Field<int>("MaPhieu"),
                         NgayTao = row.Field<DateOnly>("NgayTao"),
                         LyDo = row.Field<string>("LyDo") ?? string.Empty,
                         TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
@@ -316,7 +316,7 @@ namespace Project_PTTK.DataAccess
                 {
                     var phieuGiaHan = new PhieuGiaHan
                     {
-                        MaPhieu = row.Field<int>("MaPhieu"),
+                        MaPhieuGiaHan = row.Field<int>("MaPhieu"),
                         NgayTao = row.Field<DateOnly>("NgayTao"),
                         LyDo = row.Field<string>("LyDo") ?? string.Empty,
                         TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
