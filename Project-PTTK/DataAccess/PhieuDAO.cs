@@ -8,7 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq.Expressions;
 
-namespace Project_PTTK.DataAccess
+namespace Project_PTTK.DataAccess.Phieu
 {
     public class ChiTietPhieuDangKyDAO
     {
