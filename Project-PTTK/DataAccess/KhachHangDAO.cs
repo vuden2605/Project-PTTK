@@ -58,7 +58,7 @@ namespace Project_PTTK.DataAccess
                 throw new Exception("Lỗi khi lấy danh sách khách hàng: ", ex);
             }
         }
-        public void add(KhachHang khachHang)
+        public int add(KhachHang khachHang)
         {
             try
             {
@@ -67,10 +67,14 @@ namespace Project_PTTK.DataAccess
                     new SqlParameter("@LoaiKhachHang", khachHang.LoaiKhachHang),
                     new SqlParameter("@Email", khachHang.Email)
                 };
-                int row = DBHelper.ExecuteNonQuery(query, parameters);
-                if (row <= 0)
+                object id = DBHelper.ExecuteScalar(query, parameters);
+                if (id != null && id != DBNull.Value)
                 {
-                    throw new Exception("Không thể thêm khách hàng");
+                    return Convert.ToInt32(id);
+                }
+                else
+                {
+                    throw new Exception("Không thể lấy ID của khách hàng mới.");
                 }
             }
             catch (Exception ex)

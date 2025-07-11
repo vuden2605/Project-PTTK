@@ -37,5 +37,14 @@ namespace Project_PTTK
             conn.Open();
             return cmd.ExecuteNonQuery();
         }
+        public static object ExecuteScalar(string query, SqlParameter[]? parameters)
+        {
+            using SqlConnection conn = new SqlConnection(connectionString);
+            using SqlCommand cmd = new SqlCommand(query, conn);
+            if (parameters != null)
+                cmd.Parameters.AddRange(parameters);
+            conn.Open();
+            return cmd.ExecuteScalar() ?? DBNull.Value;
+        }
     }
 }

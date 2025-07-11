@@ -11,7 +11,37 @@ namespace Project_PTTK.DataAccess
 {
     public class ThiSinhDAO
     {
-        public ThiSinh? get(int MaTS)
+        public List<ThiSinh> LayTheoPhieuDangKy(int maPhieuDangKy)
+        {
+            var list = new List<ThiSinh>();
+            try
+            {
+                const string query = "SELECT * FROM ThiSinh WHERE MaPhieuDangKy = @MaPhieuDangKy";
+                SqlParameter[] parameters = { new SqlParameter("@MaPhieuDangKy", maPhieuDangKy) };
+                using DataTable dt = DBHelper.ExecuteQuery(query, parameters);
+                foreach (DataRow row in dt.Rows)
+                {
+                    var thiSinh = new ThiSinh
+                    {
+                        MaTS = row.Field<int>("MaTS"),
+                        HoTen = row.Field<string>("TenThiSinh") ?? string.Empty,
+                        NgaySinh = row.Field<DateOnly>("NgaySinh"),
+                        CCCD = row.Field<string>("CCCD") ?? string.Empty,
+                        GioiTinh = row.Field<string>("GioiTinh") ?? string.Empty,
+                        TrangThaiPhatHanhPhieuDuThi = row.Field<string>("TrangThaiPhatHanhPhieuDuThi") ?? string.Empty,
+                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy"),
+                        MaLichThi = row.Field<int>("MaLichThi")
+                    };
+                    list.Add(thiSinh);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy thí sinh theo phiếu đăng ký: ", ex);
+            }
+            return list;
+        }
+        public ThiSinh? loadThongTinThiSinh(int MaTS)
         {
             ThiSinh? thiSinh = null;
             try

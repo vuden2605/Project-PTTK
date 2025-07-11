@@ -66,7 +66,7 @@ namespace Project_PTTK.DataAccess
         public void CapNhat(LichThi oldLT, LichThi newLT)
         {
             const string query = "UPDATE LichThi SET NgayThi = @NgayThi, GioThi = @GioThi, SoThiSinhDaDangKy = @SoThiSinhDaDangKy, MaPhongThi = @MaPhongThi, MaDichVu = @MaDichVu, NhanVienLap = @NhanVienLap WHERE MaLichThi = @MaLichThi";
-            var parameters = new SqlParameter[]
+            SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@NgayThi", newLT.NgayThi),
                 new SqlParameter("@GioThi", newLT.GioThi),
@@ -92,7 +92,7 @@ namespace Project_PTTK.DataAccess
         public void Them(LichThi lichThi)
         {
             const string query = "INSERT INTO LichThi (NgayThi, GioThi, SoThiSinhDaDangKy, MaPhongThi, MaDichVu, NhanVienLap) VALUES (@NgayThi, @GioThi, @SoThiSinhDaDangKy, @MaPhongThi, @MaDichVu, @NhanVienLap)";
-            var parameters = new SqlParameter[]
+            SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@NgayThi", lichThi.NgayThi),
                 new SqlParameter("@GioThi", lichThi.GioThi),
