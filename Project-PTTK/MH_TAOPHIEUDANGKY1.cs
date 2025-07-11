@@ -16,6 +16,9 @@ namespace Project_PTTK
 {
     public partial class MH_TAOPHIEUDANGKY1 : Form
     {
+
+        private PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
+
         public MH_TAOPHIEUDANGKY1()
         {
             InitializeComponent();
@@ -68,7 +71,6 @@ namespace Project_PTTK
                 khdvBus.AddKhachHangDonVi(khDonVi);
             }
             PhieuDangKy phieuDangKy = new PhieuDangKy(maKH);
-            PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
             pdkBus.ThemPhieuDangKy(phieuDangKy);
             MessageBox.Show("Đã tạo phiếu đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -81,14 +83,13 @@ namespace Project_PTTK
         {
             try
             {
-                PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
                 List<PhieuDangKy> danhSach = pdkBus.LayDanhSach();
                
                 dgvPhieuDangKy.DataSource = danhSach;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi tải dữ liệu: ",ex.Message);
             }
         }
     }
