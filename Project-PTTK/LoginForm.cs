@@ -47,19 +47,34 @@ namespace Project_PTTK
                 using (SqlConnection conn = DBHelper.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT COUNT(*) FROM NhanVien WHERE email = @username AND MatKhau = @password";
+                    string query = "SELECT Vaitro FROM NhanVien WHERE email = @username AND MatKhau = @password";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
                         cmd.Parameters.AddWithValue("@password", password);
 
-                        int count = (int)cmd.ExecuteScalar(); // Lấy kết quả trả về
+                        object result = cmd.ExecuteScalar();
 
-                        if (count > 0)
+                        if (result != null)
                         {
-                            MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            string role = result.ToString();
+                            Form mainForm;
 
+                            switch (role)
+                            {
+                                case "Tiếp nhận":
+                                    mainForm = new MH_TAOPHIEUDANGKY1();
+                                    break;
+                                default:
+                                    MessageBox.Show("Vai trò không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                            }
+
+                            MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Hide();
+                            mainForm.ShowDialog();
+                            this.Close();
                         }
                         else
                         {
