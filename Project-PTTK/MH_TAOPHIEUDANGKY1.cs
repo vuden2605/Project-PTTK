@@ -47,7 +47,6 @@ namespace Project_PTTK
             KhachHang kh = new KhachHang(loai, email);
             KhangHangBus khbus = new KhangHangBus(new KhachHangDAO());
             int maKH = khbus.AddKhachHang(kh);
-            MessageBox.Show("Mã khách hàng mới là: " + maKH, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (loai == "Tự do")
             {
                 string tenkh= txtTenKhachHang.Text.Trim();
