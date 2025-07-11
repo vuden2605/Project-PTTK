@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace Project_PTTK
 {
     public static class DBHelper
     {
-        private static string connectionString = @"Server=.\SQLEXPRESS;Database=QuanLyChungChi;User Id=sa;Password=;";
+        private static string connectionString = @"Server=.\SQLEXPRESS;Database=QuanLyChungChi;User Id=sa;Password=;TrustServerCertificate=True;";
 
         public static SqlConnection GetConnection()
         {
