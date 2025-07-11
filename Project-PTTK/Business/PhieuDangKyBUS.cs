@@ -15,11 +15,5 @@ namespace Project_PTTK.Business
         }
         public List<PhieuDangKy> LayDanhSach() => _phieuDangKyDAO.LayDanhSach();
         public PhieuDangKy? LayTheoMa(int maPhieuDangKy) => _phieuDangKyDAO.LayTheoMa(maPhieuDangKy);
-        public string LayTenDichVu(int maPhieuDangKy)
-        {
-            var phieuDangKy = _phieuDangKyDAO.LayTheoMa(maPhieuDangKy);
-            if (phieuDangKy == null) return string.Empty;
-            var dichVu = _dichVuDAO.get(phieuDangKy.Ma);
-        }
     }
 }
