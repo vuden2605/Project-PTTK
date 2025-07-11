@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Project_PTTK.Model;
 using Project_PTTK.Utils;
 
-namespace Project_PTTK.DataAccess
+namespace Project_PTTK.DataAccess.PhieuGiaHanDAO
 {
     public class PhieuGiaHanDAO
     {
