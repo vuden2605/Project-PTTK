@@ -17,5 +17,7 @@ namespace Project_PTTK.Model
     {
         public int MaPhongThi { get; set; }
         public string TenPhong { get; set; } = null!;
+        public int SoThiSinhToiDa { get; set; }
+
     }
 }

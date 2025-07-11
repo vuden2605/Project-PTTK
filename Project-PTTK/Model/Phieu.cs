@@ -19,7 +19,6 @@ namespace Project_PTTK.Model
     public class ChiTietPhieuDangKy
     {
         public int MaPhieu { get; set; }
-        public int MaDichVu { get; set; }
         public int SoLuong { get; set; }
     }
     public class PhieuGiaHan

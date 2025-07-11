@@ -11,6 +11,8 @@ namespace Project_PTTK.Model
         public int MaTS { get; set; }
         public string HoTen { get; set; } = null!;
         public DateOnly NgaySinh { get; set; }
+        public string CCCD { get; set; } = null!;
+        public string GioiTinh { get; set; } = null!;
         public string TrangThaiPhatHanhPhieuDuThi { get; set; } = null!;
         public int MaKH { get; set; }
         public int MaLichThi { get; set; }
