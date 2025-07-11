@@ -9,7 +9,7 @@ using Project_PTTK.Model;
 
 namespace Project_PTTK.DataAccess
 {
-    public class DichVuRepository
+    public class DichVuDAO
     {
         public DichVu? get(int MaDichVu)
         {

@@ -9,7 +9,7 @@ using Project_PTTK.Model;
 
 namespace Project_PTTK.DataAccess
 {
-    public class ThiSinhRepository
+    public class ThiSinhDAO
     {
         public List<ThiSinh> getAll()
         {

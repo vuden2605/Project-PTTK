@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 
 namespace Project_PTTK.DataAccess
 {
-    public class ChiTietPhieuDangKyRepository
+    public class ChiTietPhieuDangKyDAO
     {
 
         public List<ChiTietPhieuDangKy> getAll()
@@ -130,7 +130,7 @@ namespace Project_PTTK.DataAccess
         }
     }
 
-    public class PhieuDangKyRepository
+    public class PhieuDangKyDAO
     {
         public List<PhieuDangKy> getAll()
         {
