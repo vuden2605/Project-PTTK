@@ -24,9 +24,9 @@ namespace Project_PTTK.DataAccess
                     var row = dt.Rows[0];
                     dichVu = new DichVu
                     {
-                        MaDichVu = Convert.ToInt32(row["MaDichVu"]),
-                        TenDichVu = row["TenDichVu"].ToString() ?? string.Empty,
-                        Gia = Convert.ToDecimal(row["Gia"])
+                        MaDichVu = row.Field<int>("MaDichVu"),
+                        TenDichVu = row.Field<string>("TenDichVu") ?? string.Empty,
+                        Gia = row.Field<decimal>("Gia")
                     };
                 }
             }
@@ -35,6 +35,32 @@ namespace Project_PTTK.DataAccess
                 throw new Exception("Lỗi khi lấy dịch vụ: ",ex);
             }
             return dichVu;
+        }
+
+        public List<DichVu> getByTen(string tenDichVu)
+        {
+            var list = new List<DichVu>();
+            try
+            {
+                const string query = "SELECT * FROM DichVu WHERE TenDichVu LIKE @TenDichVu";
+                SqlParameter[] parameters = { new SqlParameter("@TenDichVu", "%" + tenDichVu + "%") };
+                using DataTable dt = DBHelper.ExecuteQuery(query, parameters);
+                foreach (DataRow row in dt.Rows)
+                {
+                    var dichVu = new DichVu
+                    {
+                        MaDichVu = row.Field<int>("MaDichVu"),
+                        TenDichVu = row.Field<string>("TenDichVu") ?? string.Empty,
+                        Gia = row.Field<decimal>("Gia")
+                    };
+                    list.Add(dichVu);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi tìm kiếm dịch vụ: ",ex);
+            }
+            return list;
         }
 
         public List<DichVu> getAll()
