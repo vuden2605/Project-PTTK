@@ -14,7 +14,7 @@ namespace Project_PTTK
             return conn;
         }
 
-        public static DataTable GetData(string query, SqlParameter[]? parameters)
+        public static DataTable ExecuteQuery(string query, SqlParameter[]? parameters)
         {
             using SqlConnection conn = new SqlConnection(connectionString);
             using SqlCommand cmd = new SqlCommand(query, conn);
@@ -28,15 +28,14 @@ namespace Project_PTTK
         }
 
 
-        public static int ExecuteCommand(string query, params SqlParameter[] parameters)
+        public static int ExecuteNonQuery(string query, SqlParameter[]? parameters)
         {
-            using (SqlConnection conn = GetConnection())
-            {
-                SqlCommand cmd = new SqlCommand(query, conn);
+            using SqlConnection conn = new SqlConnection(connectionString);
+            using SqlCommand cmd = new SqlCommand(query, conn);
+            if (parameters != null)
                 cmd.Parameters.AddRange(parameters);
-                conn.Open();
-                return cmd.ExecuteNonQuery();
-            }
+            conn.Open();
+            return cmd.ExecuteNonQuery();
         }
     }
 }

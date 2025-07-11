@@ -18,7 +18,7 @@ namespace Project_PTTK.DataAccess
             {
                 const string query = "SELECT * FROM DichVu WHERE MaDichVu = @MaDichVu";
                 SqlParameter[] parameters = { new SqlParameter("@MaDichVu", MaDichVu) };
-                using DataTable dt = DBHelper.GetData(query,parameters);
+                using DataTable dt = DBHelper.ExecuteQuery(query,parameters);
                 if (dt.Rows.Count > 0)
                 {
                     var row = dt.Rows[0];
@@ -43,7 +43,7 @@ namespace Project_PTTK.DataAccess
             try
             {
                 const string query = "SELECT * FROM DichVu";
-                using DataTable dt = DBHelper.GetData(query, null);
+                using DataTable dt = DBHelper.ExecuteQuery(query, null);
                 foreach (DataRow row in dt.Rows)
                 {
                     var dichVu = new DichVu
