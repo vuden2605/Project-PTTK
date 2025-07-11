@@ -46,4 +46,5 @@ namespace Project_PTTK
             conn.Open();
             return cmd.ExecuteScalar() ?? DBNull.Value;
         }
+    }
 }
