@@ -12,5 +12,9 @@ namespace Project_PTTK.Business
         }
         public List<PhieuDangKy> LayDanhSach() => _phieuDangKyDAO.LayDanhSach();
         public PhieuDangKy? LayTheoMa(int maPhieuDangKy) => _phieuDangKyDAO.LayTheoMa(maPhieuDangKy);
+        public void ThemPhieuDangKy(PhieuDangKy phieuDangKy)
+        {
+            _phieuDangKyDAO.add(phieuDangKy);
+        }
     }
 }

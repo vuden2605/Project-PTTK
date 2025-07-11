@@ -145,6 +145,7 @@
             btnTaoPhieuDangKy.TabIndex = 20;
             btnTaoPhieuDangKy.Text = "📝 Tạo phiếu đăng ký";
             btnTaoPhieuDangKy.UseVisualStyleBackColor = false;
+            btnTaoPhieuDangKy.Click += btnTaoPhieuDangKy_Click_1;
             // 
             // groupKhachHang
             // 
