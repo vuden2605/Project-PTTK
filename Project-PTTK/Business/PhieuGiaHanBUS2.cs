@@ -3,12 +3,12 @@ using Project_PTTK.Model;
 
 namespace Project_PTTK.Business
 {
-    public class PhieuGiaHanService
+    public class PhieuGiaHanBUS
     {
         private readonly PhieuGiaHanDAO _phieuGiaHanDAO;
         private readonly PhieuDangKyDAO _phieuDangKyDAO;
 
-        public PhieuGiaHanService(PhieuGiaHanDAO phieuGiaHanDAO, PhieuDangKyDAO phieuDangKyDAO)
+        public PhieuGiaHanBUS(PhieuGiaHanDAO phieuGiaHanDAO, PhieuDangKyDAO phieuDangKyDAO)
         {
             _phieuGiaHanDAO = phieuGiaHanDAO;
             _phieuDangKyDAO = phieuDangKyDAO;
