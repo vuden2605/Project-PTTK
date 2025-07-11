@@ -21,7 +21,7 @@ namespace Project_PTTK.Model
     public class ChungChi
     {
         public int MaChungChi { get; set; }
-        public DateOnly NgayCap { get; set; } = new DateOnly();
+        public DateOnly NgayCap { get; set; } = DateOnly.FromDateTime(DateTime.Now);
         public string TrangThai { get; set; } = "CHƯA CẤP";
         public decimal KetQua { get; set; }
         public int MaTS { get; set; }
