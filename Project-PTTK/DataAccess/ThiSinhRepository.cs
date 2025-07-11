@@ -54,7 +54,11 @@ namespace Project_PTTK.DataAccess
             };
             try
             {
-                DBHelper.ExecuteNonQuery(query, parameters);
+                int rows = DBHelper.ExecuteNonQuery(query, parameters);
+                if (rows == 0)
+                {
+                    throw new Exception("Không có bản ghi nào được thêm.");
+                }
             }
             catch (Exception ex)
             {
