@@ -14,7 +14,7 @@ namespace Project_PTTK.Model
         public string CCCD { get; set; } = null!;
         public string GioiTinh { get; set; } = null!;
         public string TrangThaiPhatHanhPhieuDuThi { get; set; } = null!;
-        public int MaKH { get; set; }
+        public int MaPhieuDangKy { get; set; }
         public int MaLichThi { get; set; }
     }
 
