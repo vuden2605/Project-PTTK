@@ -2,181 +2,196 @@
 GO
 USE QuanLyChungChi;
 GO
-CREATE TABLE KHACH_HANG (
-    MaKH INT PRIMARY KEY IDENTITY(1,1),
+-- KHÁCH HÀNG
+CREATE TABLE KhachHang (
+    MaKH INT IDENTITY(1,1) PRIMARY KEY,
     LoaiKhachHang NVARCHAR(50),
     Email NVARCHAR(100)
 );
 GO
-CREATE TABLE KHACH_HANG_TU_DO (
+CREATE TABLE KhachHangTuDo (
     MaKH INT PRIMARY KEY,
     HoTen NVARCHAR(100),
     NgaySinh DATE,
-    FOREIGN KEY (MaKH) REFERENCES KHACH_HANG(MaKH)
+    FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH)
 );
 GO
-CREATE TABLE KHACH_HANG_DON_VI (
+CREATE TABLE KhachHangDonVi (
     MaKH INT PRIMARY KEY,
     TenDV NVARCHAR(100),
-    DiaChi NVARCHAR(200),
-    FOREIGN KEY (MaKH) REFERENCES KHACH_HANG(MaKH)
+    DiaChi NVARCHAR(255),
+    FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH)
 );
 GO
-CREATE TABLE NHAN_VIEN (
-    MaNV INT PRIMARY KEY IDENTITY(1,1),
+-- NHÂN VIÊN
+CREATE TABLE NhanVien (
+    MaNV INT IDENTITY(1,1) PRIMARY KEY,
     MatKhau NVARCHAR(100),
     HoTen NVARCHAR(100),
     SDT NVARCHAR(15),
     Email NVARCHAR(100),
     VaiTro NVARCHAR(50),
-    Luong DECIMAL(18,2)
+    Luong DECIMAL(18, 2)
 );
 GO
-CREATE TABLE DICH_VU (
-    MaDichVu INT PRIMARY KEY IDENTITY(1,1),
+-- DỊCH VỤ
+CREATE TABLE DichVu (
+    MaDichVu INT IDENTITY(1,1) PRIMARY KEY,
     TenDichVu NVARCHAR(100),
-    Gia DECIMAL(18,2)
+    Gia DECIMAL(18, 2)
 );
 GO
-CREATE TABLE PHONG_THI (
-    MaPhongThi INT PRIMARY KEY IDENTITY(1,1),
-    TenPhong NVARCHAR(100)
+-- PHÒNG THI
+CREATE TABLE PhongThi (
+    MaPhongThi INT IDENTITY(1,1) PRIMARY KEY,
+    TenPhong NVARCHAR(100),
+    SoThiSinhToiDa INT
 );
-GO	
-CREATE TABLE LICH_THI (
-    MaLichThi INT PRIMARY KEY IDENTITY(1,1),
-    NgayThi DATE,
+GO
+-- LỊCH THI
+CREATE TABLE LichThi (
+    MaLichThi INT IDENTITY(1,1) PRIMARY KEY,
+    NgayThi DATE DEFAULT GETDATE(),
     GioThi TIME,
-    SoThiSinhToiDa INT,
-    SoThiSinhDaDangKi INT,
-    MaPhongThi INT,
-    MaDichVu INT,
+    SoTSDaDangKi INT,
+	MaPhongThi INT,
+	MaDichVu INT,
 	NvLap INT
-    FOREIGN KEY (MaPhongThi) REFERENCES PHONG_THI(MaPhongThi),
-    FOREIGN KEY (MaDichVu) REFERENCES DICH_VU(MaDichVu),
-	FOREIGN KEY (NvLap) REFERENCES NHAN_VIEN(MaNV)
+	FOREIGN KEY (MaPhongThi) REFERENCES PhongThi(MaPhongThi),
+	FOREIGN KEY (MaDichVu) REFERENCES DichVu(MaDichVu),
+	FOREIGN KEY (NvLap) REFERENCES NHANVIEN(MaNV)
 );
-CREATE TABLE PHIEU_DANG_KI (
-    MaPhieuDangKi INT PRIMARY KEY IDENTITY(1,1),
+GO
+-- PHIẾU ĐĂNG KÍ
+CREATE TABLE PhieuDangKi (
+    MaPhieuDangKi INT IDENTITY(1,1) PRIMARY KEY,
     NgayTao DATE DEFAULT GETDATE(),
     TrangThaiThanhToan NVARCHAR(50),
-    PhuongThucThanhToan NVARCHAR(50),
     MaKH INT,
 	NvLap INT
-    FOREIGN KEY (MaKH) REFERENCES KHACH_HANG(MaKH),
-	FOREIGN KEY (NvLap) REFERENCES NHAN_VIEN(MaNV)
+    FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH),
+	FOREIGN KEY (NvLap) REFERENCES NHANVIEN(MaNV)
 );
 GO
-CREATE TABLE CHI_TIET_PHIEU (
+-- CHI TIẾT PHIẾU
+CREATE TABLE ChiTietPhieu (
     MaPhieuDangKi INT,
-    MaDichVu INT,
-	Soluong INT,
-    PRIMARY KEY (MaPhieuDangKi, MaDichVu),
-    FOREIGN KEY (MaPhieuDangKi) REFERENCES PHIEU_DANG_KI(MaPhieuDangKi),
-    FOREIGN KEY (MaDichVu) REFERENCES DICH_VU(MaDichVu)
+    MaLichThi INT,
+    SoLuong INT,
+    PRIMARY KEY (MaPhieuDangKi, MaLichThi),
+    FOREIGN KEY (MaPhieuDangKi) REFERENCES PhieuDangKi(MaPhieuDangKi),
+    FOREIGN KEY (MaLichThi) REFERENCES LichThi(MaLichThi)
 );
 GO
-CREATE TABLE PHIEU_GIA_HAN (
-    MaPhieuGiaHan INT PRIMARY KEY IDENTITY(1,1),
+-- PHIẾU GIA HẠN
+CREATE TABLE PhieuGiaHan (
+    MaPhieuGiaHan INT IDENTITY(1,1) PRIMARY KEY,
     NgayTao DATE DEFAULT GETDATE(),
-    LyDo NVARCHAR(200),
+    LyDo NVARCHAR(255),
     TrangThaiThanhToan NVARCHAR(50),
+    MaNV INT,
     MaPhieuDangKi INT,
-    FOREIGN KEY (MaPhieuDangKi) REFERENCES PHIEU_DANG_KI(MaPhieuDangKi)
+	MaLichThi INT
+    FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV),
+    FOREIGN KEY (MaPhieuDangKi, MaLichThi) REFERENCES ChiTietPhieu(MaPhieuDangKi,MaLichThi),
 );
 GO
-CREATE TABLE HOA_DON (
-    MaHoaDon INT PRIMARY KEY IDENTITY(1,1),
-    TongTien DECIMAL(18,2),
-    ChietKhau DECIMAL(18,2),
+-- THÍ SINH
+CREATE TABLE ThiSinh (
+    MaTS INT IDENTITY(1,1) PRIMARY KEY,
+    HoTen NVARCHAR(100),
+    NgaySinh DATE,
+    CCCD NVARCHAR(12),
+    GioiTinh NVARCHAR(10),
+    TrangThaiPhatHanhPhieuDuThi NVARCHAR(50),
+	MaLichThi INT,
+	FOREIGN KEY (MaLichThi) REFERENCES LichThi(MaLichThi)
+);
+GO
+-- CHỨNG CHỈ
+CREATE TABLE ChungChi (
+    MaChungChi INT IDENTITY(1,1) PRIMARY KEY,
+    MaTS INT,
+	NvLap INT,
+    NgayCap DATE DEFAULT GETDATE(),
+    TrangThai NVARCHAR(50),
+    KetQua NVARCHAR(50),
+	FOREIGN KEY (NvLap) REFERENCES NhanVien(MaNV),
+    FOREIGN KEY (MaTS) REFERENCES ThiSinh(MaTS)
+);
+GO
+-- HÓA ĐƠN
+CREATE TABLE HoaDon (
+    MaHoaDon INT IDENTITY(1,1) PRIMARY KEY,
+    TongTien DECIMAL(18, 2),
+    ChietKhau DECIMAL(5, 2),
+    PhuongThucThanhToan NVARCHAR(50),
     NgayTao DATE DEFAULT GETDATE(),
     Loai NVARCHAR(50),
     NvLap INT,
     MaPhieuDangKi INT,
-	MaPhieuGiaHan INT,
-    FOREIGN KEY (NvLap) REFERENCES NHAN_VIEN(MaNV),
-	FOREIGN KEY (MaPhieuGiaHan) REFERENCES PHIEU_GIA_HAN(MaPhieuGiaHan),
-    FOREIGN KEY (MaPhieuDangKi) REFERENCES PHIEU_DANG_KI(MaPhieuDangKi)
+	MaPhieuGiaHan INT
+    FOREIGN KEY (NvLap) REFERENCES NhanVien(MaNV),
+    FOREIGN KEY (MaPhieuDangKi) REFERENCES PhieuDangKi(MaPhieuDangKi),
+	FOREIGN KEY (MaPhieuGiaHan) REFERENCES PhieuGiaHan(MaPhieuGiaHan),
 );
 GO
-CREATE TABLE THI_SINH (
-    MaTS INT PRIMARY KEY IDENTITY(1,1),
-    HoTen NVARCHAR(100),
-    NgaySinh DATE,
-    TrangThaiPhatHanhPhieuDuThi NVARCHAR(100),
-    MaKH INT,
-	MaLichThi INT,
-    FOREIGN KEY (MaKH) REFERENCES KHACH_HANG(MaKH),
-	FOREIGN KEY (MaLichThi) REFERENCES LICH_THI(MaLichThi)
-);
-GO
-CREATE TABLE CHUNG_CHI (
-    MaChungChi INT PRIMARY KEY IDENTITY(1,1),
-    NgayCap DATE DEFAULT GETDATE(),
-    TrangThai NVARCHAR(50),
-    KetQua DECIMAL(10,2),
-    MaTS INT,
-	NvLap INT
-    FOREIGN KEY (MaTS) REFERENCES THI_SINH(MaTS),
-	FOREIGN KEY (NvLap) REFERENCES NHAN_VIEN(MaNV)
-);
-GO
--- Khách hàng tổng
-INSERT INTO KHACH_HANG (LoaiKhachHang, Email) VALUES
-(N'Tự do', 'tudo1@gmail.com'), -- ID = 1
-(N'Đơn vị', 'donvi1@gmail.com'); -- ID = 2
+-- Khách hàng
+INSERT INTO KhachHang (LoaiKhachHang, Email) VALUES 
+(N'Tự do', 'nguyenvana@gmail.com'),
+(N'Đơn vị', 'côngtyabc@gmail.com');
 
 -- Khách hàng tự do
-INSERT INTO KHACH_HANG_TU_DO (MaKH, HoTen, NgaySinh) VALUES
-(1, N'Nguyễn Văn A', '1995-05-12');
+INSERT INTO KhachHangTuDo (MaKH, HoTen, NgaySinh) VALUES 
+(1, N'Nguyễn Văn A', '1990-05-20');
 
 -- Khách hàng đơn vị
-INSERT INTO KHACH_HANG_DON_VI (MaKH, TenDV, DiaChi) VALUES
-(2, N'Công ty ABC', N'123 Đường ABC, Quận 1');
+INSERT INTO KhachHangDonVi (MaKH, TenDV, DiaChi) VALUES 
+(2, N'Công ty ABC', N'123 Lê Lợi, Quận 1, TP.HCM');
 GO
-
-INSERT INTO NHAN_VIEN (MatKhau, HoTen, SDT, Email, VaiTro, Luong) VALUES
-('123456', N'Lê Thị B', '0909123456', 'nvb@gmail.com', N'Nhân viên tiếp nhận', 10000000),
-('123456', N'Trần Văn C', '0988123123', 'nvc@gmail.com', N'Nhân viên thanh toán', 12000000);
+-- Nhân viên
+INSERT INTO NhanVien (MatKhau, HoTen, SDT, Email, VaiTro, Luong) VALUES
+('123456', N'Trần Thị B', '0909123456', 'tranb@example.com', N'Admin', 15000000),
+('abcdef', N'Phạm Văn C', '0911123456', 'phamc@example.com', N'Nhân viên', 10000000);
 GO
-INSERT INTO DICH_VU (TenDichVu, Gia) VALUES
+-- Dịch vụ
+INSERT INTO DichVu (TenDichVu, Gia) VALUES
 (N'Thi TOEIC', 500000),
-(N'Thi IELTS', 700000),
-(N'Thi VSTEP',80000),
-(N'Thi tin học',60000);
-GO
-INSERT INTO PHONG_THI (TenPhong) VALUES
-(N'Phòng 101'),
-(N'Phòng 202'),
-(N'Phòng 303'),
-(N'Phòng 404');
-GO
-INSERT INTO LICH_THI (NgayThi, GioThi, SoThiSinhToiDa, SoThiSinhDaDangKi, MaPhongThi, MaDichVu, NvLap)
-VALUES
-('2025-07-20', '08:00', 20, 0, 1, 1, 1),
-('2025-07-20', '14:00', 20, 0, 2, 2, 1);
-GO
-INSERT INTO PHIEU_DANG_KI (TrangThaiThanhToan, PhuongThucThanhToan, MaKH, NvLap)
-VALUES
-(N'Chưa thanh toán', N'Tiền mặt', 1, 2);
-GO
-INSERT INTO CHI_TIET_PHIEU (MaPhieuDangKi, MaDichVu,Soluong)
-VALUES (1, 1,1);
-GO
-INSERT INTO PHIEU_GIA_HAN (LyDo, TrangThaiThanhToan, MaPhieuDangKi)
-VALUES
-(N'Vắng thi', N'Chưa thanh toán', 1);
-GO
-INSERT INTO HOA_DON (TongTien, ChietKhau, Loai, NvLap, MaPhieuDangKi, MaPhieuGiaHan)
-VALUES
-(500000, 0, N'Phiếu đăng ký', 1, 1, null);
-GO
-INSERT INTO THI_SINH (HoTen, NgaySinh, TrangThaiPhatHanhPhieuDuThi, MaKH, MaLichThi)
-VALUES
-(N'Nguyễn Văn A', '1995-05-12', N'Đã phát hành', 1, 1);
-INSERT INTO CHUNG_CHI (TrangThai, KetQua, MaTS, NvLap)
-VALUES
-(N'Đã cấp', 9.0, 1, 2);
+(N'Thi IELTS', 700000);
+-- Phòng thi
+INSERT INTO PhongThi (TenPhong, SoThiSinhToiDa) VALUES
+(N'Phòng 101', 30),
+(N'Phòng 202', 25);
+-- Lịch thi
+INSERT INTO LichThi (NgayThi, GioThi, SoTSDaDangKi, MaPhongThi, MaDichVu, NvLap) VALUES
+('2025-07-15', '08:00:00', 10, 1, 1, 1),
+('2025-07-20', '14:00:00', 5, 2, 2, 2);
+-- Phiếu đăng ký
+INSERT INTO PhieuDangKi (TrangThaiThanhToan, MaKH, NvLap) VALUES
+(N'Chưa thanh toán', 1, 1),
+(N'Đã thanh toán', 2, 2);
+--Chi tiết phiếu
+INSERT INTO ChiTietPhieu (MaPhieuDangKi, MaLichThi, SoLuong) VALUES
+(1, 1, 1),
+(2, 2, 2);
+-- Phiếu gia hạn
+INSERT INTO PhieuGiaHan (LyDo, TrangThaiThanhToan, MaNV, MaPhieuDangKi, MaLichThi) VALUES
+(N'Bận việc cá nhân', N'Chưa thanh toán', 2, 1, 1);
+-- Thí sinh
+INSERT INTO ThiSinh (HoTen, NgaySinh, CCCD, GioiTinh, TrangThaiPhatHanhPhieuDuThi, MaLichThi) VALUES
+(N'Lê Thị D', '1995-03-15', '123456789012', N'Nữ', N'Đã phát hành', 1),
+(N'Ngô Văn E', '1992-11-01', '987654321098', N'Nam', N'Đã phát hành', 2);
+--Chứng chỉ
+INSERT INTO ChungChi (MaTS, NvLap, TrangThai, KetQua) VALUES
+(1, 1, N'Đã cấp', N'Đạt'),
+(2, 2, N'Chưa cấp', N'Đạt');
+--Hóa đơn
+INSERT INTO HoaDon (TongTien, ChietKhau, PhuongThucThanhToan, Loai, NvLap, MaPhieuDangKi, MaPhieuGiaHan) VALUES
+(500000, 0, N'Tiền mặt', N'Phí đăng kí', 1, 1, NULL),
+(700000, 10, N'Chuyển khoản', N'Gia hạn', 2, NULL, 1);
+
+
+
 
 
 
