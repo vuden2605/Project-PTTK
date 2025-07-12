@@ -184,6 +184,32 @@ namespace Project_PTTK.DataAccess.Phieu
             }
             return phieuDangKy;
         }
+        public List<PhieuDangKy> LayDanhSach()
+        {
+            var list = new List<PhieuDangKy>();
+            const string query = "SELECT * FROM PhieuDangKy";
+            try
+            {
+                using DataTable dt = DBHelper.ExecuteQuery(query, null);
+                foreach (DataRow row in dt.Rows)
+                {
+                    var phieuDangKy = new PhieuDangKy
+                    {
+                        MaPhieu = row.Field<int>("MaPhieu"),
+                        NgayTao = row.Field<DateOnly>("NgayTao"),
+                        TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
+                        MaKH = row.Field<int>("MaKH"),
+                        NhanVienLap = row.Field<int>("NhanVienLap")
+                    };
+                    list.Add(phieuDangKy);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách phiếu đăng ký: ", ex);
+            }
+            return list;
+        }
         public List<PhieuDangKyView> LayDanhSachPDKV()
         {
             var list = new List<PhieuDangKyView>();
@@ -383,6 +409,23 @@ namespace Project_PTTK.DataAccess.Phieu
             }
 
             return list;
+        }
+        public void CapNhatTrangThaiPhieu (int maphieu)
+        {
+            const string query = "UPDATE PhieuDangKy SET TrangThaiThanhToan = 'Đã thanh toán' WHERE MaPhieu = @MaPhieu";
+            SqlParameter[] parameters = { new SqlParameter("@MaPhieu", maphieu) };
+            try
+            {
+                int rows = DBHelper.ExecuteNonQuery(query, parameters);
+                if (rows == 0)
+                {
+                    throw new Exception("Không có bản ghi nào được cập nhật.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi cập nhật trạng thái phiếu đăng ký: ", ex);
+            }
         }
 
 

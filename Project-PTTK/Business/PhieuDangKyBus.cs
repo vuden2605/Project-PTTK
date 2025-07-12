@@ -16,6 +16,7 @@ namespace Project_PTTK.Business
             _chiTietPhieuDangKyDAO = new ChiTietPhieuDangKyDAO();
         }
         public List<PhieuDangKyView> LayDanhSachPDKV() => _phieuDangKyDAO.LayDanhSachPDKV();
+        public List<PhieuDangKy> LayDanhSach() => _phieuDangKyDAO.LayDanhSach();
         public PhieuDangKy? LayTheoMa(int maPhieuDangKy) => _phieuDangKyDAO.LayTheoMa(maPhieuDangKy);
         public void ThemPhieuDangKy(PhieuDangKy phieuDangKy) => _phieuDangKyDAO.add(phieuDangKy);
         public List<ThiSinh> getThiSinhByPhieuDangKy(int maPhieuDangKy)
@@ -31,6 +32,17 @@ namespace Project_PTTK.Business
             catch (Exception ex)
             {
                 throw new Exception("Lỗi khi tăng số lượng thí sinh đã đăng ký: ", ex);
+            }
+        }
+        public void CapNhatTrangThaiPhieu(int maPhieuDangKy)
+        {
+            try
+            {
+                _phieuDangKyDAO.CapNhatTrangThaiPhieu(maPhieuDangKy);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi cập nhật trạng thái phiếu đăng ký: ", ex);
             }
         }
     }
