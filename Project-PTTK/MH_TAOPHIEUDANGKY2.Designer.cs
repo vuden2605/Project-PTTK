@@ -275,9 +275,9 @@
             lblMaPhieuDangKy.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblMaPhieuDangKy.Location = new Point(187, -2);
             lblMaPhieuDangKy.Name = "lblMaPhieuDangKy";
-            lblMaPhieuDangKy.Size = new Size(48, 28);
+            lblMaPhieuDangKy.Size = new Size(24, 28);
             lblMaPhieuDangKy.TabIndex = 12;
-            lblMaPhieuDangKy.Text = "001";
+            lblMaPhieuDangKy.Text = "1";
             // 
             // groupKhachHang
             // 

@@ -196,6 +196,7 @@
             nudChietKhau.Name = "nudChietKhau";
             nudChietKhau.Size = new Size(120, 27);
             nudChietKhau.TabIndex = 5;
+            nudChietKhau.ValueChanged += nudChietKhau_ValueChanged;
             // 
             // lblTongTien
             // 
