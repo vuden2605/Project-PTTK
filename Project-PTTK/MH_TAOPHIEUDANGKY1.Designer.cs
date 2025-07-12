@@ -46,6 +46,11 @@
             txtTenDonVi = new TextBox();
             lblDiaChiDV = new Label();
             txtDiaChiDonVi = new TextBox();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhieuDangKy).BeginInit();
             groupKhachHang.SuspendLayout();
@@ -75,9 +80,12 @@
             // 
             // dgvPhieuDangKy
             // 
+            dgvPhieuDangKy.AllowUserToAddRows = false;
+            dgvPhieuDangKy.AllowUserToDeleteRows = false;
             dgvPhieuDangKy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPhieuDangKy.Location = new Point(20, 34);
             dgvPhieuDangKy.Name = "dgvPhieuDangKy";
+            dgvPhieuDangKy.ReadOnly = true;
             dgvPhieuDangKy.RowHeadersWidth = 51;
             dgvPhieuDangKy.Size = new Size(677, 275);
             dgvPhieuDangKy.TabIndex = 0;
@@ -220,6 +228,46 @@
             txtDiaChiDonVi.Name = "txtDiaChiDonVi";
             txtDiaChiDonVi.Size = new Size(180, 27);
             txtDiaChiDonVi.TabIndex = 9;
+            // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column1.HeaderText = "Mã phiếu đăng ký";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column2.HeaderText = "Mã khách hàng";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column3.HeaderText = "Tên khách hàng";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column5.HeaderText = "Email";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column4.HeaderText = "Ngày tạo";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
             // 
             // MH_TAOPHIEUDANGKY1
             // 
