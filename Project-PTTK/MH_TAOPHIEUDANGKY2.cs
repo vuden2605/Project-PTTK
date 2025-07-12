@@ -67,7 +67,9 @@ namespace Project_PTTK
 
         private void btnThemDichVu_Click(object sender, EventArgs e)
         {
-            MH_TAOPHIEUDANGKY3 form = new MH_TAOPHIEUDANGKY3();
+            int maphieu = Convert.ToInt32(lblMaPhieuDangKy.Text);
+            MH_TAOPHIEUDANGKY3 form = new MH_TAOPHIEUDANGKY3(maphieu);
+            this.Hide();
             form.ShowDialog();
             PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
 
