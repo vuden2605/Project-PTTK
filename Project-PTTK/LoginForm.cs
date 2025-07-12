@@ -54,7 +54,8 @@ namespace Project_PTTK
                 if (dt.Rows.Count > 0)
                 {
                     int maNV = Convert.ToInt32(dt.Rows[0]["MaNV"]);
-                    string role = dt.Rows[0]["Vaitro"].ToString();
+                    string role = dt.Rows[0]["Vaitro"]?.ToString() ?? string.Empty;
+
 
                     // Lưu lại MaNV nếu cần (ví dụ như Session)
                     Session.MaNV = maNV;
@@ -91,18 +92,23 @@ namespace Project_PTTK
 
         private void txt_Enter(object sender, EventArgs e)
         {
-            TextBox txt = sender as TextBox;
+            if (sender is not TextBox txt)
+                return; // hoặc xử lý tùy ý
+
             if (txt.ForeColor == Color.Gray)
             {
                 txt.Text = "";
                 txt.ForeColor = Color.Black;
-                if (txt.Name == "txtPassword") txt.PasswordChar = '●';
+                if (txt.Name == "txtPassword")
+                    txt.PasswordChar = '●';
             }
         }
 
         private void txt_Leave(object sender, EventArgs e)
         {
-            TextBox txt = sender as TextBox;
+            if (sender is not TextBox txt)
+                return; // hoặc throw, hoặc log
+
             if (string.IsNullOrWhiteSpace(txt.Text))
             {
                 if (txt.Name == "txtUsername")

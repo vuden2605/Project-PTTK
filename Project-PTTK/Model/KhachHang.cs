@@ -23,8 +23,9 @@ namespace Project_PTTK.Model
     {
         public string Ten { get; set; } = null!;
         public DateOnly NgaySinh { get; set; }
-        public KhachHangTuDo (string ten, DateOnly ngaySinh) 
+        public KhachHangTuDo (int MaKH,string ten, DateOnly ngaySinh) 
         {
+            this.MaKH = MaKH;
             Ten = ten;
             NgaySinh = ngaySinh;
         }
@@ -35,8 +36,9 @@ namespace Project_PTTK.Model
     {
         public string TenDonVi { get; set; } = null!;
         public string DiaChi { get; set; } = null!;
-        public KhachHangDonVi(string tenDonVi, string diaChi)
+        public KhachHangDonVi(int MaKH,string tenDonVi, string diaChi)
         {
+            this.MaKH = MaKH;
             TenDonVi = tenDonVi;
             DiaChi = diaChi;
         }

@@ -55,8 +55,8 @@ namespace Project_PTTK
             {
                 string tenkh = txtTenKhachHang.Text.Trim();
                 DateOnly ngaysinh = DateOnly.FromDateTime(dtpNgaySinh.Value);
-                KhachHangTuDo khTuDo = new KhachHangTuDo(tenkh, ngaysinh);
-                khTuDo.MaKH = maKH; // Gán mã khách hàng đã tạo
+                KhachHangTuDo khTuDo = new KhachHangTuDo(maKH, tenkh, ngaysinh);
+                //khTuDo.MaKH = maKH; // Gán mã khách hàng đã tạo
                 KhachHangTuDoBus khtdBus = new KhachHangTuDoBus(new KhachHangTuDoDAO());
                 khtdBus.AddKhachHangTuDo(khTuDo);
 
@@ -65,8 +65,8 @@ namespace Project_PTTK
             {
                 string tendv = txtTenDonVi.Text.Trim();
                 string diachi = txtDiaChiDonVi.Text.Trim();
-                KhachHangDonVi khDonVi = new KhachHangDonVi(tendv, diachi);
-                khDonVi.MaKH = maKH; // Gán mã khách hàng đã tạo
+                KhachHangDonVi khDonVi = new KhachHangDonVi(maKH, tendv, diachi);
+                //khDonVi.MaKH = maKH; // Gán mã khách hàng đã tạo
                 KhachHangDonViBus khdvBus = new KhachHangDonViBus(new KhachHangDonViDAO());
                 khdvBus.AddKhachHangDonVi(khDonVi);
             }
@@ -87,16 +87,43 @@ namespace Project_PTTK
                 PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
                 List<PhieuDangKyView> danhSach = pdkBus.LayDanhSach();
                 dgvPhieuDangKy.DataSource = danhSach;
-                dgvPhieuDangKy.Columns["MaPhieuDangKy"].HeaderText = "Mã phiếu";
-                dgvPhieuDangKy.Columns["MaKH"].HeaderText = "Mã KH";
-                dgvPhieuDangKy.Columns["TenKH"].HeaderText = "Tên khách hàng";
-                dgvPhieuDangKy.Columns["LoaiKH"].HeaderText = "Loại khách hàng";
-                dgvPhieuDangKy.Columns["Email"].HeaderText = "Email";
-                dgvPhieuDangKy.Columns["NgayTao"].HeaderText = "Ngày tạo";
+                dgvPhieuDangKy.Columns["MaPhieuDangKy"]!.HeaderText = "Mã phiếu";
+                dgvPhieuDangKy.Columns["MaKH"]!.HeaderText = "Mã KH";
+                dgvPhieuDangKy.Columns["TenKH"]!.HeaderText = "Tên khách hàng";
+                dgvPhieuDangKy.Columns["LoaiKH"]!.HeaderText = "Loại khách hàng";
+                dgvPhieuDangKy.Columns["Email"]!.HeaderText = "Email";
+                dgvPhieuDangKy.Columns["NgayTao"]!.HeaderText = "Ngày tạo";
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải dữ liệu: ",ex.Message);
+                MessageBox.Show("Lỗi khi tải dữ liệu: ", ex.Message);
+            }
+        }
+
+        private void cmbLoaiKhachHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string loai = cmbLoaiKhachHang.SelectedItem?.ToString()??string.Empty;
+
+            if (loai == "Tự do")
+            {
+                // Enable các trường của khách tự do
+                txtTenKhachHang.Enabled = true;
+                dtpNgaySinh.Enabled = true;
+
+                // Disable + clear các trường của khách đơn vị
+                txtTenDonVi.Enabled = false;
+                txtDiaChiDonVi.Enabled = false;
+                txtTenDonVi.Text = string.Empty;
+                txtDiaChiDonVi.Text = string.Empty;
+            }
+            else if (loai == "Đơn vị")
+            {
+                txtTenDonVi.Enabled = true;
+                txtDiaChiDonVi.Enabled = true;
+
+                txtTenKhachHang.Enabled = false;
+                dtpNgaySinh.Enabled = false;
+                txtTenKhachHang.Text = string.Empty;
             }
         }
     }
