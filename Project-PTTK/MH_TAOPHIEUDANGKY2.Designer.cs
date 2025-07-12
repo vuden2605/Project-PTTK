@@ -50,25 +50,20 @@
             groupBox1 = new GroupBox();
             btnThemDichVu = new Button();
             dgvDichVu = new DataGridView();
-            groupKhachHang = new GroupBox();
-            lblMaPhieuDangKy = new Label();
-            txtEmail = new TextBox();
-            label1 = new Label();
-            txtDiaChiDonVi = new TextBox();
-            dtpNgaySinh = new DateTimePicker();
-            lblLoaiKH = new Label();
-            cmbLoaiKhachHang = new ComboBox();
-            lblTenKH = new Label();
-            txtTenKhachHang = new TextBox();
-            lblNgaySinhKH = new Label();
-            lblTenDV = new Label();
-            txtTenDonVi = new TextBox();
-            lblDiaChiDV = new Label();
-            btnLuuLai = new Button();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column8 = new DataGridViewTextBoxColumn();
+            btnLuuLai = new Button();
+            //lblDiaChiDV = new Label();
+            txtTenKhachHang = new TextBox();
+            lblTenKH = new Label();
+            cmbLoaiKhachHang = new ComboBox();
+            lblLoaiKH = new Label();
+            label1 = new Label();
+            txtEmail = new TextBox();
+            lblMaPhieuDangKy = new Label();
+            groupKhachHang = new GroupBox();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvThiSinh).BeginInit();
             groupBox2.SuspendLayout();
@@ -80,11 +75,9 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(dgvThiSinh);
-            groupBox3.Location = new Point(58, 764);
-            groupBox3.Margin = new Padding(5);
+            groupBox3.Location = new Point(36, 478);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(5);
-            groupBox3.Size = new Size(1466, 498);
+            groupBox3.Size = new Size(902, 311);
             groupBox3.TabIndex = 18;
             groupBox3.TabStop = false;
             groupBox3.Text = "Danh sách thí sinh của phiếu đăng ký";
@@ -93,11 +86,10 @@
             // 
             dgvThiSinh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvThiSinh.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, Column4, Column5, Column6, Column7 });
-            dgvThiSinh.Location = new Point(32, 62);
-            dgvThiSinh.Margin = new Padding(5);
+            dgvThiSinh.Location = new Point(20, 39);
             dgvThiSinh.Name = "dgvThiSinh";
             dgvThiSinh.RowHeadersWidth = 51;
-            dgvThiSinh.Size = new Size(1424, 352);
+            dgvThiSinh.Size = new Size(876, 220);
             dgvThiSinh.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
@@ -161,82 +153,73 @@
             groupBox2.Controls.Add(lblGioiTinh);
             groupBox2.Controls.Add(cmbGioiTinh);
             groupBox2.Controls.Add(btnThemThiSinh);
-            groupBox2.Location = new Point(958, 231);
-            groupBox2.Margin = new Padding(5);
+            groupBox2.Location = new Point(590, 144);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(5);
-            groupBox2.Size = new Size(566, 523);
+            groupBox2.Size = new Size(348, 327);
             groupBox2.TabIndex = 19;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin thí sinh";
+            groupBox2.Enter += groupBox2_Enter;
             // 
             // lblHoTenTS
             // 
-            lblHoTenTS.Location = new Point(29, 64);
-            lblHoTenTS.Margin = new Padding(5, 0, 5, 0);
+            lblHoTenTS.Location = new Point(18, 40);
             lblHoTenTS.Name = "lblHoTenTS";
-            lblHoTenTS.Size = new Size(190, 37);
+            lblHoTenTS.Size = new Size(117, 23);
             lblHoTenTS.TabIndex = 13;
             lblHoTenTS.Text = "Họ tên thí sinh:";
             // 
             // txtHoTenThiSinh
             // 
-            txtHoTenThiSinh.Location = new Point(252, 58);
-            txtHoTenThiSinh.Margin = new Padding(5);
+            txtHoTenThiSinh.Location = new Point(155, 36);
             txtHoTenThiSinh.Name = "txtHoTenThiSinh";
-            txtHoTenThiSinh.Size = new Size(290, 39);
+            txtHoTenThiSinh.Size = new Size(180, 27);
             txtHoTenThiSinh.TabIndex = 14;
             // 
             // lblNgaySinhTS
             // 
-            lblNgaySinhTS.Location = new Point(29, 253);
-            lblNgaySinhTS.Margin = new Padding(5, 0, 5, 0);
+            lblNgaySinhTS.Location = new Point(18, 158);
             lblNgaySinhTS.Name = "lblNgaySinhTS";
-            lblNgaySinhTS.Size = new Size(185, 37);
+            lblNgaySinhTS.Size = new Size(114, 23);
             lblNgaySinhTS.TabIndex = 15;
             lblNgaySinhTS.Text = "Ngày sinh (TS):";
             // 
             // dtpNgaySinhTS
             // 
             dtpNgaySinhTS.Format = DateTimePickerFormat.Short;
-            dtpNgaySinhTS.Location = new Point(252, 253);
-            dtpNgaySinhTS.Margin = new Padding(5);
+            dtpNgaySinhTS.Location = new Point(155, 158);
             dtpNgaySinhTS.Name = "dtpNgaySinhTS";
-            dtpNgaySinhTS.Size = new Size(290, 39);
+            dtpNgaySinhTS.Size = new Size(180, 27);
             dtpNgaySinhTS.TabIndex = 16;
             // 
             // lblCMND
             // 
-            lblCMND.Location = new Point(29, 157);
-            lblCMND.Margin = new Padding(5, 0, 5, 0);
+            lblCMND.Location = new Point(18, 98);
             lblCMND.Name = "lblCMND";
-            lblCMND.Size = new Size(162, 37);
+            lblCMND.Size = new Size(100, 23);
             lblCMND.TabIndex = 17;
             lblCMND.Text = "CMND/CCCD:";
             // 
             // txtCCCD
             // 
-            txtCCCD.Location = new Point(252, 157);
-            txtCCCD.Margin = new Padding(5);
+            txtCCCD.Location = new Point(155, 98);
             txtCCCD.Name = "txtCCCD";
-            txtCCCD.Size = new Size(290, 39);
+            txtCCCD.Size = new Size(180, 27);
             txtCCCD.TabIndex = 18;
             // 
             // lblGioiTinh
             // 
-            lblGioiTinh.Location = new Point(29, 350);
-            lblGioiTinh.Margin = new Padding(5, 0, 5, 0);
+            lblGioiTinh.Location = new Point(18, 219);
             lblGioiTinh.Name = "lblGioiTinh";
-            lblGioiTinh.Size = new Size(185, 37);
+            lblGioiTinh.Size = new Size(114, 23);
             lblGioiTinh.TabIndex = 19;
             lblGioiTinh.Text = "Giới tính:";
             // 
             // cmbGioiTinh
             // 
-            cmbGioiTinh.Location = new Point(252, 350);
-            cmbGioiTinh.Margin = new Padding(5);
+            cmbGioiTinh.Location = new Point(155, 219);
             cmbGioiTinh.Name = "cmbGioiTinh";
-            cmbGioiTinh.Size = new Size(290, 40);
+            cmbGioiTinh.Size = new Size(180, 28);
             cmbGioiTinh.TabIndex = 20;
             // 
             // btnThemThiSinh
@@ -245,10 +228,9 @@
             btnThemThiSinh.FlatStyle = FlatStyle.Flat;
             btnThemThiSinh.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnThemThiSinh.ForeColor = Color.White;
-            btnThemThiSinh.Location = new Point(335, 440);
-            btnThemThiSinh.Margin = new Padding(5);
+            btnThemThiSinh.Location = new Point(206, 275);
             btnThemThiSinh.Name = "btnThemThiSinh";
-            btnThemThiSinh.Size = new Size(210, 64);
+            btnThemThiSinh.Size = new Size(129, 40);
             btnThemThiSinh.TabIndex = 12;
             btnThemThiSinh.Text = "Thêm thí sinh";
             btnThemThiSinh.UseVisualStyleBackColor = false;
@@ -257,11 +239,9 @@
             // 
             groupBox1.Controls.Add(btnThemDichVu);
             groupBox1.Controls.Add(dgvDichVu);
-            groupBox1.Location = new Point(58, 231);
-            groupBox1.Margin = new Padding(5);
+            groupBox1.Location = new Point(36, 144);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(5);
-            groupBox1.Size = new Size(890, 523);
+            groupBox1.Size = new Size(548, 327);
             groupBox1.TabIndex = 17;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách dich vụ đã đăng ký";
@@ -272,10 +252,9 @@
             btnThemDichVu.FlatStyle = FlatStyle.Flat;
             btnThemDichVu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnThemDichVu.ForeColor = Color.White;
-            btnThemDichVu.Location = new Point(32, 440);
-            btnThemDichVu.Margin = new Padding(5);
+            btnThemDichVu.Location = new Point(20, 275);
             btnThemDichVu.Name = "btnThemDichVu";
-            btnThemDichVu.Size = new Size(210, 64);
+            btnThemDichVu.Size = new Size(129, 40);
             btnThemDichVu.TabIndex = 11;
             btnThemDichVu.Text = "Thêm dịch vụ";
             btnThemDichVu.UseVisualStyleBackColor = false;
@@ -284,165 +263,11 @@
             // 
             dgvDichVu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDichVu.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column8 });
-            dgvDichVu.Location = new Point(18, 62);
-            dgvDichVu.Margin = new Padding(5);
+            dgvDichVu.Location = new Point(11, 39);
             dgvDichVu.Name = "dgvDichVu";
             dgvDichVu.RowHeadersWidth = 51;
-            dgvDichVu.Size = new Size(863, 352);
+            dgvDichVu.Size = new Size(531, 220);
             dgvDichVu.TabIndex = 0;
-            // 
-            // groupKhachHang
-            // 
-            groupKhachHang.Controls.Add(lblMaPhieuDangKy);
-            groupKhachHang.Controls.Add(txtEmail);
-            groupKhachHang.Controls.Add(label1);
-            groupKhachHang.Controls.Add(txtDiaChiDonVi);
-            groupKhachHang.Controls.Add(dtpNgaySinh);
-            groupKhachHang.Controls.Add(lblLoaiKH);
-            groupKhachHang.Controls.Add(cmbLoaiKhachHang);
-            groupKhachHang.Controls.Add(lblTenKH);
-            groupKhachHang.Controls.Add(txtTenKhachHang);
-            groupKhachHang.Controls.Add(lblNgaySinhKH);
-            groupKhachHang.Controls.Add(lblTenDV);
-            groupKhachHang.Controls.Add(txtTenDonVi);
-            groupKhachHang.Controls.Add(lblDiaChiDV);
-            groupKhachHang.Location = new Point(43, 18);
-            groupKhachHang.Margin = new Padding(5);
-            groupKhachHang.Name = "groupKhachHang";
-            groupKhachHang.Padding = new Padding(5);
-            groupKhachHang.Size = new Size(1495, 203);
-            groupKhachHang.TabIndex = 15;
-            groupKhachHang.TabStop = false;
-            groupKhachHang.Text = "Thông tin phiếu đăng ký";
-            // 
-            // lblMaPhieuDangKy
-            // 
-            lblMaPhieuDangKy.AutoSize = true;
-            lblMaPhieuDangKy.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblMaPhieuDangKy.Location = new Point(304, -3);
-            lblMaPhieuDangKy.Margin = new Padding(5, 0, 5, 0);
-            lblMaPhieuDangKy.Name = "lblMaPhieuDangKy";
-            lblMaPhieuDangKy.Size = new Size(74, 45);
-            lblMaPhieuDangKy.TabIndex = 12;
-            lblMaPhieuDangKy.Text = "001";
-            // 
-            // txtEmail
-            // 
-            txtEmail.Location = new Point(694, 134);
-            txtEmail.Margin = new Padding(5);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(290, 39);
-            txtEmail.TabIndex = 11;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(606, 136);
-            label1.Margin = new Padding(5, 0, 5, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(76, 32);
-            label1.TabIndex = 10;
-            label1.Text = "Email:";
-            // 
-            // txtDiaChiDonVi
-            // 
-            txtDiaChiDonVi.Location = new Point(1173, 134);
-            txtDiaChiDonVi.Margin = new Padding(5);
-            txtDiaChiDonVi.Name = "txtDiaChiDonVi";
-            txtDiaChiDonVi.Size = new Size(290, 39);
-            txtDiaChiDonVi.TabIndex = 9;
-            // 
-            // dtpNgaySinh
-            // 
-            dtpNgaySinh.Format = DateTimePickerFormat.Short;
-            dtpNgaySinh.Location = new Point(692, 64);
-            dtpNgaySinh.Margin = new Padding(5);
-            dtpNgaySinh.Name = "dtpNgaySinh";
-            dtpNgaySinh.Size = new Size(290, 39);
-            dtpNgaySinh.TabIndex = 5;
-            // 
-            // lblLoaiKH
-            // 
-            lblLoaiKH.Location = new Point(32, 78);
-            lblLoaiKH.Margin = new Padding(5, 0, 5, 0);
-            lblLoaiKH.Name = "lblLoaiKH";
-            lblLoaiKH.Size = new Size(210, 37);
-            lblLoaiKH.TabIndex = 0;
-            lblLoaiKH.Text = "Loại khách hàng:";
-            // 
-            // cmbLoaiKhachHang
-            // 
-            cmbLoaiKhachHang.Location = new Point(252, 70);
-            cmbLoaiKhachHang.Margin = new Padding(5);
-            cmbLoaiKhachHang.Name = "cmbLoaiKhachHang";
-            cmbLoaiKhachHang.Size = new Size(290, 40);
-            cmbLoaiKhachHang.TabIndex = 1;
-            // 
-            // lblTenKH
-            // 
-            lblTenKH.Location = new Point(32, 134);
-            lblTenKH.Margin = new Padding(5, 0, 5, 0);
-            lblTenKH.Name = "lblTenKH";
-            lblTenKH.Size = new Size(185, 37);
-            lblTenKH.TabIndex = 2;
-            lblTenKH.Text = "Tên khách hàng:";
-            // 
-            // txtTenKhachHang
-            // 
-            txtTenKhachHang.Location = new Point(252, 133);
-            txtTenKhachHang.Margin = new Padding(5);
-            txtTenKhachHang.Name = "txtTenKhachHang";
-            txtTenKhachHang.Size = new Size(290, 39);
-            txtTenKhachHang.TabIndex = 3;
-            // 
-            // lblNgaySinhKH
-            // 
-            lblNgaySinhKH.Location = new Point(572, 69);
-            lblNgaySinhKH.Margin = new Padding(5, 0, 5, 0);
-            lblNgaySinhKH.Name = "lblNgaySinhKH";
-            lblNgaySinhKH.Size = new Size(135, 37);
-            lblNgaySinhKH.TabIndex = 4;
-            lblNgaySinhKH.Text = "Ngày sinh:";
-            // 
-            // lblTenDV
-            // 
-            lblTenDV.Location = new Point(1035, 67);
-            lblTenDV.Margin = new Padding(5, 0, 5, 0);
-            lblTenDV.Name = "lblTenDV";
-            lblTenDV.Size = new Size(135, 37);
-            lblTenDV.TabIndex = 6;
-            lblTenDV.Text = "Tên đơn vị:";
-            // 
-            // txtTenDonVi
-            // 
-            txtTenDonVi.Location = new Point(1173, 64);
-            txtTenDonVi.Margin = new Padding(5);
-            txtTenDonVi.Name = "txtTenDonVi";
-            txtTenDonVi.Size = new Size(290, 39);
-            txtTenDonVi.TabIndex = 7;
-            // 
-            // lblDiaChiDV
-            // 
-            lblDiaChiDV.Location = new Point(1006, 141);
-            lblDiaChiDV.Margin = new Padding(5, 0, 5, 0);
-            lblDiaChiDV.Name = "lblDiaChiDV";
-            lblDiaChiDV.Size = new Size(180, 37);
-            lblDiaChiDV.TabIndex = 8;
-            lblDiaChiDV.Text = "Địa chỉ đơn vị:";
-            // 
-            // btnLuuLai
-            // 
-            btnLuuLai.BackColor = Color.MediumSeaGreen;
-            btnLuuLai.FlatStyle = FlatStyle.Flat;
-            btnLuuLai.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnLuuLai.ForeColor = Color.White;
-            btnLuuLai.Location = new Point(1263, 1289);
-            btnLuuLai.Margin = new Padding(5);
-            btnLuuLai.Name = "btnLuuLai";
-            btnLuuLai.Size = new Size(260, 72);
-            btnLuuLai.TabIndex = 16;
-            btnLuuLai.Text = "📝 Lưu lại";
-            btnLuuLai.UseVisualStyleBackColor = false;
             // 
             // Column1
             // 
@@ -450,7 +275,7 @@
             Column1.HeaderText = "Tên dịch vụ";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
-            Column1.Width = 182;
+            Column1.Width = 90;
             // 
             // Column2
             // 
@@ -458,7 +283,7 @@
             Column2.HeaderText = "Mã lịch thi";
             Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
-            Column2.Width = 172;
+            Column2.Width = 83;
             // 
             // Column3
             // 
@@ -466,7 +291,7 @@
             Column3.HeaderText = "Số lượng thí sinh tối đa";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
-            Column3.Width = 227;
+            Column3.Width = 140;
             // 
             // Column8
             // 
@@ -474,20 +299,119 @@
             Column8.HeaderText = "Số lượng thí sinh đã đăng ký";
             Column8.MinimumWidth = 6;
             Column8.Name = "Column8";
-            Column8.Width = 257;
+            Column8.Width = 159;
+            // 
+            // btnLuuLai
+            // 
+            btnLuuLai.BackColor = Color.MediumSeaGreen;
+            btnLuuLai.FlatStyle = FlatStyle.Flat;
+            btnLuuLai.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnLuuLai.ForeColor = Color.White;
+            btnLuuLai.Location = new Point(777, 806);
+            btnLuuLai.Name = "btnLuuLai";
+            btnLuuLai.Size = new Size(160, 45);
+            btnLuuLai.TabIndex = 16;
+            btnLuuLai.Text = "📝 Lưu lại";
+            btnLuuLai.UseVisualStyleBackColor = false;
+            // 
+            // lblDiaChiDV
+            // 
+            //lblDiaChiDV.Location = new Point(619, 88);
+            //lblDiaChiDV.Name = "lblDiaChiDV";
+           // lblDiaChiDV.Size = new Size(111, 23);
+            //lblDiaChiDV.TabIndex = 8;
+            // 
+            // txtTenKhachHang
+            // 
+            txtTenKhachHang.Location = new Point(477, 43);
+            txtTenKhachHang.Name = "txtTenKhachHang";
+            txtTenKhachHang.Size = new Size(180, 27);
+            txtTenKhachHang.TabIndex = 3;
+            //txtTenKhachHang.TextChanged += this.txtTenKhachHang_TextChanged;
+            // 
+            // lblTenKH
+            // 
+            lblTenKH.Location = new Point(357, 47);
+            lblTenKH.Name = "lblTenKH";
+            lblTenKH.Size = new Size(114, 23);
+            lblTenKH.TabIndex = 2;
+            lblTenKH.Text = "Tên khách hàng:";
+            //lblTenKH.Click += this.lblTenKH_Click;
+            // 
+            // cmbLoaiKhachHang
+            // 
+            cmbLoaiKhachHang.Location = new Point(155, 44);
+            cmbLoaiKhachHang.Name = "cmbLoaiKhachHang";
+            cmbLoaiKhachHang.Size = new Size(180, 28);
+            cmbLoaiKhachHang.TabIndex = 1;
+            // 
+            // lblLoaiKH
+            // 
+            lblLoaiKH.Location = new Point(20, 49);
+            lblLoaiKH.Name = "lblLoaiKH";
+            lblLoaiKH.Size = new Size(129, 23);
+            lblLoaiKH.TabIndex = 0;
+            lblLoaiKH.Text = "Loại khách hàng:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(672, 47);
+            label1.Name = "label1";
+            label1.Size = new Size(49, 20);
+            label1.TabIndex = 10;
+            label1.Text = "Email:";
+            //label1.Click += this.label1_Click;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(726, 45);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(180, 27);
+            txtEmail.TabIndex = 11;
+            //txtEmail.TextChanged += this.txtEmail_TextChanged;
+            // 
+            // lblMaPhieuDangKy
+            // 
+            lblMaPhieuDangKy.AutoSize = true;
+            lblMaPhieuDangKy.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblMaPhieuDangKy.Location = new Point(187, -2);
+            lblMaPhieuDangKy.Name = "lblMaPhieuDangKy";
+            lblMaPhieuDangKy.Size = new Size(48, 28);
+            lblMaPhieuDangKy.TabIndex = 12;
+            lblMaPhieuDangKy.Text = "001";
+            // 
+            // groupKhachHang
+            // 
+            groupKhachHang.Controls.Add(lblMaPhieuDangKy);
+            groupKhachHang.Controls.Add(txtEmail);
+            groupKhachHang.Controls.Add(label1);
+            groupKhachHang.Controls.Add(lblLoaiKH);
+            groupKhachHang.Controls.Add(cmbLoaiKhachHang);
+            groupKhachHang.Controls.Add(lblTenKH);
+            groupKhachHang.Controls.Add(txtTenKhachHang);
+            //groupKhachHang.Controls.Add(lblDiaChiDV);
+            groupKhachHang.Location = new Point(26, 11);
+            groupKhachHang.Name = "groupKhachHang";
+            groupKhachHang.Size = new Size(920, 127);
+            groupKhachHang.TabIndex = 15;
+            groupKhachHang.TabStop = false;
+            groupKhachHang.Text = "Thông tin phiếu đăng ký";
+            //groupKhachHang.Enter += this.groupKhachHang_Enter;
             // 
             // MH_TAOPHIEUDANGKY2
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1580, 1379);
+            ClientSize = new Size(972, 659);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(groupKhachHang);
             Controls.Add(btnLuuLai);
+            Margin = new Padding(2);
             Name = "MH_TAOPHIEUDANGKY2";
-            Text = "MH_TAOPHIEUDANGKY2";
+            Text = "gig";
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvThiSinh).EndInit();
             groupBox2.ResumeLayout(false);
@@ -516,20 +440,6 @@
         private GroupBox groupBox1;
         private Button btnThemDichVu;
         private DataGridView dgvDichVu;
-        private GroupBox groupKhachHang;
-        private Label lblMaPhieuDangKy;
-        private TextBox txtEmail;
-        private Label label1;
-        private TextBox txtDiaChiDonVi;
-        private DateTimePicker dtpNgaySinh;
-        private Label lblLoaiKH;
-        private ComboBox cmbLoaiKhachHang;
-        private Label lblTenKH;
-        private TextBox txtTenKhachHang;
-        private Label lblNgaySinhKH;
-        private Label lblTenDV;
-        private TextBox txtTenDonVi;
-        private Label lblDiaChiDV;
         private Button btnLuuLai;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -542,5 +452,14 @@
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column8;
+        //private Label lblDiaChiDV;
+        private TextBox txtTenKhachHang;
+        private Label lblTenKH;
+        private ComboBox cmbLoaiKhachHang;
+        private Label lblLoaiKH;
+        private Label label1;
+        private TextBox txtEmail;
+        private Label lblMaPhieuDangKy;
+        private GroupBox groupKhachHang;
     }
 }

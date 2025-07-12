@@ -41,46 +41,45 @@ namespace Project_PTTK
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // Kết nối SQL
             try
             {
-                using (SqlConnection conn = DBHelper.GetConnection())
+                string query = "SELECT MaNV, Vaitro FROM NhanVien WHERE Email = @email AND MatKhau = @matkhau";
+                SqlParameter[] parameters = {
+                    new SqlParameter("@email", username),
+                    new SqlParameter("@matkhau", password)
+            };
+
+                DataTable dt = DBHelper.ExecuteQuery(query, parameters);
+
+                if (dt.Rows.Count > 0)
                 {
-                    conn.Open();
-                    string query = "SELECT Vaitro FROM NhanVien WHERE email = @username AND MatKhau = @password";
+                    int maNV = Convert.ToInt32(dt.Rows[0]["MaNV"]);
+                    string role = dt.Rows[0]["Vaitro"]?.ToString() ?? string.Empty;
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+
+                    // Lưu lại MaNV nếu cần (ví dụ như Session)
+                    Session.MaNV = maNV;
+
+                    Form mainForm;
+
+                    switch (role)
                     {
-                        cmd.Parameters.AddWithValue("@username", username);
-                        cmd.Parameters.AddWithValue("@password", password);
-
-                        object result = cmd.ExecuteScalar();
-
-                        if (result != null)
-                        {
-                            string role = result.ToString();
-                            Form mainForm;
-
-                            switch (role)
-                            {
-                                case "Tiếp nhận":
-                                    mainForm = new MH_TAOPHIEUDANGKY1();
-                                    break;
-                                default:
-                                    MessageBox.Show("Vai trò không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                            }
-
-                            MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Hide();
-                            mainForm.ShowDialog();
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                        case "Tiếp nhận":
+                            mainForm = new MH_TAOPHIEUDANGKY1();
+                            break;
+                        default:
+                            MessageBox.Show("Vai trò không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                     }
+
+                    MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    mainForm.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -90,20 +89,26 @@ namespace Project_PTTK
         }
 
 
+
         private void txt_Enter(object sender, EventArgs e)
         {
-            TextBox txt = sender as TextBox;
+            if (sender is not TextBox txt)
+                return; // hoặc xử lý tùy ý
+
             if (txt.ForeColor == Color.Gray)
             {
                 txt.Text = "";
                 txt.ForeColor = Color.Black;
-                if (txt.Name == "txtPassword") txt.PasswordChar = '●';
+                if (txt.Name == "txtPassword")
+                    txt.PasswordChar = '●';
             }
         }
 
         private void txt_Leave(object sender, EventArgs e)
         {
-            TextBox txt = sender as TextBox;
+            if (sender is not TextBox txt)
+                return; // hoặc throw, hoặc log
+
             if (string.IsNullOrWhiteSpace(txt.Text))
             {
                 if (txt.Name == "txtUsername")

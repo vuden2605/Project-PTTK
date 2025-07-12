@@ -143,8 +143,8 @@ namespace Project_PTTK.DataAccess.Phieu
                     {
                         MaPhieu = row.Field<int>("MaPhieu"),
                         NgayTao = row.Field<DateOnly>("NgayTao"),
+                        
                         TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
-                        PhuongThucThanhToan = row.Field<string>("PhuongThucThanhToan") ?? string.Empty,
                         MaKH = row.Field<int>("MaKH"),
                         NhanVienLap = row.Field<int>("NhanVienLap")
                     };
@@ -156,40 +156,56 @@ namespace Project_PTTK.DataAccess.Phieu
             }
             return phieuDangKy;
         }
-        public List<PhieuDangKy> LayDanhSach()
+        public List<PhieuDangKyView> LayDanhSach()
         {
-            var list = new List<PhieuDangKy>();
+            var list = new List<PhieuDangKyView>();
+
             try
             {
-                const string query = "SELECT * FROM PhieuDangKy";
-                using DataTable dt = DBHelper.ExecuteQuery(query, null);
+                const string query = @"
+                    SELECT * 
+                    FROM PhieuDangKy pdk
+                    JOIN KhachHang kh ON kh.MaKH = pdk.MaKH
+                    LEFT JOIN KhachHangDonVi khdv ON khdv.MaKH = kh.MaKH
+                    LEFT JOIN KhachHangTuDo khtd ON khtd.MaKH = kh.MaKH
+                    ORDER BY pdk.MaPhieuDangKy DESC
+                ";
+                DataTable dt = DBHelper.ExecuteQuery(query, null);
+
                 foreach (DataRow row in dt.Rows)
                 {
-                    var phieuDangKy = new PhieuDangKy
+                    var phieuDangKyView = new PhieuDangKyView
                     {
-                        MaPhieu = row.Field<int>("MaPhieu"),
-                        NgayTao = row.Field<DateOnly>("NgayTao"),
-                        TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
-                        PhuongThucThanhToan = row.Field<string>("PhuongThucThanhToan") ?? string.Empty,
+                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy"),
+                        // Chuyển DateTime -> DateOnly
+                        NgayTao = DateOnly.FromDateTime(row.Field<DateTime>("NgayTao")),
+     
                         MaKH = row.Field<int>("MaKH"),
-                        NhanVienLap = row.Field<int>("NhanVienLap")
+                        Email = row.Field<string>("Email") ?? string.Empty,
+                        LoaiKH = row.Field<string>("LoaiKhachHang") ?? string.Empty,
+                        TenKH = row.Field<string>("HoTen") ?? row.Field<string>("TenDV")
                     };
-                    list.Add(phieuDangKy);
+
+                    list.Add(phieuDangKyView);
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi lấy danh sách phiếu đăng ký: ", ex);
+                string errorDetail =
+                    $"Lỗi khi lấy danh sách phiếu đăng ký:\nMessage: {ex.Message}\nStackTrace: {ex.StackTrace}";
+                Console.WriteLine(errorDetail);
+                throw new Exception(errorDetail, ex);
             }
+
             return list;
         }
+
         public void add(PhieuDangKy phieuDangKy)
         {
-            const string query = "INSERT INTO PhieuDangKy VALUES (@NgayTao, @TrangThaiThanhToan, @PhuongThucThanhToan, @MaKH, @NhanVienLap)";
+            const string query = "INSERT INTO PhieuDangKy VALUES (@NgayTao, @TrangThaiThanhToan, @MaKH, @NhanVienLap)";
             SqlParameter[] parameters = {
                 new SqlParameter("@NgayTao", phieuDangKy.NgayTao),
                 new SqlParameter("@TrangThaiThanhToan", phieuDangKy.TrangThaiThanhToan),
-                new SqlParameter("@PhuongThucThanhToan", phieuDangKy.PhuongThucThanhToan),
                 new SqlParameter("@MaKH", phieuDangKy.MaKH),
                 new SqlParameter("@NhanVienLap", phieuDangKy.NhanVienLap)
             };
@@ -228,8 +244,8 @@ namespace Project_PTTK.DataAccess.Phieu
             const string query = "UPDATE PhieuDangKy SET NgayTao = @NgayTao, TrangThaiThanhToan = @TrangThaiThanhToan, PhuongThucThanhToan = @PhuongThucThanhToan, MaKH = @MaKH, NhanVienLap = @NhanVienLap WHERE MaPhieu = @MaPhieu";
             SqlParameter[] parameters = {
                 new SqlParameter("@NgayTao", newP.NgayTao),
+                 
                 new SqlParameter("@TrangThaiThanhToan", newP.TrangThaiThanhToan),
-                new SqlParameter("@PhuongThucThanhToan", newP.PhuongThucThanhToan),
                 new SqlParameter("@MaKH", newP.MaKH),
                 new SqlParameter("@NhanVienLap", newP.NhanVienLap),
                 new SqlParameter("@MaPhieu", oldP.MaPhieu)
@@ -263,7 +279,7 @@ namespace Project_PTTK.DataAccess.Phieu
                         MaPhieu = row.Field<int>("MaPhieu"),
                         NgayTao = row.Field<DateOnly>("NgayTao"),
                         TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
-                        PhuongThucThanhToan = row.Field<string>("PhuongThucThanhToan") ?? string.Empty,
+                        
                         MaKH = row.Field<int>("MaKH"),
                         NhanVienLap = row.Field<int>("NhanVienLap")
                     };
@@ -290,7 +306,7 @@ namespace Project_PTTK.DataAccess.Phieu
                         MaPhieu = dr.Field<int>("MaPhieu"),
                         NgayTao = dr.Field<DateOnly>("NgayTao"),
                         TrangThaiThanhToan = dr.Field<string>("TrangThaiThanhToan") ?? string.Empty,
-                        PhuongThucThanhToan = dr.Field<string>("PhuongThucThanhToan") ?? string.Empty,
+                        
                         MaKH = dr.Field<int>("MaKH"),
                         NhanVienLap = dr.Field<int>("NhanVienLap")
                     });
@@ -302,6 +318,7 @@ namespace Project_PTTK.DataAccess.Phieu
             }
             return list;
         }
+        
     }
 
     public class PhieuGiaHanDAO

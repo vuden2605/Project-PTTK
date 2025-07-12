@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data;
+using System.IO;
+using System.Text.RegularExpressions;
 using Microsoft.Data.SqlClient;
 
 namespace Project_PTTK
@@ -7,17 +9,17 @@ namespace Project_PTTK
     public static class DBHelper
     {
         private static string connectionString = @"Server=.\SQLEXPRESS;Database=QuanLyChungChi;User Id=sa;Password=;TrustServerCertificate=True;";
+     
 
         public static SqlConnection GetConnection()
         {
-            SqlConnection conn = new SqlConnection(connectionString);
-            return conn;
+            return new SqlConnection(connectionString);
         }
 
         public static DataTable ExecuteQuery(string query, SqlParameter[]? parameters)
         {
-            using SqlConnection conn = new SqlConnection(connectionString);
-            using SqlCommand cmd = new SqlCommand(query, conn);
+            using var conn = new SqlConnection(connectionString);
+            using var cmd = new SqlCommand(query, conn);
             if (parameters != null)
                 cmd.Parameters.AddRange(parameters);
 
@@ -46,5 +48,7 @@ namespace Project_PTTK
             conn.Open();
             return cmd.ExecuteScalar() ?? DBNull.Value;
         }
+
+        
     }
 }
