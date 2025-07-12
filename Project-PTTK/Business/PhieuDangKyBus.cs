@@ -13,7 +13,7 @@ namespace Project_PTTK.Business
             _phieuDangKyDAO = phieuDangKyDAO;
             _dichVuDAO = new DichVuDAO();
         }
-        public List<PhieuDangKy> LayDanhSach() => _phieuDangKyDAO.LayDanhSach();
+        public List<PhieuDangKyView> LayDanhSach() => _phieuDangKyDAO.LayDanhSach();
         public PhieuDangKy? LayTheoMa(int maPhieuDangKy) => _phieuDangKyDAO.LayTheoMa(maPhieuDangKy);
         public void ThemPhieuDangKy(PhieuDangKy phieuDangKy) => _phieuDangKyDAO.add(phieuDangKy);
     }
