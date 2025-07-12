@@ -9,7 +9,7 @@ namespace Project_PTTK
     public partial class MH_TAOPHIEUGIAHAN : Form
     {
         private PhieuGiaHanBUS phieuGiaHanBUS = new PhieuGiaHanBUS(new PhieuGiaHanDAO(), new PhieuDangKyDAO());
-        private PhieuDangKyBUS phieuDangKyBUS = new PhieuDangKyBUS(new PhieuDangKyDAO());
+        private PhieuDangKyBUS phieuDangKyBUS = new PhieuDangKyBUS();
         private KhachHangBUS khachHangBUS = new KhachHangBUS();
         private DichVuBUS dichVuBUS = new DichVuBUS(new DichVuDAO());
         public MH_TAOPHIEUGIAHAN()

@@ -17,7 +17,7 @@ namespace Project_PTTK
     public partial class MH_TAOPHIEUDANGKY1 : Form
     {
 
-        private PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
+        private PhieuDangKyBUS pdkBus = new PhieuDangKyBUS();
 
         public MH_TAOPHIEUDANGKY1()
         {
@@ -84,8 +84,8 @@ namespace Project_PTTK
         {
             try
             {
-                PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
-                List<PhieuDangKyView> danhSach = pdkBus.LayDanhSach();
+                PhieuDangKyBUS pdkBus = new PhieuDangKyBUS();
+                List<PhieuDangKyView> danhSach = pdkBus.LayDanhSachCoTenKhachHang();
                 dgvPhieuDangKy.DataSource = danhSach;
                 dgvPhieuDangKy.Columns["MaPhieuDangKy"].HeaderText = "Mã phiếu";
                 dgvPhieuDangKy.Columns["MaKH"].HeaderText = "Mã KH";
