@@ -118,6 +118,31 @@ namespace Project_PTTK.DataAccess
                 throw new Exception("Lỗi khi cập nhật lịch thi: ", ex);
             }
         }
+        public void TangSoLuongThiSinhDangKy(int maLichThi)
+        {
+            const string query = @"
+        UPDATE LichThi
+        SET SoTSDaDangKy = SoTSDaDangKy + 1
+        WHERE MaLichThi = @MaLichThi";
+
+            SqlParameter[] parameters = {
+        new SqlParameter("@MaLichThi", maLichThi)
+    };
+
+            try
+            {
+                int rows = DBHelper.ExecuteNonQuery(query, parameters);
+                if (rows == 0)
+                {
+                    throw new Exception("Không có bản ghi nào được cập nhật.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi cập nhật số lượng thí sinh đã đăng ký: ", ex);
+            }
+        }
+
         public void Them(LichThi lichThi)
         {
             const string query = "INSERT INTO LichThi (NgayThi, GioThi, SoThiSinhDaDangKy, MaPhongThi, MaDichVu, NhanVienLap) VALUES (@NgayThi, @GioThi, @SoThiSinhDaDangKy, @MaPhongThi, @MaDichVu, @NhanVienLap)";
