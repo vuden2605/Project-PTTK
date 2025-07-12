@@ -91,7 +91,7 @@
             dgvPhieuDangKy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPhieuDangKy.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
             dgvPhieuDangKy.Location = new Point(58, 38);
-            dgvPhieuDangKy.Margin = new Padding(2, 2, 2, 2);
+            dgvPhieuDangKy.Margin = new Padding(2);
             dgvPhieuDangKy.Name = "dgvPhieuDangKy";
             dgvPhieuDangKy.RowHeadersWidth = 82;
             dgvPhieuDangKy.Size = new Size(593, 199);
@@ -294,7 +294,7 @@
             Controls.Add(groupBox1);
             Controls.Add(groupPhieu);
             Controls.Add(groupHoaDon);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "MH_THANHTOANPHIEUDANGKY";
             Text = " ";
             groupBox1.ResumeLayout(false);

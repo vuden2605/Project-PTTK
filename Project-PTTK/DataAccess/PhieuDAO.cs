@@ -156,33 +156,50 @@ namespace Project_PTTK.DataAccess.Phieu
             }
             return phieuDangKy;
         }
-        public List<PhieuDangKy> LayDanhSach()
+        public List<PhieuDangKyView> LayDanhSach()
         {
-            var list = new List<PhieuDangKy>();
+            var list = new List<PhieuDangKyView>();
+
             try
             {
-                const string query = "SELECT * FROM PhieuDangKy";
+                const string query = @"
+                    SELECT * 
+                    FROM PhieuDangKy pdk
+                    JOIN KhachHang kh ON kh.MaKH = pdk.MaKH
+                    LEFT JOIN KhachHangDonVi khdv ON khdv.MaKH = kh.MaKH
+                    LEFT JOIN KhachHangTuDo khtd ON khtd.MaKH = kh.MaKH
+                    ORDER BY pdk.MaPhieuDangKy DESC
+                ";
                 DataTable dt = DBHelper.ExecuteQuery(query, null);
+
                 foreach (DataRow row in dt.Rows)
                 {
-                    var phieuDangKy = new PhieuDangKy
+                    var phieuDangKyView = new PhieuDangKyView
                     {
-                        MaPhieu = row.Field<int>("MaPhieuDangKy"),
-                        NgayTao = row.Field<DateOnly>("NgayTao"),
-                        
-                        TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
+                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy"),
+                        // Chuyển DateTime -> DateOnly
+                        NgayTao = DateOnly.FromDateTime(row.Field<DateTime>("NgayTao")),
+     
                         MaKH = row.Field<int>("MaKH"),
-                        NhanVienLap = row.Field<int>("NvLap")
+                        Email = row.Field<string>("Email") ?? string.Empty,
+                        LoaiKH = row.Field<string>("LoaiKhachHang") ?? string.Empty,
+                        TenKH = row.Field<string>("HoTen") ?? row.Field<string>("TenDV")
                     };
-                    list.Add(phieuDangKy);
+
+                    list.Add(phieuDangKyView);
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi lấy danh sách phiếu đăng ký: ", ex);
+                string errorDetail =
+                    $"Lỗi khi lấy danh sách phiếu đăng ký:\nMessage: {ex.Message}\nStackTrace: {ex.StackTrace}";
+                Console.WriteLine(errorDetail);
+                throw new Exception(errorDetail, ex);
             }
+
             return list;
         }
+
         public void add(PhieuDangKy phieuDangKy)
         {
             const string query = "INSERT INTO PhieuDangKy VALUES (@NgayTao, @TrangThaiThanhToan, @MaKH, @NhanVienLap)";
@@ -301,6 +318,7 @@ namespace Project_PTTK.DataAccess.Phieu
             }
             return list;
         }
+        
     }
 
     public class PhieuGiaHanDAO

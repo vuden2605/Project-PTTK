@@ -82,9 +82,16 @@ namespace Project_PTTK
             try
             {
                 PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
-                List<PhieuDangKy> danhSach = pdkBus.LayDanhSach();
-               
+                List<PhieuDangKyView> danhSach = pdkBus.LayDanhSach();
+                MessageBox.Show("Số lượng phiếu: " + danhSach.Count);
+
                 dgvPhieuDangKy.DataSource = danhSach;
+                dgvPhieuDangKy.Columns["MaPhieuDangKy"].HeaderText = "Mã phiếu";
+                dgvPhieuDangKy.Columns["MaKH"].HeaderText = "Mã KH";
+                dgvPhieuDangKy.Columns["TenKH"].HeaderText = "Tên khách hàng";
+                dgvPhieuDangKy.Columns["LoaiKH"].HeaderText = "Loại khách hàng";
+                dgvPhieuDangKy.Columns["Email"].HeaderText = "Email";
+                dgvPhieuDangKy.Columns["NgayTao"].HeaderText = "Ngày tạo";
             }
             catch (Exception ex)
             {
