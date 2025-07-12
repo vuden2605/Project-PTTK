@@ -87,7 +87,7 @@ namespace Project_PTTK
                 List<PhieuDangKyView> danhSach = pdkBus.LayDanhSach();
                 MessageBox.Show("Số lượng phiếu: " + danhSach.Count);
 
-
+                    
 
                 dgvPhieuDangKy.DataSource = danhSach;
                 dgvPhieuDangKy.Columns["MaPhieuDangKy"].HeaderText = "Mã phiếu";
