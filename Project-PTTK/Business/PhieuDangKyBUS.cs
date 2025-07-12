@@ -15,6 +15,18 @@ namespace Project_PTTK.Business
         }
         public List<PhieuDangKyView> LayDanhSach() => _phieuDangKyDAO.LayDanhSach();
         public PhieuDangKy? LayTheoMa(int maPhieuDangKy) => _phieuDangKyDAO.LayTheoMa(maPhieuDangKy);
+
+
+        public void CapNhatTrangThaiPhieu(int maPhieuDangKy)
+        {
+            PhieuDangKy? phieuDangKy = LayTheoMa(maPhieuDangKy);
+            if (phieuDangKy != null)
+            {
+                phieuDangKy.TrangThaiThanhToan = "Đã thanh toán";
+                _phieuDangKyDAO.update(phieuDangKy,phieuDangKy);
+            }
+        }
+
         public void ThemPhieuDangKy(PhieuDangKy phieuDangKy) => _phieuDangKyDAO.add(phieuDangKy);
     }
 }
