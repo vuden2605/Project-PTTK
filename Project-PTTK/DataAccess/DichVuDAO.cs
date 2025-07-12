@@ -87,5 +87,52 @@ namespace Project_PTTK.DataAccess
             }
             return list;
         }
+        public List<DichVuView> getDichVuView(int maphieu)
+        {
+            var list = new List<DichVuView>();
+
+            try
+            {
+                const string query = @"
+                    SELECT * FROM ChiTietPhieu ctp
+                    JOIN LichThi lt ON ctp.MaLichThi = lt.MaLichThi
+                    JOIN DichVu dv ON dv.MaDichVu = lt.MaDichVu
+                    JOIN PhongThi pt ON pt.MaPhongThi = lt.MaPhongThi
+                    WHERE ctp.MaPhieuDangKy = @maphieu;
+                ";
+
+                SqlParameter[] parameters = {
+                    new SqlParameter("@maphieu", maphieu)
+                };
+
+                DataTable dt = DBHelper.ExecuteQuery(query, parameters);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    var dichVuView = new DichVuView
+                    {
+                        maLichThi = row.Field<int>("MaLichThi"),
+                        tenDichVu = row.Field<string>("TenDichVu") ?? string.Empty,
+                        ngayThi = DateOnly.FromDateTime(row.Field<DateTime>("NgayThi")),
+                        gioThi = TimeOnly.FromTimeSpan(row.Field<TimeSpan>("GioThi")),
+                        phongThi = row.Field<string>("TenPhong") ?? string.Empty,
+                        soLuongTsDaDangKy = row.Field<int>("SoTsDaDangKy"),
+                        soLuongTsToiDa = row.Field<int>("SoThiSinhToiDa")
+                    };
+
+                    list.Add(dichVuView);
+                }
+            }
+            catch (Exception ex)
+            {
+                string errorDetail =
+                    $"Lỗi khi lấy danh sách phiếu đăng ký:\nMessage: {ex.Message}\nStackTrace: {ex.StackTrace}";
+                Console.WriteLine(errorDetail);
+                throw new Exception(errorDetail, ex);
+            }
+
+            return list;
+        }
+
     }
 }

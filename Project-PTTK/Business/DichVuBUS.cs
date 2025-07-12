@@ -12,11 +12,12 @@ namespace Project_PTTK.Business
 {
     public class DichVuBUS
     {
-        private readonly DichVuDAO _dichVuDAO = new DichVuDAO();
+        private readonly DichVuDAO _dichVuDAO ;
         public DichVuBUS(DichVuDAO dichVuDAO)
         {
             _dichVuDAO = dichVuDAO;
         }
         public List<DichVu> LayDanhSach() => _dichVuDAO.getAll();
+        public List<DichVuView> GetDichVuViews(int maphieu) => _dichVuDAO.getDichVuView(maphieu);
     }
 }

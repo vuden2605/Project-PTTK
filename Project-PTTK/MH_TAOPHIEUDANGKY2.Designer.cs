@@ -50,12 +50,7 @@
             groupBox1 = new GroupBox();
             btnThemDichVu = new Button();
             dgvDichVu = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column8 = new DataGridViewTextBoxColumn();
             btnLuuLai = new Button();
-            //lblDiaChiDV = new Label();
             txtTenKhachHang = new TextBox();
             lblTenKH = new Label();
             cmbLoaiKhachHang = new ComboBox();
@@ -234,6 +229,7 @@
             btnThemThiSinh.TabIndex = 12;
             btnThemThiSinh.Text = "Thêm thí sinh";
             btnThemThiSinh.UseVisualStyleBackColor = false;
+            btnThemThiSinh.Click += btnThemThiSinh_Click;
             // 
             // groupBox1
             // 
@@ -258,48 +254,17 @@
             btnThemDichVu.TabIndex = 11;
             btnThemDichVu.Text = "Thêm dịch vụ";
             btnThemDichVu.UseVisualStyleBackColor = false;
+            btnThemDichVu.Click += btnThemDichVu_Click;
             // 
             // dgvDichVu
             // 
             dgvDichVu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDichVu.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column8 });
             dgvDichVu.Location = new Point(11, 39);
             dgvDichVu.Name = "dgvDichVu";
             dgvDichVu.RowHeadersWidth = 51;
             dgvDichVu.Size = new Size(531, 220);
             dgvDichVu.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Column1.HeaderText = "Tên dịch vụ";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 90;
-            // 
-            // Column2
-            // 
-            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Column2.HeaderText = "Mã lịch thi";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 83;
-            // 
-            // Column3
-            // 
-            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Column3.HeaderText = "Số lượng thí sinh tối đa";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 140;
-            // 
-            // Column8
-            // 
-            Column8.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Column8.HeaderText = "Số lượng thí sinh đã đăng ký";
-            Column8.MinimumWidth = 6;
-            Column8.Name = "Column8";
-            Column8.Width = 159;
+            dgvDichVu.CellContentClick += dgvDichVu_CellContentClick;
             // 
             // btnLuuLai
             // 
@@ -314,20 +279,12 @@
             btnLuuLai.Text = "📝 Lưu lại";
             btnLuuLai.UseVisualStyleBackColor = false;
             // 
-            // lblDiaChiDV
-            // 
-            //lblDiaChiDV.Location = new Point(619, 88);
-            //lblDiaChiDV.Name = "lblDiaChiDV";
-           // lblDiaChiDV.Size = new Size(111, 23);
-            //lblDiaChiDV.TabIndex = 8;
-            // 
             // txtTenKhachHang
             // 
             txtTenKhachHang.Location = new Point(477, 43);
             txtTenKhachHang.Name = "txtTenKhachHang";
             txtTenKhachHang.Size = new Size(180, 27);
             txtTenKhachHang.TabIndex = 3;
-            //txtTenKhachHang.TextChanged += this.txtTenKhachHang_TextChanged;
             // 
             // lblTenKH
             // 
@@ -336,7 +293,6 @@
             lblTenKH.Size = new Size(114, 23);
             lblTenKH.TabIndex = 2;
             lblTenKH.Text = "Tên khách hàng:";
-            //lblTenKH.Click += this.lblTenKH_Click;
             // 
             // cmbLoaiKhachHang
             // 
@@ -361,7 +317,6 @@
             label1.Size = new Size(49, 20);
             label1.TabIndex = 10;
             label1.Text = "Email:";
-            //label1.Click += this.label1_Click;
             // 
             // txtEmail
             // 
@@ -369,7 +324,6 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(180, 27);
             txtEmail.TabIndex = 11;
-            //txtEmail.TextChanged += this.txtEmail_TextChanged;
             // 
             // lblMaPhieuDangKy
             // 
@@ -390,14 +344,12 @@
             groupKhachHang.Controls.Add(cmbLoaiKhachHang);
             groupKhachHang.Controls.Add(lblTenKH);
             groupKhachHang.Controls.Add(txtTenKhachHang);
-            //groupKhachHang.Controls.Add(lblDiaChiDV);
             groupKhachHang.Location = new Point(26, 11);
             groupKhachHang.Name = "groupKhachHang";
             groupKhachHang.Size = new Size(920, 127);
             groupKhachHang.TabIndex = 15;
             groupKhachHang.TabStop = false;
             groupKhachHang.Text = "Thông tin phiếu đăng ký";
-            //groupKhachHang.Enter += this.groupKhachHang_Enter;
             // 
             // MH_TAOPHIEUDANGKY2
             // 
@@ -448,10 +400,6 @@
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column8;
         //private Label lblDiaChiDV;
         private TextBox txtTenKhachHang;
         private Label lblTenKH;
