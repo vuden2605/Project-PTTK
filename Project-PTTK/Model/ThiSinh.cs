@@ -15,8 +15,9 @@ namespace Project_PTTK.Model
         public string GioiTinh { get; set; } = null!;
         public string TrangThaiPhatHanhPhieuDuThi { get; set; } = null!;
         public int MaLichThi { get; set; }
+        public int MaPhieuDangKy { get; set; }
 
-        public ThiSinh(string hoTen, DateOnly ngaySinh, string cccd, string gioiTinh, string trangThaiPhatHanhPhieuDuThi, int maLichThi)
+        public ThiSinh(string hoTen, DateOnly ngaySinh, string cccd, string gioiTinh, string trangThaiPhatHanhPhieuDuThi, int maLichThi, int maPhieuDangKy)
         {
             HoTen = hoTen;
             NgaySinh = ngaySinh;
@@ -24,6 +25,7 @@ namespace Project_PTTK.Model
             GioiTinh = gioiTinh;
             TrangThaiPhatHanhPhieuDuThi = trangThaiPhatHanhPhieuDuThi;
             MaLichThi = maLichThi;
+            MaPhieuDangKy = maPhieuDangKy;
         }
         public ThiSinh () { }
     }

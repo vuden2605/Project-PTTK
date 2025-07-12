@@ -57,5 +57,16 @@ namespace Project_PTTK.Business
                 MessageBox.Show("Lỗi.Phiếu đã có dịch vụ này.");
             }
         }
+        public List<ChiTietPhieuDangKy> LayChiTietPhieuDangKyByMaPhieu(int maPhieuDangKy)
+        {
+            try
+            {
+                return _chiTietPhieuDangKyDAO.getByMaPhieu(maPhieuDangKy);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy chi tiết phiếu đăng ký: ", ex);
+            }
+        }
     }
 }

@@ -101,14 +101,15 @@ namespace Project_PTTK.DataAccess
         }
         public void add(ThiSinh TS)
         {
-            const string query = "INSERT INTO ThiSinh VALUES (@TenThiSinh, @NgaySinh, @CCCD, @GioiTinh, @TrangThaiPhatHanhPhieuDuThi, @MaLichThi)";
+            const string query = "INSERT INTO ThiSinh VALUES (@TenThiSinh, @NgaySinh, @CCCD, @GioiTinh, @TrangThaiPhatHanhPhieuDuThi, @MaLichThi, @MaPhieuDangKy)";
             SqlParameter[] parameters = {
                 new SqlParameter("@TenThiSinh", TS.HoTen),
                 new SqlParameter("@NgaySinh", TS.NgaySinh),
                 new SqlParameter("@CCCD", TS.CCCD),
                 new SqlParameter("@GioiTinh", TS.GioiTinh),
                 new SqlParameter("@TrangThaiPhatHanhPhieuDuThi", TS.TrangThaiPhatHanhPhieuDuThi),
-                new SqlParameter("@MaLichThi", TS.MaLichThi)
+                new SqlParameter("@MaLichThi", TS.MaLichThi),
+                new SqlParameter("@MaPhieuDangKy", TS.MaPhieuDangKy)
             };
             try
             {
