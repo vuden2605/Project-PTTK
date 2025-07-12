@@ -73,6 +73,7 @@ namespace Project_PTTK
             PhieuDangKy phieuDangKy = new PhieuDangKy(maKH);
             pdkBus.ThemPhieuDangKy(phieuDangKy);
             MessageBox.Show("Đã tạo phiếu đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LoadPhieuDangKy();
         }
 
         private void dgvPhieuDangKy_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -85,10 +86,6 @@ namespace Project_PTTK
             {
                 PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
                 List<PhieuDangKyView> danhSach = pdkBus.LayDanhSach();
-                MessageBox.Show("Số lượng phiếu: " + danhSach.Count);
-
-                    
-
                 dgvPhieuDangKy.DataSource = danhSach;
                 dgvPhieuDangKy.Columns["MaPhieuDangKy"].HeaderText = "Mã phiếu";
                 dgvPhieuDangKy.Columns["MaKH"].HeaderText = "Mã KH";
