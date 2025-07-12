@@ -15,28 +15,28 @@ namespace Project_PTTK.Business
         {
             this.hoaDonDAO = _hoaDonDAO;
         }
-        public void ThemHoaDon(HoaDonCreateModel hoaDonCreateModel)
+        public void ThemHoaDon(HoaDon hoadon)
         {
-            HoaDon hoaDon = hoaDonCreateModel.toEntity();
-            hoaDonDAO.ThemHoaDon(hoaDon);
+            
+            hoaDonDAO.ThemHoaDon(hoadon);
         }
 
 
     }
-    public class HoaDonCreateModel
-    {
-        public int MaPhieuGiaHan { get; set; }
-        public float TongTien { get; set; }
-        public int ChietKhau { get; set; }
-        public String PhuongThucThanhToan { get; set; } = null!;
-        public HoaDon toEntity()
-        {
-            HoaDon hoaDon = new HoaDon();
-            hoaDon.MaPhieuGiaHan = this.MaPhieuGiaHan;
-            hoaDon.TongTien = (int)this.TongTien;
-            hoaDon.ChietKhau = this.ChietKhau;
-            hoaDon.NgayTao = DateOnly.FromDateTime(DateTime.Now);
-            return hoaDon;
-        }
-    }
+    //public class HoaDonCreateModel
+    //{
+    //    public int MaPhieuGiaHan { get; set; }
+    //    public float TongTien { get; set; }
+    //    public int ChietKhau { get; set; }
+    //    public String PhuongThucThanhToan { get; set; } = null!;
+    //    public HoaDon toEntity()
+    //    {
+    //        HoaDon hoaDon = new HoaDon();
+    //        hoaDon.MaPhieuGiaHan = this.MaPhieuGiaHan;
+    //        hoaDon.TongTien = (int)this.TongTien;
+    //        hoaDon.ChietKhau = this.ChietKhau;
+    //        hoaDon.NgayTao = DateOnly.FromDateTime(DateTime.Now);
+    //        return hoaDon;
+    //    }
+    //}
 }

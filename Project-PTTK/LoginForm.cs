@@ -65,10 +65,10 @@ namespace Project_PTTK
                     switch (role)
                     {
                         case "Tiếp nhận":
-                            mainForm = new MH_TAOPHIEUDANGKY1();
+                            mainForm = new TIEPNHAN_FORM();
                             break;
                         case "Kế toán":
-                            mainForm = new MH_THANHTOANPHIEUDANGKY();
+                            mainForm = new KETOAN_FORM();
                             break;
                         default:
                             MessageBox.Show("Vai trò không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

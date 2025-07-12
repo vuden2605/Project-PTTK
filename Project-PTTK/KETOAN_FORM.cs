@@ -21,5 +21,17 @@ namespace Project_PTTK
         {
 
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            var form = new MH_THANHTOANPHIEUDANGKY();
+            form.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var form = new MH_THANHTOANPHIEUGIAHAN();
+            form.ShowDialog();
+        }
     }
 }

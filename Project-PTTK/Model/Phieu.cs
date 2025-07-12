@@ -58,6 +58,7 @@ namespace Project_PTTK.Model
         public int MaHoaDon { get; set; }
         public decimal TongTien { get; set; }
         public decimal ChietKhau { get; set; }
+        public string ? PhuongThucThanhToan { get; set; } = null!;
         public DateOnly NgayTao { get; set; }
         public string Loai { get; set; } = null!;
         public int NhanVienLap { get; set; }

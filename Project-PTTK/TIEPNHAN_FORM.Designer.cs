@@ -44,6 +44,7 @@
             button1.TabIndex = 8;
             button1.Text = "PHIẾU GIA HẠN";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // btnLogin
             // 
@@ -56,6 +57,7 @@
             btnLogin.TabIndex = 7;
             btnLogin.Text = "PHIẾU ĐĂNG KÝ";
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // label1
             // 

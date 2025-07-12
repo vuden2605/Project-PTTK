@@ -55,7 +55,7 @@
             btnLogin.TabIndex = 4;
             btnLogin.Text = "PHIẾU ĐĂNG KÝ";
             btnLogin.UseVisualStyleBackColor = false;
-            btnLogin.Click += this.button1_Click;
+            btnLogin.Click += btnLogin_Click;
             // 
             // button1
             // 
@@ -68,7 +68,7 @@
             button1.TabIndex = 5;
             button1.Text = "PHIẾU GIA HẠN";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += this.button1_Click;
+            button1.Click += button1_Click;
             // 
             // KETOAN_FORM
             // 
