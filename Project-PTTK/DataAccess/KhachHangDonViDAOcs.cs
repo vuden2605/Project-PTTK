@@ -11,6 +11,30 @@ namespace Project_PTTK.DataAccess
 {
     public class KhachHangDonViDAO 
     {
+        public KhachHangDonVi? get(int MaKH)
+        {
+            try
+            {
+                string query = "SELECT * FROM KhachHangDonVi WHERE MaKH = @MaKH";
+                SqlParameter[] parameters = { new SqlParameter("@MaKH", MaKH) };
+                DataTable dataTable = DBHelper.ExecuteQuery(query, parameters);
+                if (dataTable.Rows.Count > 0)
+                {
+                    DataRow row = dataTable.Rows[0];
+                    return new KhachHangDonVi
+                    {
+                        MaKH = row.Field<int>("MaKH"),
+                        TenDonVi = row.Field<string>("TenDV") ?? string.Empty,
+                        DiaChi = row.Field<string>("DiaChi") ?? string.Empty,
+                    };
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy khách hàng: ", ex);
+            }
+        }
         public List<KhachHangDonVi> getAll()
         {
             try

@@ -156,47 +156,30 @@ namespace Project_PTTK.DataAccess.Phieu
             }
             return phieuDangKy;
         }
-        public List<PhieuDangKyView> LayDanhSach()
+        public List<PhieuDangKy> LayDanhSach()
         {
-            var list = new List<PhieuDangKyView>();
-
+            var list = new List<PhieuDangKy>();
+            const string query = "SELECT * FROM PhieuDangKy";
             try
             {
-                const string query = @"
-                    SELECT * 
-                    FROM PhieuDangKy pdk
-                    JOIN KhachHang kh ON kh.MaKH = pdk.MaKH
-                    LEFT JOIN KhachHangDonVi khdv ON khdv.MaKH = kh.MaKH
-                    LEFT JOIN KhachHangTuDo khtd ON khtd.MaKH = kh.MaKH
-                    ORDER BY pdk.MaPhieuDangKy DESC
-                ";
-                DataTable dt = DBHelper.ExecuteQuery(query, null);
-
+                using DataTable dt = DBHelper.ExecuteQuery(query, null);
                 foreach (DataRow row in dt.Rows)
                 {
-                    var phieuDangKyView = new PhieuDangKyView
+                    var phieuDangKy = new PhieuDangKy
                     {
-                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy"),
-                        // Chuyển DateTime -> DateOnly
-                        NgayTao = DateOnly.FromDateTime(row.Field<DateTime>("NgayTao")),
-     
+                        MaPhieu = row.Field<int>("MaPhieu"),
+                        NgayTao = row.Field<DateOnly>("NgayTao"),
+                        TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
                         MaKH = row.Field<int>("MaKH"),
-                        Email = row.Field<string>("Email") ?? string.Empty,
-                        LoaiKH = row.Field<string>("LoaiKhachHang") ?? string.Empty,
-                        TenKH = row.Field<string>("HoTen") ?? row.Field<string>("TenDV")
+                        NhanVienLap = row.Field<int>("NhanVienLap")
                     };
-
-                    list.Add(phieuDangKyView);
+                    list.Add(phieuDangKy);
                 }
             }
             catch (Exception ex)
             {
-                string errorDetail =
-                    $"Lỗi khi lấy danh sách phiếu đăng ký:\nMessage: {ex.Message}\nStackTrace: {ex.StackTrace}";
-                Console.WriteLine(errorDetail);
-                throw new Exception(errorDetail, ex);
+                throw new Exception("Lỗi khi lấy danh sách phiếu đăng ký: ", ex);
             }
-
             return list;
         }
 
