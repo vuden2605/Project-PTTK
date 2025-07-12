@@ -17,6 +17,7 @@ namespace Project_PTTK
     {
         private PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
         private DichVuBUS dvBus = new DichVuBUS(new DataAccess.DichVuDAO());
+        private HoaDonBus hdBus = new HoaDonBus(new DataAccess.HoaDonDAO());
         public MH_THANHTOANPHIEUDANGKY()
         {
             InitializeComponent();
@@ -90,6 +91,7 @@ namespace Project_PTTK
                     }
                  
                     nudSoTien.Value = tongThanhTien;
+                    nudTongTien.Value = tongThanhTien * (100 - nudChietKhau.Value) / 100;
 
                 }
 
@@ -102,7 +104,36 @@ namespace Project_PTTK
 
         private void btnXacNhan_Click_1(object sender, EventArgs e)
         {
+            if (dgvPhieuDangKy.CurrentRow != null && dgvPhieuDangKy.CurrentRow.Cells["MaPhieu"].Value != null)
+            {
+                string maPhieuDangKy = dgvPhieuDangKy.CurrentRow.Cells["MaPhieu"].Value.ToString();
+                if (maPhieuDangKy != null)
+                {
+                    pdkBus.CapNhatTrangThaiPhieu(int.Parse(maPhieuDangKy));
+                }
+                else
+                {
+                    MessageBox.Show("Phiếu đăng kí không tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
+
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một phiếu đăng ký để thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            decimal tongTien = nudSoTien.Value * (100 - nudChietKhau.Value) / 100;
+            HoaDon hoaDon = new HoaDon
+            {
+                TongTien = tongTien,
+                ChietKhau = nudChietKhau.Value,
+                PhuongThucThanhToan = cbmPhuongThuc.SelectedItem?.ToString() ?? "Chưa xác định",
+                Loai = "Phiếu đăng ký",
+                NhanVienLap = Session.MaNV,
+                MaPhieuDangKy = int.Parse(lblMaPhieu.Text)
+            };
+            hdBus.ThemHoaDon(hoaDon);
         }
     }
 }

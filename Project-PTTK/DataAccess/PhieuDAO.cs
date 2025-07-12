@@ -381,8 +381,8 @@ namespace Project_PTTK.DataAccess.Phieu
             SELECT ts.MaTS, ts.HoTen, ts.NgaySinh, ts.CCCD, ts.GioiTinh, 
                    ts.TrangThaiPhatHanhPhieuDuThi, ts.MaLichThi 
             FROM ThiSinh ts 
-            JOIN ChiTietPhieu ctpdk ON ts.MaLichThi = ctpdk.MaLichThi
-            WHERE ctpdk.MaPhieuDangKy = @MaPhieuDangKy";
+            JOIN PhieuDangKy pdk ON ts.MaPhieuDangKy = pdk.MaPhieuDangKy
+            WHERE pdk.MaPhieuDangKy = @MaPhieuDangKy";
 
                 SqlParameter[] parameters = { new SqlParameter("@MaPhieuDangKy", maphieu) };
                 using DataTable dt = DBHelper.ExecuteQuery(query, parameters);
@@ -412,7 +412,8 @@ namespace Project_PTTK.DataAccess.Phieu
         }
         public void CapNhatTrangThaiPhieu (int maphieu)
         {
-            const string query = "UPDATE PhieuDangKy SET TrangThaiThanhToan = 'Đã thanh toán' WHERE MaPhieu = @MaPhieu";
+            const string query = "UPDATE PhieuDangKy SET TrangThaiThanhToan = N'Đã thanh toán' WHERE MaPhieuDangKy = @MaPhieu";
+
             SqlParameter[] parameters = { new SqlParameter("@MaPhieu", maphieu) };
             try
             {

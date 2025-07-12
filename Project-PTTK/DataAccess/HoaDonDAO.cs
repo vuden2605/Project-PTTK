@@ -13,28 +13,34 @@ namespace Project_PTTK.DataAccess
     {
         public void ThemHoaDon(HoaDon hoaDon)
         {
-            String query = "INSERT INTO HOA_DON(TongTien, ChietKhau, NgayTao, Loai, NvLap, MaPhieuDangKi, MaPhieuGiaHan) " +
-                           "VALUES (@TongTien, @ChietKhau, @NgayTao, @Loai, @NvLap, @MaPhieuDangKi, @MaPhieuGiaHan);" +
-                           "SELECT SCOPE_IDENTITY();";
+            string query = "INSERT INTO HOADON(TongTien, ChietKhau, PhuongThucThanhToan, Loai, NvLap, MaPhieuDangKy, MaPhieuGiaHan) " +
+                           "VALUES (@TongTien, @ChietKhau, @PhuongThucThanhToan, @Loai, @NvLap, @MaPhieuDangKy, @MaPhieuGiaHan);";
+                          
+
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@TongTien", hoaDon.TongTien),
                 new SqlParameter("@ChietKhau", hoaDon.ChietKhau),
-                new SqlParameter("@NgayTao", hoaDon.NgayTao),
+                new SqlParameter("@PhuongThucThanhToan", hoaDon.PhuongThucThanhToan),
                 new SqlParameter("@Loai", hoaDon.Loai),
                 new SqlParameter("@NvLap", hoaDon.NhanVienLap),
-                new SqlParameter("@MaPhieuDangKi", hoaDon.MaPhieuDangKy),
-                new SqlParameter("@MaPhieuGiaHan", hoaDon.MaPhieuGiaHan)
+                new SqlParameter("@MaPhieuDangKy", (object?)hoaDon.MaPhieuDangKy ?? DBNull.Value),
+                new SqlParameter("@MaPhieuGiaHan", (object?)hoaDon.MaPhieuGiaHan ?? DBNull.Value)
+        
             };
+
             try
             {
                 DataTable dt = DBHelper.ExecuteQuery(query, parameters);
-                int maHoaDon = dt.MinimumCapacity > 0 ? Convert.ToInt32(dt.Rows[0][0]) : 0;
+                MessageBox.Show("Thêm hóa đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
             }
             catch (Exception ex)
             {
                 throw new Exception("Lỗi khi thực hiện thêm hóa đơn", ex);
             }
         }
+
     }
 }
