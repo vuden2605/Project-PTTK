@@ -143,12 +143,12 @@ namespace Project_PTTK.DataAccess
             try
             {
                 const string query = @"
-             SELECT * FROM ChiTietPhieu ctp
-                    JOIN LichThi lt ON ctp.MaLichThi = lt.MaLichThi
-                    JOIN DichVu dv ON dv.MaDichVu = lt.MaDichVu
-                    JOIN PhongThi pt ON pt.MaPhongThi = lt.MaPhongThi
-            WHERE lt.SoTsDaDangKy < pt.SoThiSinhToiDa;
-        ";
+             SELECT  * FROM 
+                LichThi lt
+                JOIN DichVu dv ON dv.MaDichVu = lt.MaDichVu
+                JOIN PhongThi pt ON pt.MaPhongThi = lt.MaPhongThi
+                WHERE lt.SoTsDaDangKy < pt.SoThiSinhToiDa;
+            ";
 
                 DataTable dt = DBHelper.ExecuteQuery(query, null); // không cần parameters
 
@@ -164,8 +164,7 @@ namespace Project_PTTK.DataAccess
                         phongThi = row.Field<string>("TenPhong") ?? string.Empty,
                         soLuongTsDaDangKy = row.Field<int>("SoTsDaDangKy"),
                         soLuongTsToiDa = row.Field<int>("SoThiSinhToiDa"),
-                        soLuong = Convert.ToDecimal(row["SoLuong"]),
-                        gia = Convert.ToDecimal(row["Gia"])
+                       
                     };
 
                     list.Add(dichVuView);

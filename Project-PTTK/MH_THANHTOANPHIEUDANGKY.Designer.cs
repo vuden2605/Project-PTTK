@@ -131,6 +131,7 @@
             dgvChiTietPhieu.RowHeadersWidth = 51;
             dgvChiTietPhieu.Size = new Size(593, 188);
             dgvChiTietPhieu.TabIndex = 0;
+            dgvChiTietPhieu.CellContentClick += dgvChiTietPhieu_CellContentClick;
             // 
             // groupHoaDon
             // 

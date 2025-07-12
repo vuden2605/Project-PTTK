@@ -143,5 +143,10 @@ namespace Project_PTTK
             decimal tongTien = nudSoTien.Value * (100 - nudChietKhau.Value) / 100;
             nudTongTien.Value = tongTien;
         }
+
+        private void dgvChiTietPhieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
