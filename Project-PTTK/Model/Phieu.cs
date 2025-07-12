@@ -36,6 +36,13 @@ namespace Project_PTTK.Model
         public int MaPhieu { get; set; }
         public int MaLichThi { get; set; }
         public int SoLuong { get; set; }
+        public ChiTietPhieuDangKy(int maPhieu, int maLichThi, int soLuong)
+        {
+            MaPhieu = maPhieu;
+            MaLichThi = maLichThi;
+            SoLuong = soLuong;
+        }
+        public ChiTietPhieuDangKy() { }
 
     }
     public class PhieuGiaHan

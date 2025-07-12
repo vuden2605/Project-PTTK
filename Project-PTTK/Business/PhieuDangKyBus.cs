@@ -45,5 +45,17 @@ namespace Project_PTTK.Business
                 throw new Exception("Lỗi khi cập nhật trạng thái phiếu đăng ký: ", ex);
             }
         }
+        public void ThemChiTietPhieu(ChiTietPhieuDangKy chiTietPhieuDangKy)
+        {
+            try
+            {
+                _chiTietPhieuDangKyDAO.add(chiTietPhieuDangKy);
+                MessageBox.Show("Thêm dịch vụ cho phiếu thành công.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi.Phiếu đã có dịch vụ này.");
+            }
+        }
     }
 }

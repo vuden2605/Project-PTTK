@@ -64,7 +64,7 @@ namespace Project_PTTK.DataAccess.Phieu
         }
         public void add(ChiTietPhieuDangKy chiTietPhieuDangKy)
         {
-            const string query = "INSERT INTO ChiTietPhieuDangKy VALUES (@MaPhieuDangKy, @MaLichThi, @SoLuong)";
+            const string query = "INSERT INTO ChiTietPhieu VALUES (@MaPhieuDangKy, @MaLichThi, @SoLuong)";
             SqlParameter[] parameters = {
                 new SqlParameter("@MaPhieuDangKy", chiTietPhieuDangKy.MaPhieu),
                 new SqlParameter("@MaLichThi", chiTietPhieuDangKy.MaLichThi),

@@ -69,6 +69,7 @@
             btnTaoPhieuDangKy.TabIndex = 13;
             btnTaoPhieuDangKy.Text = "Thêm dịch vụ";
             btnTaoPhieuDangKy.UseVisualStyleBackColor = false;
+            btnTaoPhieuDangKy.Click += btnTaoPhieuDangKy_Click;
             // 
             // dgvLichThiDV
             // 
