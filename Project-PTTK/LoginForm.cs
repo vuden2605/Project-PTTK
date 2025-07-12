@@ -1,26 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using Microsoft.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.VisualBasic.ApplicationServices;
+﻿using Project_PTTK.Business;
+using Project_PTTK.Model;
 
 namespace Project_PTTK
 {
     public partial class LoginForm : Form
     {
-        private readonly Dictionary<string, (string Password, string Role)> users = new()
-        {
-            { "tiepnhan", ("123456", "Tiếp nhận") },
-            { "ketoan", ("abc123", "Kế toán") },
-            { "nhaplieu", ("pwd321", "Nhập liệu") },
-            { "admin", ("admin", "Admin") }
-        };
+        private readonly NhanVienBUS nhanVienBus = new NhanVienBUS();
 
         public LoginForm()
         {
@@ -38,30 +23,27 @@ namespace Project_PTTK
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text.Trim();
+            string email = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
-
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin đăng nhập.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
-                string query = "SELECT MaNV, Vaitro FROM NhanVien WHERE Email = @email AND MatKhau = @matkhau";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@email", username),
-                    new SqlParameter("@matkhau", password)
-            };
-
-                DataTable dt = DBHelper.ExecuteQuery(query, parameters);
-
-                if (dt.Rows.Count > 0)
+                int maNV = nhanVienBus.Authenticate(email, password);
+                if (maNV != 0)
                 {
-                    int maNV = Convert.ToInt32(dt.Rows[0]["MaNV"]);
-                    string role = dt.Rows[0]["Vaitro"].ToString();
-
-                    // Lưu lại MaNV nếu cần (ví dụ như Session)
-                    Session.MaNV = maNV;
-
+                    NhanVien? nhanVien = nhanVienBus.GetNhanVienInfo(maNV);
+                    if (nhanVien == null)
+                    {
+                        MessageBox.Show("Không tìm thấy nhân viên với email này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    Session.MaNV = maNV; // Lưu mã nhân viên vào Session
                     Form mainForm;
-
-                    switch (role)
+                    switch (nhanVien.VaiTro)
                     {
                         case "Tiếp nhận":
                             mainForm = new MH_TAOPHIEUDANGKY1();
@@ -70,7 +52,6 @@ namespace Project_PTTK
                             MessageBox.Show("Vai trò không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                     }
-
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
                     mainForm.ShowDialog();
@@ -83,7 +64,7 @@ namespace Project_PTTK
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Kết nối thất bại!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi xác thực: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
