@@ -63,6 +63,7 @@
             btnXemChiTietPhieu.TabIndex = 22;
             btnXemChiTietPhieu.Text = "Xem chi tiết phiếu";
             btnXemChiTietPhieu.UseVisualStyleBackColor = false;
+            btnXemChiTietPhieu.Click += btnXemChiTietPhieu_Click;
             // 
             // panel1
             // 

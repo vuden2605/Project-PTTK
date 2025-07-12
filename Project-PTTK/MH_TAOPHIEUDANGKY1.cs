@@ -102,7 +102,7 @@ namespace Project_PTTK
 
         private void cmbLoaiKhachHang_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string loai = cmbLoaiKhachHang.SelectedItem?.ToString()??string.Empty;
+            string loai = cmbLoaiKhachHang.SelectedItem?.ToString() ?? string.Empty;
 
             if (loai == "Tự do")
             {
@@ -125,6 +125,34 @@ namespace Project_PTTK
                 dtpNgaySinh.Enabled = false;
                 txtTenKhachHang.Text = string.Empty;
             }
+        }
+
+        private void btnXemChiTietPhieu_Click(object sender, EventArgs e)
+        {
+            if (dgvPhieuDangKy.CurrentRow != null)
+            {
+                // Lấy giá trị từ dòng đang chọn
+                int maPhieu = Convert.ToInt32(dgvPhieuDangKy.CurrentRow.Cells["MaPhieuDangKy"].Value);
+                string loai = dgvPhieuDangKy.CurrentRow.Cells["LoaiKH"].Value.ToString();
+                string ten = dgvPhieuDangKy.CurrentRow.Cells["TenKH"].Value.ToString();
+                string email = dgvPhieuDangKy.CurrentRow.Cells["Email"].Value.ToString();
+
+        
+                DateOnly ngaySinh = DateOnly.FromDateTime(dtpNgaySinh.Value); 
+
+                // Nếu là đơn vị thì có thông tin thêm
+                string tenDV = txtTenDonVi.Text ?? "";
+                string diachi = txtDiaChiDonVi.Text ?? "";
+
+                // Tạo form và truyền dữ liệu vào constructor
+                MH_TAOPHIEUDANGKY2 form = new MH_TAOPHIEUDANGKY2(maPhieu, loai, ten, ngaySinh, email, tenDV, diachi);
+                form.ShowDialog(); // hoặc .Show() nếu không cần chờ
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để xem chi tiết!");
+            }
+
         }
     }
 }
