@@ -17,7 +17,9 @@ namespace Project_PTTK
     {
         private PhieuDangKyBUS phieuDangKyBUS;
         private ChiTietPhieuDangKyDAO chiTietPhieuDangKyDAO;
-
+        public MH_THANHTOANPHIEUDANGKY() {
+            InitializeComponent();
+        }
         public MH_THANHTOANPHIEUDANGKY(PhieuDangKyBUS phieuDangKyBUS)
         {
             this.phieuDangKyBUS = phieuDangKyBUS;
