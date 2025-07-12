@@ -85,7 +85,7 @@ namespace Project_PTTK
             try
             {
                 PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
-                List<PhieuDangKyView> danhSach = pdkBus.LayDanhSach();
+                List<PhieuDangKyView> danhSach = pdkBus.LayDanhSachPDKV();
                 dgvPhieuDangKy.DataSource = danhSach;
                 dgvPhieuDangKy.Columns["MaPhieuDangKy"]!.HeaderText = "Mã phiếu";
                 dgvPhieuDangKy.Columns["MaKH"]!.HeaderText = "Mã KH";

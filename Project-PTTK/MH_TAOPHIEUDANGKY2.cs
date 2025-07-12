@@ -19,7 +19,7 @@ namespace Project_PTTK
         public MH_TAOPHIEUDANGKY2()
         {
             InitializeComponent();
-            
+
         }
         public MH_TAOPHIEUDANGKY2(int maphieu, string loai, string ten, DateOnly ngaysinh, string email, string tendv, string diachi)
         {
@@ -31,8 +31,8 @@ namespace Project_PTTK
             txtTenKhachHang.ReadOnly = true;
             txtEmail.ReadOnly = true;
             cmbLoaiKhachHang.Enabled = false;
-            
             LoadDichVuview(maphieu);
+            LoadDsThiSinhByPhieuDangKy(maphieu);
 
         }
 
@@ -43,7 +43,26 @@ namespace Project_PTTK
 
         private void btnThemThiSinh_Click(object sender, EventArgs e)
         {
+            int maLichThi = dgvDichVu.CurrentRow?.Cells["maLichThi"]?.Value is int m ? m : 0;
+            string hoten = txtHoTenThiSinh.Text.Trim();
+            string cmnd = txtCCCD.Text.Trim();
+            DateOnly ngaysinh = DateOnly.FromDateTime(dtpNgaySinhTS.Value); // sửa đoạn này
+            string gioitinh = cmbGioiTinh.Text.Trim();
 
+            ThiSinhBus tsBus = new ThiSinhBus(new ThiSinhDAO());
+
+            ThiSinh thiSinh = new ThiSinh(hoten, ngaysinh, cmnd, gioitinh, "CHƯA PHÁT HÀNH", maLichThi);
+
+            tsBus.add(thiSinh);
+            MessageBox.Show("Thêm thí sinh thành công!");
+            // Cập nhật lại danh sách thí sinh
+            LichThiBus ltBus = new LichThiBus(new LichThiDAO());
+            ltBus.tangSoLuongTs(maLichThi);
+            int maphieu = Convert.ToInt32(lblMaPhieuDangKy.Text);
+            // Cập nhật chi tiết phiếu đăng ký
+            PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
+            pdkBus.TangSoLuongThiSinhDangKy(maphieu, maLichThi);
+            LoadDsThiSinhByPhieuDangKy(maphieu);
         }
 
         private void btnThemDichVu_Click(object sender, EventArgs e)
@@ -79,7 +98,24 @@ namespace Project_PTTK
                 MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
             }
         }
+        public void LoadDsThiSinhByPhieuDangKy(int maphieu)
+        {
+            try
+            {
+                PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
+                List<ThiSinh> danhSach = pdkBus.getThiSinhByPhieuDangKy(maphieu);
+                dgvThiSinh.DataSource = danhSach;
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
+            }
+        }
 
+        private void dgvThiSinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

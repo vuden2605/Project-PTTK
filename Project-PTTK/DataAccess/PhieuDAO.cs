@@ -124,6 +124,34 @@ namespace Project_PTTK.DataAccess.Phieu
                 throw new Exception("Lỗi khi cập nhật chi tiết phiếu đăng ký: ", ex);
             }
         }
+        public void TangSoLuongThiSinh(int maPhieuDangKy, int maLichThi)
+        {
+            const string query = @"
+        UPDATE ChiTietPhieu
+        SET SoLuong = SoLuong + 1
+        WHERE MaPhieuDangKy = @MaPhieuDangKy AND MaLichThi = @MaLichThi";
+
+            SqlParameter[] parameters =
+            {
+        new SqlParameter("@MaPhieuDangKy", maPhieuDangKy),
+        new SqlParameter("@MaLichThi", maLichThi)
+    };
+
+            try
+            {
+                int rows = DBHelper.ExecuteNonQuery(query, parameters);
+                if (rows == 0)
+                {
+                    throw new Exception("Không tìm thấy dòng phù hợp để cập nhật.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi tăng số lượng thí sinh trong chi tiết phiếu: ", ex);
+            }
+        }
+
+
     }
 
     public class PhieuDangKyDAO
@@ -156,7 +184,7 @@ namespace Project_PTTK.DataAccess.Phieu
             }
             return phieuDangKy;
         }
-        public List<PhieuDangKyView> LayDanhSach()
+        public List<PhieuDangKyView> LayDanhSachPDKV()
         {
             var list = new List<PhieuDangKyView>();
 
@@ -318,7 +346,46 @@ namespace Project_PTTK.DataAccess.Phieu
             }
             return list;
         }
-        
+        public List<ThiSinh> getThiSinhByPhieuDangKy(int maphieu)
+        {
+            var list = new List<ThiSinh>();
+            try
+            {
+                const string query = @"
+            SELECT ts.MaTS, ts.HoTen, ts.NgaySinh, ts.CCCD, ts.GioiTinh, 
+                   ts.TrangThaiPhatHanhPhieuDuThi, ts.MaLichThi 
+            FROM ThiSinh ts 
+            JOIN ChiTietPhieu ctpdk ON ts.MaLichThi = ctpdk.MaLichThi
+            WHERE ctpdk.MaPhieuDangKy = @MaPhieuDangKy";
+
+                SqlParameter[] parameters = { new SqlParameter("@MaPhieuDangKy", maphieu) };
+                using DataTable dt = DBHelper.ExecuteQuery(query, parameters);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    var thiSinh = new ThiSinh
+                    {
+                        MaTS = row.Field<int>("MaTS"),
+                        HoTen = row.Field<string>("HoTen") ?? string.Empty,
+                        NgaySinh = DateOnly.FromDateTime(row.Field<DateTime>("NgaySinh")), // ✅ sửa chỗ này
+                        CCCD = row.Field<string>("CCCD") ?? string.Empty,
+                        GioiTinh = row.Field<string>("GioiTinh") ?? string.Empty,
+                        TrangThaiPhatHanhPhieuDuThi = row.Field<string>("TrangThaiPhatHanhPhieuDuThi") ?? string.Empty,
+                        MaLichThi = row.Field<int>("MaLichThi")
+                    };
+
+                    list.Add(thiSinh);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy thí sinh theo phiếu đăng ký: ", ex);
+            }
+
+            return list;
+        }
+
+
     }
 
     public class PhieuGiaHanDAO

@@ -21,6 +21,10 @@ namespace Project_PTTK.Business
             ThiSinh thiSinh = thiSinhDAO.loadThongTinThiSinh(maTS);
             return ThiSinhGetModel.mapFromEntity(thiSinh);
         }
+        public void add(ThiSinh thiSinh)
+        {
+            thiSinhDAO.add(thiSinh);
+        }
 
     }
     public class ThiSinhGetModel

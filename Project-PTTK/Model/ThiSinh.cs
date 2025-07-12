@@ -14,8 +14,18 @@ namespace Project_PTTK.Model
         public string CCCD { get; set; } = null!;
         public string GioiTinh { get; set; } = null!;
         public string TrangThaiPhatHanhPhieuDuThi { get; set; } = null!;
-        public int MaPhieuDangKy { get; set; }
         public int MaLichThi { get; set; }
+
+        public ThiSinh(string hoTen, DateOnly ngaySinh, string cccd, string gioiTinh, string trangThaiPhatHanhPhieuDuThi, int maLichThi)
+        {
+            HoTen = hoTen;
+            NgaySinh = ngaySinh;
+            CCCD = cccd;
+            GioiTinh = gioiTinh;
+            TrangThaiPhatHanhPhieuDuThi = trangThaiPhatHanhPhieuDuThi;
+            MaLichThi = maLichThi;
+        }
+        public ThiSinh () { }
     }
 
     public class ChungChi

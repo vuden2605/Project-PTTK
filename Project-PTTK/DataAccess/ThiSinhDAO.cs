@@ -29,7 +29,7 @@ namespace Project_PTTK.DataAccess
                         CCCD = row.Field<string>("CCCD") ?? string.Empty,
                         GioiTinh = row.Field<string>("GioiTinh") ?? string.Empty,
                         TrangThaiPhatHanhPhieuDuThi = row.Field<string>("TrangThaiPhatHanhPhieuDuThi") ?? string.Empty,
-                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy"),
+                        
                         MaLichThi = row.Field<int>("MaLichThi")
                     };
                     list.Add(thiSinh);
@@ -60,7 +60,7 @@ namespace Project_PTTK.DataAccess
                         CCCD = row.Field<string>("CCCD") ?? string.Empty,
                         GioiTinh = row.Field<string>("GioiTinh") ?? string.Empty,
                         TrangThaiPhatHanhPhieuDuThi = row.Field<string>("TrangThaiPhatHanhPhieuDuThi") ?? string.Empty,
-                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy"),
+                        
                         MaLichThi = row.Field<int>("MaLichThi")
                     };
                 }
@@ -88,7 +88,6 @@ namespace Project_PTTK.DataAccess
                         CCCD = row.Field<string>("CCCD") ?? string.Empty,
                         GioiTinh = row.Field<string>("GioiTinh") ?? string.Empty,
                         TrangThaiPhatHanhPhieuDuThi = row.Field<string>("TrangThaiPhatHanhPhieuDuThi") ?? string.Empty,
-                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy"),
                         MaLichThi = row.Field<int>("MaLichThi")
                     };
                     list.Add(thiSinh);
@@ -102,14 +101,13 @@ namespace Project_PTTK.DataAccess
         }
         public void add(ThiSinh TS)
         {
-            const string query = "INSERT INTO ThiSinh VALUES (@TenThiSinh, @NgaySinh, @CCCD, @GioiTinh, @TrangThaiPhatHanhPhieuDuThi, @MaPhieuDangKy, @MaLichThi)";
+            const string query = "INSERT INTO ThiSinh VALUES (@TenThiSinh, @NgaySinh, @CCCD, @GioiTinh, @TrangThaiPhatHanhPhieuDuThi, @MaLichThi)";
             SqlParameter[] parameters = {
                 new SqlParameter("@TenThiSinh", TS.HoTen),
                 new SqlParameter("@NgaySinh", TS.NgaySinh),
                 new SqlParameter("@CCCD", TS.CCCD),
                 new SqlParameter("@GioiTinh", TS.GioiTinh),
                 new SqlParameter("@TrangThaiPhatHanhPhieuDuThi", TS.TrangThaiPhatHanhPhieuDuThi),
-                new SqlParameter("@MaPhieuDangKy", TS.MaPhieuDangKy),
                 new SqlParameter("@MaLichThi", TS.MaLichThi)
             };
             try
@@ -127,7 +125,7 @@ namespace Project_PTTK.DataAccess
         }
         public void update(ThiSinh oldTS, ThiSinh newTS)
         {
-            const string query = "UPDATE ThiSinh SET TenThiSinh = @TenThiSinh, NgaySinh = @NgaySinh, CCCD = @CCCD, GioiTinh = @GioiTinh, TrangThaiPhatHanhPhieuDuThi = @TrangThaiPhatHanhPhieuDuThi, MaPhieuDangKy = @MaPhieuDangKy, MaLichThi = @MaLichThi WHERE MaTS = @MaTS";
+            const string query = "UPDATE ThiSinh SET TenThiSinh = @TenThiSinh, NgaySinh = @NgaySinh, CCCD = @CCCD, GioiTinh = @GioiTinh, TrangThaiPhatHanhPhieuDuThi = @TrangThaiPhatHanhPhieuDuThi, MaLichThi = @MaLichThi WHERE MaTS = @MaTS";
             var parameters = new SqlParameter[]
             {
                 new SqlParameter("@MaTS", oldTS.MaTS),
@@ -136,7 +134,7 @@ namespace Project_PTTK.DataAccess
                 new SqlParameter("@CCCD", newTS.CCCD),
                 new SqlParameter("@GioiTinh", newTS.GioiTinh),
                 new SqlParameter("@TrangThaiPhatHanhPhieuDuThi", newTS.TrangThaiPhatHanhPhieuDuThi),
-                new SqlParameter("@MaPhieuDangKy", newTS.MaPhieuDangKy),
+                
                 new SqlParameter("@MaLichThi", newTS.MaLichThi)
                 };
             try

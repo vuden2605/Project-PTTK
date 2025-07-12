@@ -30,13 +30,6 @@
         {
             groupBox3 = new GroupBox();
             dgvThiSinh = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
             groupBox2 = new GroupBox();
             lblHoTenTS = new Label();
             txtHoTenThiSinh = new TextBox();
@@ -80,62 +73,12 @@
             // dgvThiSinh
             // 
             dgvThiSinh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvThiSinh.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, Column4, Column5, Column6, Column7 });
             dgvThiSinh.Location = new Point(20, 39);
             dgvThiSinh.Name = "dgvThiSinh";
             dgvThiSinh.RowHeadersWidth = 51;
             dgvThiSinh.Size = new Size(876, 220);
             dgvThiSinh.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewTextBoxColumn1.HeaderText = "Tên thí sinh";
-            dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "CCCD";
-            dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Ngày sinh";
-            dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.Width = 200;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Giới tính";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Tên dịch vụ";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.Width = 200;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Ngày thi";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.Width = 200;
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Giờ thi";
-            Column7.MinimumWidth = 6;
-            Column7.Name = "Column7";
-            Column7.Width = 200;
+            dgvThiSinh.CellContentClick += dgvThiSinh_CellContentClick;
             // 
             // groupBox2
             // 
@@ -212,6 +155,7 @@
             // 
             // cmbGioiTinh
             // 
+            cmbGioiTinh.Items.AddRange(new object[] { "Nam", "Nữ" });
             cmbGioiTinh.Location = new Point(155, 219);
             cmbGioiTinh.Name = "cmbGioiTinh";
             cmbGioiTinh.Size = new Size(180, 28);
@@ -393,13 +337,6 @@
         private Button btnThemDichVu;
         private DataGridView dgvDichVu;
         private Button btnLuuLai;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column7;
         //private Label lblDiaChiDV;
         private TextBox txtTenKhachHang;
         private Label lblTenKH;
