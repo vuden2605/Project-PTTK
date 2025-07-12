@@ -42,7 +42,7 @@ namespace Project_PTTK.DataAccess.Phieu
             var list = new List<ChiTietPhieuDangKy>();
             try
             {
-                const string query = "SELECT * FROM ChiTietPhieuDangKy WHERE MaPhieuDangKy = @MaPhieuDangKy";
+                const string query = "SELECT * FROM ChiTietPhieu WHERE MaPhieuDangKy = @MaPhieuDangKy";
                 SqlParameter[] parameters = { new SqlParameter("@MaPhieuDangKy", maPhieu) };
                 using DataTable dt = DBHelper.ExecuteQuery(query, parameters);
                 foreach (DataRow row in dt.Rows)
@@ -187,7 +187,7 @@ namespace Project_PTTK.DataAccess.Phieu
         public List<PhieuDangKy> LayDanhSach()
         {
             var list = new List<PhieuDangKy>();
-            const string query = "SELECT * FROM PhieuDangKy";
+            const string query = "SELECT * FROM PhieuDangKy WHERE TrangThaiThanhToan = N'Chưa thanh toán' ";
             try
             {
                 using DataTable dt = DBHelper.ExecuteQuery(query, null);
@@ -195,11 +195,11 @@ namespace Project_PTTK.DataAccess.Phieu
                 {
                     var phieuDangKy = new PhieuDangKy
                     {
-                        MaPhieu = row.Field<int>("MaPhieu"),
-                        NgayTao = row.Field<DateOnly>("NgayTao"),
+                        MaPhieu = row.Field<int>("MaPhieuDangKy"),
+                        NgayTao = DateOnly.FromDateTime(row.Field<DateTime>("NgayTao")),
                         TrangThaiThanhToan = row.Field<string>("TrangThaiThanhToan") ?? string.Empty,
                         MaKH = row.Field<int>("MaKH"),
-                        NhanVienLap = row.Field<int>("NhanVienLap")
+                        NhanVienLap = row.Field<int>("NvLap")
                     };
                     list.Add(phieuDangKy);
                 }
