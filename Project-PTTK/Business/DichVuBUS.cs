@@ -19,5 +19,6 @@ namespace Project_PTTK.Business
         }
         public List<DichVu> LayDanhSach() => _dichVuDAO.getAll();
         public List<DichVuView> GetDichVuViews(int maphieu) => _dichVuDAO.getDichVuView(maphieu);
+        public List<DichVuView> getDichVuHienCo () => _dichVuDAO.getDichVuHienCo();
     }
 }
