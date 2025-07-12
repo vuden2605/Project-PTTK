@@ -51,14 +51,14 @@ namespace Project_PTTK
             int maphieu = Convert.ToInt32(lblMaPhieuDangKy.Text);
             ThiSinhBus tsBus = new ThiSinhBus(new ThiSinhDAO());
 
-            ThiSinh thiSinh = new ThiSinh(hoten, ngaysinh, cmnd, gioitinh, "CHƯA PHÁT HÀNH", maLichThi,maphieu);
+            ThiSinh thiSinh = new ThiSinh(hoten, ngaysinh, cmnd, gioitinh, "CHƯA PHÁT HÀNH", maLichThi, maphieu);
 
             tsBus.add(thiSinh);
             MessageBox.Show("Thêm thí sinh thành công!");
             // Cập nhật lại danh sách thí sinh
             LichThiBus ltBus = new LichThiBus(new LichThiDAO());
             ltBus.tangSoLuongTs(maLichThi);
-            
+
             // Cập nhật chi tiết phiếu đăng ký
             PhieuDangKyBUS pdkBus = new PhieuDangKyBUS(new PhieuDangKyDAO());
             pdkBus.TangSoLuongThiSinhDangKy(maphieu, maLichThi);
@@ -116,6 +116,11 @@ namespace Project_PTTK
         }
 
         private void dgvThiSinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnLuuLai_Click(object sender, EventArgs e)
         {
 
         }

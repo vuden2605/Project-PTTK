@@ -70,6 +70,9 @@ namespace Project_PTTK
                         case "Kế toán":
                             mainForm = new KETOAN_FORM();
                             break;
+                        case "Nhập liệu":
+                            mainForm = new MH_GHINHANKETQUA();
+                            break;
                         default:
                             MessageBox.Show("Vai trò không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;

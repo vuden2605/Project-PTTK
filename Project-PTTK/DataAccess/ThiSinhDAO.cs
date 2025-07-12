@@ -55,8 +55,8 @@ namespace Project_PTTK.DataAccess
                     thiSinh = new ThiSinh
                     {
                         MaTS = row.Field<int>("MaTS"),
-                        HoTen = row.Field<string>("TenThiSinh") ?? string.Empty,
-                        NgaySinh = row.Field<DateOnly>("NgaySinh"),
+                        HoTen = row.Field<string>("HoTen") ?? string.Empty,
+                        NgaySinh = DateOnly.FromDateTime(row.Field<DateTime>("NgaySinh")),
                         CCCD = row.Field<string>("CCCD") ?? string.Empty,
                         GioiTinh = row.Field<string>("GioiTinh") ?? string.Empty,
                         TrangThaiPhatHanhPhieuDuThi = row.Field<string>("TrangThaiPhatHanhPhieuDuThi") ?? string.Empty,
