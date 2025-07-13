@@ -32,24 +32,30 @@ namespace Project_PTTK.DataAccess
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi khi cập nhật trạng thái phiếu gia hạn", ex);
+                throw new Exception("Lỗi khi cập nhật trạng thái phiếu gia hạn111", ex);
             }
         }
 
         public List<PhieuGiaHan> LoadDSPhieuGH()
-        {
-            String query = "SELECT * FROM PHIEU_GIA_HAN WHERE MaPhieu = @MaPhieu";
-            SqlParameter[] parameters = new SqlParameter[] { };
-            try
-            {
-                DataTable dt = DBHelper.ExecuteQuery(query, parameters);
-                return DataTableUtils.ToList<PhieuGiaHan>(dt);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi cập nhật trạng thái phiếu gia hạn", ex);
-            }
-        }
+{
+    string query = @"
+        SELECT pgh.MaPhieuGiaHan, pgh.MaPhieuDangKy, pd.MaKH as MaKhachHang, pgh.MaLichThi, pgh.LyDo, pgh.TrangThaiThanhToan
+        FROM PhieuGiaHan pgh
+        JOIN PhieuDangKy pd ON pgh.MaPhieuDangKy = pd.MaPhieuDangKy where pgh.TrangThaiThanhToan = 'Chưa thanh toán'
+    ";
+
+    try
+    {
+        DataTable dt = DBHelper.ExecuteQuery(query, new SqlParameter[] { });
+        return DataTableUtils.ToList<PhieuGiaHan>(dt);
+    }
+    catch (Exception ex)
+    {
+        throw new Exception("Lỗi khi tải danh sách phiếu gia hạn", ex);
+    }
+}
+
+
 
         public PhieuGiaHan LoadThongTinPhieuGH(int maPhieuGiaHan)
         {

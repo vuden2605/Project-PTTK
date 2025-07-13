@@ -64,9 +64,12 @@ namespace Project_PTTK.Business
             PhieuGiaHanModel model = new PhieuGiaHanModel();
             model.MaPhieuDangKy = phieuGiaHan.MaPhieuDangKy;
             model.MaPhieuGiaHan = phieuGiaHan.MaPhieuGiaHan;
+            model.MaKhachHang = phieuGiaHan.MaKhachHang; 
+            model.MaLichThi = phieuGiaHan.MaLichThi;
             model.LyDo = phieuGiaHan.LyDo;
             model.TrangThaiThanhToan = phieuGiaHan.TrangThaiThanhToan;
             return model;
         }
+
     }
 }

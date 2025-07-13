@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            txtMaKhachHang = new TextBox();
+            label6 = new Label();
+            txtLyDo = new TextBox();
+            label5 = new Label();
+            txtMaLichThi = new TextBox();
+            label4 = new Label();
+            txtMaPhieuDangKy = new TextBox();
+            label3 = new Label();
+            txtMaPhieuGiaHan = new TextBox();
+            label2 = new Label();
             btnChon = new Button();
             dgvPhieuGiaHan = new DataGridView();
             label1 = new Label();
-            label2 = new Label();
-            txtMaPhieuGiaHan = new TextBox();
-            txtMaPhieuDangKy = new TextBox();
-            label3 = new Label();
-            txtMaLichThi = new TextBox();
-            label4 = new Label();
-            txtLyDo = new TextBox();
-            label5 = new Label();
-            txtMaKhachHang = new TextBox();
-            label6 = new Label();
             groupHoaDon = new GroupBox();
             lblPhuongThuc = new Label();
             cbmPhuongThuc = new ComboBox();
@@ -52,11 +52,6 @@
             lblTongTien = new Label();
             nudTongTien = new NumericUpDown();
             btnXacNhan = new Button();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhieuGiaHan).BeginInit();
             groupHoaDon.SuspendLayout();
@@ -85,88 +80,22 @@
             groupBox1.Text = "Thông tin phiếu gia hạn";
             groupBox1.Enter += groupBox1_Enter;
             // 
-            // btnChon
+            // txtMaKhachHang
             // 
-            btnChon.BackColor = Color.MediumSeaGreen;
-            btnChon.FlatStyle = FlatStyle.Flat;
-            btnChon.ForeColor = Color.White;
-            btnChon.Location = new Point(1179, 214);
-            btnChon.Margin = new Padding(5);
-            btnChon.Name = "btnChon";
-            btnChon.Size = new Size(131, 64);
-            btnChon.TabIndex = 10;
-            btnChon.Text = "Chọn";
-            btnChon.UseVisualStyleBackColor = false;
+            txtMaKhachHang.Location = new Point(812, 108);
+            txtMaKhachHang.Name = "txtMaKhachHang";
+            txtMaKhachHang.ReadOnly = true;
+            txtMaKhachHang.Size = new Size(241, 39);
+            txtMaKhachHang.TabIndex = 9;
             // 
-            // dgvPhieuGiaHan
+            // label6
             // 
-            dgvPhieuGiaHan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPhieuGiaHan.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
-            dgvPhieuGiaHan.Location = new Point(84, 138);
-            dgvPhieuGiaHan.Name = "dgvPhieuGiaHan";
-            dgvPhieuGiaHan.RowHeadersWidth = 82;
-            dgvPhieuGiaHan.Size = new Size(1063, 250);
-            dgvPhieuGiaHan.TabIndex = 9;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(57, 85);
-            label1.Name = "label1";
-            label1.Size = new Size(279, 32);
-            label1.TabIndex = 8;
-            label1.Text = "Danh sách phiếu gia hạn";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(32, 48);
-            label2.Name = "label2";
-            label2.Size = new Size(207, 32);
-            label2.TabIndex = 0;
-            label2.Text = "Mã phiếu gia hạn:";
-            // 
-            // txtMaPhieuGiaHan
-            // 
-            txtMaPhieuGiaHan.Location = new Point(266, 38);
-            txtMaPhieuGiaHan.Name = "txtMaPhieuGiaHan";
-            txtMaPhieuGiaHan.ReadOnly = true;
-            txtMaPhieuGiaHan.Size = new Size(241, 39);
-            txtMaPhieuGiaHan.TabIndex = 1;
-            // 
-            // txtMaPhieuDangKy
-            // 
-            txtMaPhieuDangKy.Location = new Point(266, 108);
-            txtMaPhieuDangKy.Name = "txtMaPhieuDangKy";
-            txtMaPhieuDangKy.ReadOnly = true;
-            txtMaPhieuDangKy.Size = new Size(241, 39);
-            txtMaPhieuDangKy.TabIndex = 3;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(32, 118);
-            label3.Name = "label3";
-            label3.Size = new Size(213, 32);
-            label3.TabIndex = 2;
-            label3.Text = "Mã phiếu đăng ký:";
-            // 
-            // txtMaLichThi
-            // 
-            txtMaLichThi.Location = new Point(266, 188);
-            txtMaLichThi.Name = "txtMaLichThi";
-            txtMaLichThi.ReadOnly = true;
-            txtMaLichThi.Size = new Size(241, 39);
-            txtMaLichThi.TabIndex = 5;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(32, 191);
-            label4.Name = "label4";
-            label4.Size = new Size(132, 32);
-            label4.TabIndex = 4;
-            label4.Text = "Mã lịch thi:";
+            label6.AutoSize = true;
+            label6.Location = new Point(578, 118);
+            label6.Name = "label6";
+            label6.Size = new Size(184, 32);
+            label6.TabIndex = 8;
+            label6.Text = "Mã khách hàng:";
             // 
             // txtLyDo
             // 
@@ -185,22 +114,88 @@
             label5.TabIndex = 6;
             label5.Text = "Lý do:";
             // 
-            // txtMaKhachHang
+            // txtMaLichThi
             // 
-            txtMaKhachHang.Location = new Point(812, 108);
-            txtMaKhachHang.Name = "txtMaKhachHang";
-            txtMaKhachHang.ReadOnly = true;
-            txtMaKhachHang.Size = new Size(241, 39);
-            txtMaKhachHang.TabIndex = 9;
+            txtMaLichThi.Location = new Point(266, 188);
+            txtMaLichThi.Name = "txtMaLichThi";
+            txtMaLichThi.ReadOnly = true;
+            txtMaLichThi.Size = new Size(241, 39);
+            txtMaLichThi.TabIndex = 5;
             // 
-            // label6
+            // label4
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(578, 118);
-            label6.Name = "label6";
-            label6.Size = new Size(184, 32);
-            label6.TabIndex = 8;
-            label6.Text = "Mã khách hàng:";
+            label4.AutoSize = true;
+            label4.Location = new Point(32, 191);
+            label4.Name = "label4";
+            label4.Size = new Size(132, 32);
+            label4.TabIndex = 4;
+            label4.Text = "Mã lịch thi:";
+            // 
+            // txtMaPhieuDangKy
+            // 
+            txtMaPhieuDangKy.Location = new Point(266, 108);
+            txtMaPhieuDangKy.Name = "txtMaPhieuDangKy";
+            txtMaPhieuDangKy.ReadOnly = true;
+            txtMaPhieuDangKy.Size = new Size(241, 39);
+            txtMaPhieuDangKy.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(32, 118);
+            label3.Name = "label3";
+            label3.Size = new Size(213, 32);
+            label3.TabIndex = 2;
+            label3.Text = "Mã phiếu đăng ký:";
+            // 
+            // txtMaPhieuGiaHan
+            // 
+            txtMaPhieuGiaHan.Location = new Point(266, 38);
+            txtMaPhieuGiaHan.Name = "txtMaPhieuGiaHan";
+            txtMaPhieuGiaHan.ReadOnly = true;
+            txtMaPhieuGiaHan.Size = new Size(241, 39);
+            txtMaPhieuGiaHan.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(32, 48);
+            label2.Name = "label2";
+            label2.Size = new Size(207, 32);
+            label2.TabIndex = 0;
+            label2.Text = "Mã phiếu gia hạn:";
+            // 
+            // btnChon
+            // 
+            btnChon.BackColor = Color.MediumSeaGreen;
+            btnChon.FlatStyle = FlatStyle.Flat;
+            btnChon.ForeColor = Color.White;
+            btnChon.Location = new Point(1179, 214);
+            btnChon.Margin = new Padding(5);
+            btnChon.Name = "btnChon";
+            btnChon.Size = new Size(131, 64);
+            btnChon.TabIndex = 10;
+            btnChon.Text = "Chọn";
+            btnChon.UseVisualStyleBackColor = false;
+            btnChon.Click += btnChon_Click;
+            // 
+            // dgvPhieuGiaHan
+            // 
+            dgvPhieuGiaHan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPhieuGiaHan.Location = new Point(84, 138);
+            dgvPhieuGiaHan.Name = "dgvPhieuGiaHan";
+            dgvPhieuGiaHan.RowHeadersWidth = 82;
+            dgvPhieuGiaHan.Size = new Size(1063, 250);
+            dgvPhieuGiaHan.TabIndex = 9;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(57, 85);
+            label1.Name = "label1";
+            label1.Size = new Size(279, 32);
+            label1.TabIndex = 8;
+            label1.Text = "Danh sách phiếu gia hạn";
             // 
             // groupHoaDon
             // 
@@ -232,11 +227,13 @@
             // 
             // cbmPhuongThuc
             // 
+            cbmPhuongThuc.Items.AddRange(new object[] { "Trực tiếp", "Chuyển khoản" });
             cbmPhuongThuc.Location = new Point(275, 40);
             cbmPhuongThuc.Margin = new Padding(5);
             cbmPhuongThuc.Name = "cbmPhuongThuc";
             cbmPhuongThuc.Size = new Size(290, 40);
             cbmPhuongThuc.TabIndex = 1;
+            cbmPhuongThuc.Text = "Trực tiếp";
             // 
             // lblSoTien
             // 
@@ -304,41 +301,7 @@
             btnXacNhan.TabIndex = 14;
             btnXacNhan.Text = "✅ Xác nhận thanh toán";
             btnXacNhan.UseVisualStyleBackColor = false;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Mã phiếu gia hạn";
-            Column1.MinimumWidth = 10;
-            Column1.Name = "Column1";
-            Column1.Width = 200;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Mã phiếu đăng ký";
-            Column2.MinimumWidth = 10;
-            Column2.Name = "Column2";
-            Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Mã khách hàng";
-            Column3.MinimumWidth = 10;
-            Column3.Name = "Column3";
-            Column3.Width = 200;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Lý do";
-            Column4.MinimumWidth = 10;
-            Column4.Name = "Column4";
-            Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Trạng thái";
-            Column5.MinimumWidth = 10;
-            Column5.Name = "Column5";
-            Column5.Width = 200;
+            btnXacNhan.Click += btnXacNhan_Click;
             // 
             // MH_THANHTOANPHIEUGIAHAN
             // 
@@ -391,10 +354,5 @@
         private Label lblTongTien;
         private NumericUpDown nudTongTien;
         private Button btnXacNhan;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
     }
 }

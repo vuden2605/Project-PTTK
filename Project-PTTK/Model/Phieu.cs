@@ -52,7 +52,7 @@ namespace Project_PTTK.Model
         public string? LyDo { get; set; } 
         public string TrangThaiThanhToan { get; set; } = null!;
         public int MaNV { get; set; }
-
+        public int MaKhachHang { get; set; }
         public int MaPhieuDangKy { get; set; }
         public int MaLichThi { get; set; }
     }

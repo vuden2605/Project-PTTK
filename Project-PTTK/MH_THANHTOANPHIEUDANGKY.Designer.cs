@@ -59,9 +59,10 @@
             btnXacNhan.BackColor = Color.MediumSeaGreen;
             btnXacNhan.FlatStyle = FlatStyle.Flat;
             btnXacNhan.ForeColor = Color.White;
-            btnXacNhan.Location = new Point(646, 678);
+            btnXacNhan.Location = new Point(1050, 1085);
+            btnXacNhan.Margin = new Padding(5);
             btnXacNhan.Name = "btnXacNhan";
-            btnXacNhan.Size = new Size(220, 40);
+            btnXacNhan.Size = new Size(358, 64);
             btnXacNhan.TabIndex = 13;
             btnXacNhan.Text = "✅ Xác nhận thanh toán";
             btnXacNhan.UseVisualStyleBackColor = false;
@@ -71,9 +72,11 @@
             // 
             groupBox1.Controls.Add(dgvPhieuDangKy);
             groupBox1.Controls.Add(btnXemChiTietPhieu);
-            groupBox1.Location = new Point(74, 19);
+            groupBox1.Location = new Point(120, 30);
+            groupBox1.Margin = new Padding(5);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(800, 237);
+            groupBox1.Padding = new Padding(5);
+            groupBox1.Size = new Size(1300, 379);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách phiếu đăng ký cần thanh toán";
@@ -81,11 +84,10 @@
             // dgvPhieuDangKy
             // 
             dgvPhieuDangKy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPhieuDangKy.Location = new Point(58, 38);
-            dgvPhieuDangKy.Margin = new Padding(2);
+            dgvPhieuDangKy.Location = new Point(94, 61);
             dgvPhieuDangKy.Name = "dgvPhieuDangKy";
             dgvPhieuDangKy.RowHeadersWidth = 82;
-            dgvPhieuDangKy.Size = new Size(593, 199);
+            dgvPhieuDangKy.Size = new Size(964, 318);
             dgvPhieuDangKy.TabIndex = 6;
             dgvPhieuDangKy.CellContentClick += dgvPhieuDangKy_CellContentClick;
             // 
@@ -94,9 +96,10 @@
             btnXemChiTietPhieu.BackColor = Color.MediumSeaGreen;
             btnXemChiTietPhieu.FlatStyle = FlatStyle.Flat;
             btnXemChiTietPhieu.ForeColor = Color.White;
-            btnXemChiTietPhieu.Location = new Point(671, 99);
+            btnXemChiTietPhieu.Location = new Point(1090, 158);
+            btnXemChiTietPhieu.Margin = new Padding(5);
             btnXemChiTietPhieu.Name = "btnXemChiTietPhieu";
-            btnXemChiTietPhieu.Size = new Size(113, 40);
+            btnXemChiTietPhieu.Size = new Size(184, 64);
             btnXemChiTietPhieu.TabIndex = 5;
             btnXemChiTietPhieu.Text = "Xem chi tiết";
             btnXemChiTietPhieu.UseVisualStyleBackColor = false;
@@ -106,9 +109,11 @@
             // 
             groupPhieu.Controls.Add(lblMaPhieu);
             groupPhieu.Controls.Add(dgvChiTietPhieu);
-            groupPhieu.Location = new Point(74, 262);
+            groupPhieu.Location = new Point(120, 419);
+            groupPhieu.Margin = new Padding(5);
             groupPhieu.Name = "groupPhieu";
-            groupPhieu.Size = new Size(800, 254);
+            groupPhieu.Padding = new Padding(5);
+            groupPhieu.Size = new Size(1300, 406);
             groupPhieu.TabIndex = 10;
             groupPhieu.TabStop = false;
             groupPhieu.Text = "Thông tin Phiếu Đăng Ký";
@@ -117,19 +122,21 @@
             // 
             lblMaPhieu.AutoSize = true;
             lblMaPhieu.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblMaPhieu.Location = new Point(186, -2);
+            lblMaPhieu.Location = new Point(302, -3);
+            lblMaPhieu.Margin = new Padding(5, 0, 5, 0);
             lblMaPhieu.Name = "lblMaPhieu";
-            lblMaPhieu.Size = new Size(48, 28);
+            lblMaPhieu.Size = new Size(74, 45);
             lblMaPhieu.TabIndex = 1;
             lblMaPhieu.Text = "001";
             // 
             // dgvChiTietPhieu
             // 
             dgvChiTietPhieu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvChiTietPhieu.Location = new Point(58, 38);
+            dgvChiTietPhieu.Location = new Point(94, 61);
+            dgvChiTietPhieu.Margin = new Padding(5);
             dgvChiTietPhieu.Name = "dgvChiTietPhieu";
             dgvChiTietPhieu.RowHeadersWidth = 51;
-            dgvChiTietPhieu.Size = new Size(593, 188);
+            dgvChiTietPhieu.Size = new Size(964, 301);
             dgvChiTietPhieu.TabIndex = 0;
             dgvChiTietPhieu.CellContentClick += dgvChiTietPhieu_CellContentClick;
             // 
@@ -143,90 +150,100 @@
             groupHoaDon.Controls.Add(nudChietKhau);
             groupHoaDon.Controls.Add(lblTongTien);
             groupHoaDon.Controls.Add(nudTongTien);
-            groupHoaDon.Location = new Point(74, 538);
+            groupHoaDon.Location = new Point(120, 861);
+            groupHoaDon.Margin = new Padding(5);
             groupHoaDon.Name = "groupHoaDon";
-            groupHoaDon.Size = new Size(800, 100);
+            groupHoaDon.Padding = new Padding(5);
+            groupHoaDon.Size = new Size(1300, 160);
             groupHoaDon.TabIndex = 11;
             groupHoaDon.TabStop = false;
             groupHoaDon.Text = "Hóa Đơn";
             // 
             // lblPhuongThuc
             // 
-            lblPhuongThuc.Location = new Point(59, 27);
+            lblPhuongThuc.Location = new Point(96, 43);
+            lblPhuongThuc.Margin = new Padding(5, 0, 5, 0);
             lblPhuongThuc.Name = "lblPhuongThuc";
-            lblPhuongThuc.Size = new Size(100, 23);
+            lblPhuongThuc.Size = new Size(162, 37);
             lblPhuongThuc.TabIndex = 0;
             lblPhuongThuc.Text = "Phương thức:";
             // 
             // cbmPhuongThuc
             // 
-            cbmPhuongThuc.Items.AddRange(new object[] { "Tiền mặt", "Thanh toán online" });
-            cbmPhuongThuc.Location = new Point(169, 25);
+            cbmPhuongThuc.Items.AddRange(new object[] { "Trực tiếp", "Chuyển khoản" });
+            cbmPhuongThuc.Location = new Point(275, 40);
+            cbmPhuongThuc.Margin = new Padding(5);
             cbmPhuongThuc.Name = "cbmPhuongThuc";
-            cbmPhuongThuc.Size = new Size(180, 28);
+            cbmPhuongThuc.Size = new Size(290, 40);
             cbmPhuongThuc.TabIndex = 1;
+            cbmPhuongThuc.Text = "Trực tiếp";
             // 
             // lblSoTien
             // 
-            lblSoTien.Location = new Point(466, 30);
+            lblSoTien.Location = new Point(757, 48);
+            lblSoTien.Margin = new Padding(5, 0, 5, 0);
             lblSoTien.Name = "lblSoTien";
-            lblSoTien.Size = new Size(100, 23);
+            lblSoTien.Size = new Size(162, 37);
             lblSoTien.TabIndex = 2;
             lblSoTien.Text = "Số tiền:";
             // 
             // nudSoTien
             // 
             nudSoTien.Enabled = false;
-            nudSoTien.Location = new Point(572, 30);
+            nudSoTien.Location = new Point(930, 48);
+            nudSoTien.Margin = new Padding(5);
             nudSoTien.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             nudSoTien.Name = "nudSoTien";
-            nudSoTien.Size = new Size(120, 27);
+            nudSoTien.Size = new Size(195, 39);
             nudSoTien.TabIndex = 3;
             // 
             // lblChietKhau
             // 
-            lblChietKhau.Location = new Point(59, 62);
+            lblChietKhau.Location = new Point(96, 99);
+            lblChietKhau.Margin = new Padding(5, 0, 5, 0);
             lblChietKhau.Name = "lblChietKhau";
-            lblChietKhau.Size = new Size(100, 23);
+            lblChietKhau.Size = new Size(162, 37);
             lblChietKhau.TabIndex = 4;
             lblChietKhau.Text = "Chiết khấu (%):";
             // 
             // nudChietKhau
             // 
-            nudChietKhau.Location = new Point(169, 60);
+            nudChietKhau.Location = new Point(275, 96);
+            nudChietKhau.Margin = new Padding(5);
             nudChietKhau.Name = "nudChietKhau";
-            nudChietKhau.Size = new Size(120, 27);
+            nudChietKhau.Size = new Size(195, 39);
             nudChietKhau.TabIndex = 5;
             nudChietKhau.ValueChanged += nudChietKhau_ValueChanged;
             // 
             // lblTongTien
             // 
-            lblTongTien.Location = new Point(466, 65);
+            lblTongTien.Location = new Point(757, 104);
+            lblTongTien.Margin = new Padding(5, 0, 5, 0);
             lblTongTien.Name = "lblTongTien";
-            lblTongTien.Size = new Size(100, 23);
+            lblTongTien.Size = new Size(162, 37);
             lblTongTien.TabIndex = 6;
             lblTongTien.Text = "Tổng tiền:";
             // 
             // nudTongTien
             // 
             nudTongTien.Enabled = false;
-            nudTongTien.Location = new Point(572, 63);
+            nudTongTien.Location = new Point(930, 101);
+            nudTongTien.Margin = new Padding(5);
             nudTongTien.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             nudTongTien.Name = "nudTongTien";
             nudTongTien.ReadOnly = true;
-            nudTongTien.Size = new Size(120, 27);
+            nudTongTien.Size = new Size(195, 39);
             nudTongTien.TabIndex = 7;
             // 
             // MH_THANHTOANPHIEUDANGKY
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1004, 722);
+            ClientSize = new Size(1632, 1155);
             Controls.Add(btnXacNhan);
             Controls.Add(groupBox1);
             Controls.Add(groupPhieu);
             Controls.Add(groupHoaDon);
-            Margin = new Padding(2);
             Name = "MH_THANHTOANPHIEUDANGKY";
             Text = " ";
             groupBox1.ResumeLayout(false);
