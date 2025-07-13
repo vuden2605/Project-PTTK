@@ -39,6 +39,9 @@ namespace Project_PTTK
                 if (dichVuList != null && dichVuList.Count > 0)
                 {
                     dgvLichThiDV.DataSource = dichVuList;
+                    dgvLichThiDV.Columns["gia"].Visible = false;
+                    dgvLichThiDV.Columns["soLuong"].Visible = false;
+                    dgvLichThiDV.Columns["ThanhTien"].Visible = false;
                     dgvLichThiDV.Columns["maLichThi"]!.HeaderText = "Mã lịch thi";
                     dgvLichThiDV.Columns["tenDichVu"]!.HeaderText = "Tên dịch vụ";
                     dgvLichThiDV.Columns["ngayThi"]!.HeaderText = "Ngày thi";

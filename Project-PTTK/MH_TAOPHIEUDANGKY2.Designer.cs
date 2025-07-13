@@ -301,9 +301,11 @@
             lblMaPhieuDangKy.Location = new Point(304, -3);
             lblMaPhieuDangKy.Margin = new Padding(5, 0, 5, 0);
             lblMaPhieuDangKy.Name = "lblMaPhieuDangKy";
+
             lblMaPhieuDangKy.Size = new Size(74, 45);
+
             lblMaPhieuDangKy.TabIndex = 12;
-            lblMaPhieuDangKy.Text = "001";
+            lblMaPhieuDangKy.Text = "1";
             // 
             // groupKhachHang
             // 

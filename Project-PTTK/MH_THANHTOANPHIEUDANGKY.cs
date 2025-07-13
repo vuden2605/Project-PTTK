@@ -78,7 +78,7 @@ namespace Project_PTTK
                 if (maPhieuDangKy != null)
                 {
                     lblMaPhieu.Text = maPhieuDangKy;
-                    List<DichVuView> chiTietPhieuDangKy =dvBus.GetDichVuViews(int.Parse(maPhieuDangKy));
+                    List<DichVuView> chiTietPhieuDangKy = dvBus.GetDichVuViews(int.Parse(maPhieuDangKy));
                     dgvChiTietPhieu.DataSource = chiTietPhieuDangKy;
                     decimal tongThanhTien = 0;
 
@@ -89,7 +89,7 @@ namespace Project_PTTK
                             tongThanhTien += thanhTien;
                         }
                     }
-                 
+
                     nudSoTien.Value = tongThanhTien;
                     nudTongTien.Value = tongThanhTien * (100 - nudChietKhau.Value) / 100;
 
@@ -134,6 +134,19 @@ namespace Project_PTTK
                 MaPhieuDangKy = int.Parse(lblMaPhieu.Text)
             };
             hdBus.ThemHoaDon(hoaDon);
+        }
+
+        private void nudChietKhau_ValueChanged(object sender, EventArgs e)
+        {
+            decimal soTien = nudSoTien.Value;
+            decimal chietKhau = nudChietKhau.Value;
+            decimal tongTien = nudSoTien.Value * (100 - nudChietKhau.Value) / 100;
+            nudTongTien.Value = tongTien;
+        }
+
+        private void dgvChiTietPhieu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

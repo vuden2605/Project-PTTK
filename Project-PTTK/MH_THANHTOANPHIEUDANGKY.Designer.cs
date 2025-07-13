@@ -131,6 +131,7 @@
             dgvChiTietPhieu.RowHeadersWidth = 51;
             dgvChiTietPhieu.Size = new Size(593, 188);
             dgvChiTietPhieu.TabIndex = 0;
+            dgvChiTietPhieu.CellContentClick += dgvChiTietPhieu_CellContentClick;
             // 
             // groupHoaDon
             // 
@@ -196,6 +197,7 @@
             nudChietKhau.Name = "nudChietKhau";
             nudChietKhau.Size = new Size(120, 27);
             nudChietKhau.TabIndex = 5;
+            nudChietKhau.ValueChanged += nudChietKhau_ValueChanged;
             // 
             // lblTongTien
             // 

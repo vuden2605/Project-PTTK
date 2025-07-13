@@ -8,8 +8,8 @@ namespace Project_PTTK
 {
     public static class DBHelper
     {
-        private static string connectionString = @"Server=.\SQLEXPRESS01;Database=QuanLyChungChi;User Id=sa;Password=1;TrustServerCertificate=True;";
-     
+        private static string connectionString = @"Server=.\SQLEXPRESS;Database=QuanLyChungChi;User Id=sa;Password=;TrustServerCertificate=True;";
+
 
         public static SqlConnection GetConnection()
         {
