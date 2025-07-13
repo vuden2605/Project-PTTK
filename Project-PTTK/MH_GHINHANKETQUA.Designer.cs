@@ -62,6 +62,7 @@
             btnTaoChungChi.TabIndex = 18;
             btnTaoChungChi.Text = "📝Tạo chứng chỉ";
             btnTaoChungChi.UseVisualStyleBackColor = false;
+            btnTaoChungChi.Click += btnTaoChungChi_Click;
             // 
             // groupBox2
             // 
@@ -218,6 +219,7 @@
             txtMaTS.Name = "txtMaTS";
             txtMaTS.Size = new Size(201, 39);
             txtMaTS.TabIndex = 1;
+            txtMaTS.TextChanged += txtMaTS_TextChanged;
             // 
             // label1
             // 

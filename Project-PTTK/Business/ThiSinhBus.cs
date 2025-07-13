@@ -16,11 +16,12 @@ namespace Project_PTTK.Business
         {
             this.thiSinhDAO = _thiSinhDAO;
         }
-        //public ThiSinhGetModel loadThongTinTS(int maTS)
-        //{
-        //    ThiSinh thiSinh = thiSinhDAO.loadThongTinThiSinh(maTS);
-        //    return ThiSinhGetModel.mapFromEntity(thiSinh);
-        //}
+        public ThiSinh? LoadThongTinTS(int maTS)
+        {
+            return thiSinhDAO.loadThongTinThiSinh(maTS);
+        }
+
+
         public void add(ThiSinh thiSinh)
         {
             thiSinhDAO.add(thiSinh);
