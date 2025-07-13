@@ -12,6 +12,7 @@ using Project_PTTK.Business;
 using Project_PTTK.Model;
 
 
+
 namespace Project_PTTK
 {
     public partial class MH_GHINHANKETQUA : Form
@@ -22,7 +23,7 @@ namespace Project_PTTK
         }
         private ThiSinhBus tsbus = new ThiSinhBus(new ThiSinhDAO());
         private ChungChiBus chungChiBus = new ChungChiBus(new ChungChiDAO());
-
+        
         private void txtMaTS_TextChanged(object sender, EventArgs e)
         {
             if (int.TryParse(txtMaTS.Text, out int maTS))
@@ -57,6 +58,11 @@ namespace Project_PTTK
                 }
 
                 var ts = tsbus.LoadThongTinTS(maTS);
+                if(chungChiBus.KiemTraTonTaiChungChi(ts.MaTS))
+{
+                    MessageBox.Show("Thí sinh này đã được cấp chứng chỉ rồi.");
+                    return; // thêm return để không tiếp tục xử lý nữa
+                }
                 if (ts == null)
                 {
                     MessageBox.Show("Không tìm thấy thí sinh.");
@@ -85,7 +91,7 @@ namespace Project_PTTK
                 double ketQuaDouble = (s1 + s2 + s3 + s4) / 4.0;
                 int ketQua = (int)Math.Round(ketQuaDouble);
 
-                int NvLap = 1; // tạm thời
+                int NvLap = Session.MaNV; // 
 
                 ChungChiCreateModel model = new ChungChiCreateModel(maTS, ketQua);
                 model.NvLap = NvLap;

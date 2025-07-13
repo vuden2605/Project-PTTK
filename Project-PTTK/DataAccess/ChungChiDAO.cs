@@ -13,9 +13,9 @@ namespace Project_PTTK.DataAccess
     {
         public void ThemChungChi(ChungChi chungChi)
         {
-            String query = "INSERT INTO CHUNG_CHI(NgayCap, TrangThai, KetQua, MaTS, NvLap) " +
-                           "VALUES (@NgayCap, @TrangThai, @KetQua, @MaTS, @NhanVienLap);" +
-                           "SELECT SCOPE_IDENTITY();";
+            String query = "INSERT INTO CHUNGCHI( MaTS, NvLap, NgayCap, TrangThai, KetQua ) " +
+                           "VALUES (@MaTS, @NhanVienLap, @NgayCap, @TrangThai, @KetQua);";
+                           
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@NgayCap", chungChi.NgayCap),
@@ -27,8 +27,7 @@ namespace Project_PTTK.DataAccess
             try
             {
                 DataTable dt = DBHelper.ExecuteQuery(query, parameters);
-                int maChungChi = Convert.ToInt32(dt.Rows[0][0]);
-                chungChi.MaChungChi = maChungChi;
+                
             }
             catch(Exception ex) { 
                 throw new Exception("Lỗi khi thực hiện thêm chứng chỉ", ex);

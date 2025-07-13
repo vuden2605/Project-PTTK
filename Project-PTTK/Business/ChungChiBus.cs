@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Project_PTTK.DataAccess;
 using Project_PTTK.Model;
+using Microsoft.Data.SqlClient;
 
 namespace Project_PTTK.Business
 {
@@ -20,6 +21,16 @@ namespace Project_PTTK.Business
         {
             ChungChi chungChi = model.toEntity();
             chungChiDAO.ThemChungChi(chungChi);
+        }
+        public bool KiemTraTonTaiChungChi(int maTS)
+        {
+            string query = "SELECT COUNT(*) FROM ChungChi WHERE MaTS = @MaTS";
+            SqlParameter[] parameters = {
+        new SqlParameter("@MaTS", maTS)
+    };
+
+            int count = (int)DBHelper.ExecuteScalar(query, parameters); // Giả sử bạn có lớp DBHelper
+            return count > 0;
         }
     }
     public class ChungChiCreateModel
