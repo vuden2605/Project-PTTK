@@ -48,12 +48,13 @@ namespace Project_PTTK.DataAccess
                     var lichThi = new LichThi
                     {
                         MaLichThi = row.Field<int>("MaLichThi"),
-                        NgayThi = row.Field<DateOnly>("NgayThi"),
-                        GioThi = row.Field<TimeOnly>("GioThi"),
-                        SoThiSinhDaDangKy = row.Field<int>("SoThiSinhDaDangKy"),
+                        NgayThi = DateOnly.FromDateTime(row.Field<DateTime>("NgayThi")),
+                        GioThi = TimeOnly.FromTimeSpan(row.Field<TimeSpan>("GioThi")),
+
+                        SoThiSinhDaDangKy = row.Field<int>("SoTSDaDangKy"),
                         MaPhongThi = row.Field<int>("MaPhongThi"),
                         MaDichVu = row.Field<int>("MaDichVu"),
-                        NhanVienLap = row.Field<int>("NhanVienLap")
+                        NhanVienLap = row.Field<int>("NvLap")
                     };
                     lichThis.Add(lichThi);
                 }

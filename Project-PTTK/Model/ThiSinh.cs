@@ -16,6 +16,10 @@ namespace Project_PTTK.Model
         public string TrangThaiPhatHanhPhieuDuThi { get; set; } = null!;
         public int MaLichThi { get; set; }
         public int MaPhieuDangKy { get; set; }
+        public override string ToString()
+        {
+            return $"Mã TS: {MaTS}, Họ tên: {HoTen}, Mã phiếu: {MaPhieuDangKy}, Ngày sinh: {NgaySinh}";
+        }
 
         public ThiSinh(string hoTen, DateOnly ngaySinh, string cccd, string gioiTinh, string trangThaiPhatHanhPhieuDuThi, int maLichThi, int maPhieuDangKy)
         {

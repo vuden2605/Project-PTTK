@@ -36,17 +36,12 @@
             groupBox2 = new GroupBox();
             btnChonDichVu = new Button();
             dgvDichVuDaDK = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
             groupBox3 = new GroupBox();
             dgvLichThiMoi = new DataGridView();
             label4 = new Label();
             cmbLyDo = new ComboBox();
             label3 = new Label();
             btnTaoPhieuGiaHan = new Button();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
-            Column8 = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDichVuDaDK).BeginInit();
@@ -84,9 +79,10 @@
             label2.Location = new Point(316, 29);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(89, 20);
+            label2.Size = new Size(57, 20);
             label2.TabIndex = 2;
-            label2.Text = "Khách hàng:";
+            label2.Text = "Họ tên:";
+            label2.Click += label2_Click;
             // 
             // txtMaPhieu
             // 
@@ -95,6 +91,7 @@
             txtMaPhieu.Name = "txtMaPhieu";
             txtMaPhieu.Size = new Size(150, 27);
             txtMaPhieu.TabIndex = 1;
+            txtMaPhieu.KeyDown += txtMaPhieu_KeyDown;
             // 
             // label1
             // 
@@ -102,9 +99,9 @@
             label1.Location = new Point(20, 30);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(74, 20);
+            label1.Size = new Size(84, 20);
             label1.TabIndex = 0;
-            label1.Text = "Mã phiếu:";
+            label1.Text = "Mã thí sinh:";
             // 
             // groupBox2
             // 
@@ -125,7 +122,7 @@
             btnChonDichVu.FlatStyle = FlatStyle.Flat;
             btnChonDichVu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnChonDichVu.ForeColor = Color.White;
-            btnChonDichVu.Location = new Point(270, 152);
+            btnChonDichVu.Location = new Point(270, 159);
             btnChonDichVu.Name = "btnChonDichVu";
             btnChonDichVu.Size = new Size(68, 30);
             btnChonDichVu.TabIndex = 23;
@@ -136,28 +133,13 @@
             // dgvDichVuDaDK
             // 
             dgvDichVuDaDK.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDichVuDaDK.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2 });
             dgvDichVuDaDK.Location = new Point(20, 25);
             dgvDichVuDaDK.Margin = new Padding(2);
             dgvDichVuDaDK.Name = "dgvDichVuDaDK";
             dgvDichVuDaDK.RowHeadersWidth = 82;
-            dgvDichVuDaDK.Size = new Size(583, 116);
+            dgvDichVuDaDK.Size = new Size(583, 129);
             dgvDichVuDaDK.TabIndex = 0;
             dgvDichVuDaDK.CellContentClick += dgvDichVuDaDK_CellContentClick;
-            // 
-            // Column1
-            // 
-            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column1.HeaderText = "Mã dịch vụ";
-            Column1.MinimumWidth = 10;
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Tên dịch vụ";
-            Column2.MinimumWidth = 10;
-            Column2.Name = "Column2";
-            Column2.Width = 200;
             // 
             // groupBox3
             // 
@@ -177,12 +159,11 @@
             // dgvLichThiMoi
             // 
             dgvLichThiMoi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLichThiMoi.Columns.AddRange(new DataGridViewColumn[] { Column6, Column7, Column8 });
             dgvLichThiMoi.Location = new Point(20, 111);
             dgvLichThiMoi.Margin = new Padding(2);
             dgvLichThiMoi.Name = "dgvLichThiMoi";
             dgvLichThiMoi.RowHeadersWidth = 82;
-            dgvLichThiMoi.Size = new Size(584, 117);
+            dgvLichThiMoi.Size = new Size(584, 124);
             dgvLichThiMoi.TabIndex = 7;
             dgvLichThiMoi.CellContentClick += dgvLichThiMoi_CellContentClick;
             // 
@@ -222,7 +203,7 @@
             btnTaoPhieuGiaHan.FlatStyle = FlatStyle.Flat;
             btnTaoPhieuGiaHan.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnTaoPhieuGiaHan.ForeColor = Color.White;
-            btnTaoPhieuGiaHan.Location = new Point(224, 599);
+            btnTaoPhieuGiaHan.Location = new Point(223, 609);
             btnTaoPhieuGiaHan.Name = "btnTaoPhieuGiaHan";
             btnTaoPhieuGiaHan.Size = new Size(207, 45);
             btnTaoPhieuGiaHan.TabIndex = 21;
@@ -230,32 +211,11 @@
             btnTaoPhieuGiaHan.UseVisualStyleBackColor = false;
             btnTaoPhieuGiaHan.Click += btnTaoPhieuGiaHan_Click;
             // 
-            // Column6
-            // 
-            Column6.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column6.HeaderText = "Mã lịch thi";
-            Column6.MinimumWidth = 10;
-            Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Ngày thi";
-            Column7.MinimumWidth = 10;
-            Column7.Name = "Column7";
-            Column7.Width = 200;
-            // 
-            // Column8
-            // 
-            Column8.HeaderText = "Giờ thi";
-            Column8.MinimumWidth = 10;
-            Column8.Name = "Column8";
-            Column8.Width = 200;
-            // 
             // MH_TAOPHIEUGIAHAN
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(660, 659);
+            ClientSize = new Size(714, 678);
             Controls.Add(btnTaoPhieuGiaHan);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
@@ -291,10 +251,5 @@
         private ComboBox cmbLyDo;
         private Label label3;
         private Button btnTaoPhieuGiaHan;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column7;
-        private DataGridViewTextBoxColumn Column8;
     }
 }

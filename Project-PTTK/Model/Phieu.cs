@@ -49,9 +49,12 @@ namespace Project_PTTK.Model
     {
         public int MaPhieuGiaHan { get; set; }
         public DateOnly NgayTao { get; set; }
-        public string LyDo { get; set; } = null!;
+        public string? LyDo { get; set; } 
         public string TrangThaiThanhToan { get; set; } = null!;
+        public int MaNV { get; set; }
+
         public int MaPhieuDangKy { get; set; }
+        public int MaLichThi { get; set; }
     }
     public class HoaDon
     {

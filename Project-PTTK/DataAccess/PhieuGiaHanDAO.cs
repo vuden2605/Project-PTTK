@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Project_PTTK.Model;
 using Project_PTTK.Utils;
 
-namespace Project_PTTK.DataAccess.PhieuGiaHanDAO
+namespace Project_PTTK.DataAccess
 {
     public class PhieuGiaHanDAO
     {
@@ -30,7 +30,7 @@ namespace Project_PTTK.DataAccess.PhieuGiaHanDAO
             {
                 DBHelper.ExecuteNonQuery(query, parameters);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Lỗi khi cập nhật trạng thái phiếu gia hạn", ex);
             }
@@ -39,7 +39,7 @@ namespace Project_PTTK.DataAccess.PhieuGiaHanDAO
         public List<PhieuGiaHan> LoadDSPhieuGH()
         {
             String query = "SELECT * FROM PHIEU_GIA_HAN WHERE MaPhieu = @MaPhieu";
-            SqlParameter[] parameters = new SqlParameter[]{};
+            SqlParameter[] parameters = new SqlParameter[] { };
             try
             {
                 DataTable dt = DBHelper.ExecuteQuery(query, parameters);
@@ -70,7 +70,28 @@ namespace Project_PTTK.DataAccess.PhieuGiaHanDAO
             }
 
         }
+        public void ThemPhieuGiaHan(PhieuGiaHan phieuGiaHan)
+        {
+            String query = "INSERT INTO PHIEUGIAHAN (LyDo, TrangThaiThanhToan, MaNV, MaPhieuDangKy, MaLichThi) " +
+                           "VALUES (@LyDo, @TrangThai, @MaNV, @MaPhieuDangKy, @MaLichThi)";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+               
+                new SqlParameter("@LyDo", phieuGiaHan.LyDo),
+                new SqlParameter("@TrangThai", phieuGiaHan.TrangThaiThanhToan),
+                new SqlParameter("@MaNV", phieuGiaHan.MaNV),
+                new SqlParameter("@MaPhieuDangKy", phieuGiaHan.MaPhieuDangKy),
+                new SqlParameter("@MaLichThi", phieuGiaHan.MaLichThi)
+            };
+            try
+            {
+                DBHelper.ExecuteNonQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi thêm phiếu gia hạn", ex);
+            }
 
-
+        }
     }
 }

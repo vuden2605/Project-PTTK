@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Project_PTTK.DataAccess.PhieuGiaHanDAO;
+using Project_PTTK.DataAccess;
 using Project_PTTK.Model;
 
 namespace Project_PTTK.Business
@@ -13,7 +13,7 @@ namespace Project_PTTK.Business
         private readonly PhieuGiaHanDAO phieuGiaHanDAO;
         public PhieuGiaHanBus(PhieuGiaHanDAO _phieuGiaHanDAO)
         {
-            this.phieuGiaHanDAO = _phieuGiaHanDAO;
+            phieuGiaHanDAO = _phieuGiaHanDAO;
         }
         public int TinhSoTien(String LyDo)
         {
@@ -33,6 +33,10 @@ namespace Project_PTTK.Business
         {
             PhieuGiaHan phieuGiaHan = phieuGiaHanDAO.LoadThongTinPhieuGH(maPhieuGiaHan);
             return PhieuGiaHanModel.mapFromEntity(phieuGiaHan);
+        }
+        public void ThemPhieuGiaHan (PhieuGiaHan phieuGiaHan)
+        {
+            phieuGiaHanDAO.ThemPhieuGiaHan(phieuGiaHan);
         }
     }
 

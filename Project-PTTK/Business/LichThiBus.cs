@@ -23,5 +23,7 @@ namespace Project_PTTK.Business
                 throw new Exception("Lỗi khi tăng số lượng thí sinh đã đăng ký: ", ex);
             }
         }
+        public List<LichThi> LayTheoMaDichVu (int madichvu) =>
+            _lichThiDAO.LayTheoMaDichVu(madichvu);
     }
 }

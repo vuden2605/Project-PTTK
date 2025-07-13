@@ -60,7 +60,8 @@ namespace Project_PTTK.DataAccess
                         CCCD = row.Field<string>("CCCD") ?? string.Empty,
                         GioiTinh = row.Field<string>("GioiTinh") ?? string.Empty,
                         TrangThaiPhatHanhPhieuDuThi = row.Field<string>("TrangThaiPhatHanhPhieuDuThi") ?? string.Empty,
-                        
+                        MaPhieuDangKy = row.Field<int>("MaPhieuDangKy"),
+
                         MaLichThi = row.Field<int>("MaLichThi")
                     };
                 }
